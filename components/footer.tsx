@@ -159,7 +159,7 @@ export const Footer = () => {
             {links.ownerName}
           </Link>{" "}
           |{" "}
-          <Link href={links.sourceCode} className="underline">
+          <Link href={links.sourceCode} className="underline" target="_blank" rel="noreferrer noopener">
             Source Code
           </Link>
         </p>
