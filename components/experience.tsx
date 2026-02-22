@@ -15,7 +15,7 @@ export const Experience = () => {
           <Button
             key={experience.id}
             borderRadius="1.75rem"
-            className="flex-1 border-neutral-200 text-white dark:border-slate-800"
+            className="flex-1"
             duration={Math.floor(Math.random() * 10000 + 10000)}
           >
             <div className="flex flex-col gap-2 p-3 py-6 md:p-5 lg:flex-row lg:items-center lg:p-10">
@@ -28,10 +28,10 @@ export const Experience = () => {
               />
 
               <div className="lg:ms-5">
-                <h1 className="text-start text-xl font-bold md:text-2xl">
+                <h1 className="text-start text-xl font-bold md:text-2xl" style={{ color: "var(--text-primary)" }}>
                   {experience.title}
                 </h1>
-                <p className="mt-3 text-start font-semibold text-white-100">
+                <p className="mt-3 text-start font-semibold" style={{ color: "var(--text-secondary)" }}>
                   {experience.desc}
                 </p>
               </div>

@@ -89,11 +89,12 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-[90vw] max-w-full flex-shrink-0 rounded-2xl border border-b-0 border-slate-800 p-5 md:w-[60vw] md:p-16"
+            className="relative w-[90vw] max-w-full flex-shrink-0 rounded-2xl border border-b-0 p-5 md:w-[60vw] md:p-16"
             style={{
-              background: "rgb(4,7,29)",
-              backgroundColor:
-                "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+              borderColor: "var(--moving-card-border)",
+              background: "var(--surface-card)",
+              backgroundImage: "var(--surface-card-gradient)",
+              boxShadow: "var(--shadow-card)",
             }}
             key={idx}
           >
@@ -102,17 +103,17 @@ export const InfiniteMovingCards = ({
                 aria-hidden="true"
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               />
-              <span className=" relative z-20 text-sm font-normal leading-[1.6] text-white md:text-lg">
+              <span className="relative z-20 text-sm font-normal leading-[1.6] md:text-lg" style={{ color: "var(--text-primary)" }}>
                 {item.quote}
               </span>
 
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 <div className="flex flex-col gap-1">
-                  <span className="text-xl font-bold leading-[1.6] text-white">
+                  <span className="text-xl font-bold leading-[1.6]" style={{ color: "var(--text-primary)" }}>
                     {item.name}
                   </span>
 
-                  <span className=" text-sm font-normal leading-[1.6] text-white-200">
+                  <span className="text-sm font-normal leading-[1.6]" style={{ color: "var(--text-secondary)" }}>
                     {item.title}
                   </span>
                 </div>

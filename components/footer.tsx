@@ -52,6 +52,7 @@ export const Footer = () => {
           src="/footer-grid.svg"
           alt="grid"
           className="h-full w-full opacity-50"
+          style={{ filter: "var(--footer-grid-filter)" }}
           width={1260}
           height={863}
         />
@@ -63,7 +64,7 @@ export const Footer = () => {
           opportunities.
         </h1>
 
-        <p className="mb-4 mt-5 text-center text-white-200 md:mb-3 md:mt-6">
+        <p className="mb-4 mt-5 text-center md:mb-3 md:mt-6" style={{ color: "var(--text-secondary)" }}>
           Contact me to discuss product engineering, backend architecture, or
           mobile delivery.
         </p>
@@ -87,10 +88,18 @@ export const Footer = () => {
           {isContactPopupOpen && (
             <div
               ref={popupRef}
-              className="absolute bottom-full left-1/2 z-[300] mb-0 w-[min(92vw,22rem)] -translate-x-1/2 rounded-2xl border border-white/[0.14] bg-gradient-to-b from-[#12193f] to-[#0a0f28] p-3 shadow-[0_18px_45px_rgba(0,0,0,0.55)] backdrop-blur-sm"
+              className="absolute bottom-full left-1/2 z-[300] mb-0 w-[min(92vw,22rem)] -translate-x-1/2 rounded-2xl border p-3 backdrop-blur-sm"
+              style={{
+                borderColor: "var(--border-medium)",
+                background: "linear-gradient(to bottom, var(--popup-from), var(--popup-to))",
+                boxShadow: "var(--shadow-popup)",
+              }}
             >
-              <div className="absolute -bottom-[8px] left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 border-b border-r border-white/[0.14] bg-[#0a0f28]" />
-              <p className="mb-2 text-[10px] uppercase tracking-[0.18em] text-white/45">
+              <div
+                className="absolute -bottom-[8px] left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 border-b border-r"
+                style={{ borderColor: "var(--border-medium)", backgroundColor: "var(--popup-arrow)" }}
+              />
+              <p className="mb-2 text-[10px] uppercase tracking-[0.18em]" style={{ color: "var(--text-faint)" }}>
                 Contact Method
               </p>
 
@@ -100,7 +109,12 @@ export const Footer = () => {
                   target="_blank"
                   rel="noreferrer noopener"
                   onClick={() => setIsContactPopupOpen(false)}
-                  className="flex items-center justify-between rounded-xl border border-white/[0.12] bg-[#12183a] px-3 py-2.5 text-sm text-white/90 transition hover:border-purple/70 hover:bg-[#171f4a] hover:text-purple"
+                  className="flex items-center justify-between rounded-xl border px-3 py-2.5 text-sm transition hover:border-purple/70 hover:text-purple"
+                  style={{
+                    borderColor: "var(--border-medium)",
+                    backgroundColor: "var(--popup-item)",
+                    color: "var(--text-primary)",
+                  }}
                 >
                   <span className="flex items-center gap-2">
                     <FaTelegramPlane className="h-4 w-4" />
@@ -114,7 +128,12 @@ export const Footer = () => {
                   target="_blank"
                   rel="noreferrer noopener"
                   onClick={() => setIsContactPopupOpen(false)}
-                  className="flex items-center justify-between rounded-xl border border-white/[0.12] bg-[#12183a] px-3 py-2.5 text-sm text-white/90 transition hover:border-purple/70 hover:bg-[#171f4a] hover:text-purple"
+                  className="flex items-center justify-between rounded-xl border px-3 py-2.5 text-sm transition hover:border-purple/70 hover:text-purple"
+                  style={{
+                    borderColor: "var(--border-medium)",
+                    backgroundColor: "var(--popup-item)",
+                    color: "var(--text-primary)",
+                  }}
                 >
                   <span className="flex items-center gap-2">
                     <MdOutlineEmail className="h-4 w-4" />
@@ -152,7 +171,11 @@ export const Footer = () => {
               href={profile.link}
               target="_blank"
               rel="noreferrer noopener"
-              className="saturate-180 flex size-10 items-center justify-center rounded-lg border border-black-300 bg-black-200 bg-opacity-75 backdrop-blur-lg backdrop-filter"
+              className="saturate-180 flex size-10 items-center justify-center rounded-lg border backdrop-blur-lg backdrop-filter"
+              style={{
+                borderColor: "var(--social-border)",
+                backgroundColor: "var(--social-bg)",
+              }}
               title={profile.name}
             >
               <Image
@@ -160,6 +183,7 @@ export const Footer = () => {
                 alt={`profile-${profile.name}`}
                 width={20}
                 height={20}
+                className="dark:invert-0 invert"
               />
             </Link>
           ))}

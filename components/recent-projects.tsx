@@ -79,7 +79,7 @@ export const RecentProjects = () => {
                 containerClassName="h-full w-full"
               >
                 <div className="relative mb-8 flex aspect-[16/10] w-[80vw] items-center justify-center overflow-hidden sm:w-[570px]">
-                  <div className="relative h-full w-full overflow-hidden bg-[#13162d] lg:rounded-3xl">
+                  <div className="relative h-full w-full overflow-hidden lg:rounded-3xl" style={{ backgroundColor: "var(--project-bg)" }}>
                     <Image
                       height={330}
                       width={552}
@@ -98,11 +98,11 @@ export const RecentProjects = () => {
                   />
                 </div>
 
-                <h1 className="line-clamp-1 text-base font-bold md:text-xl lg:text-2xl">
+                <h1 className="line-clamp-1 text-base font-bold md:text-xl lg:text-2xl" style={{ color: "var(--text-primary)" }}>
                   {title}
                 </h1>
 
-                <p className="line-clamp-2 text-sm font-light lg:text-xl lg:font-normal">
+                <p className="line-clamp-2 text-sm font-light lg:text-xl lg:font-normal" style={{ color: "var(--text-secondary)" }}>
                   {des}
                 </p>
 
@@ -111,9 +111,11 @@ export const RecentProjects = () => {
                     {iconLists.map((icon, i) => (
                       <div
                         key={icon}
-                        className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.2] bg-black lg:h-10 lg:w-10"
+                        className="flex h-8 w-8 items-center justify-center rounded-full border lg:h-10 lg:w-10"
                         style={{
                           transform: `translateX(-${5 * i * 2}px)`,
+                          borderColor: "var(--border-medium)",
+                          backgroundColor: "var(--surface-card)",
                         }}
                       >
                         <Image
@@ -157,13 +159,21 @@ export const RecentProjects = () => {
                         {activeSourcePopup?.projectId === id && (
                           <div
                             ref={popupRef}
-                            className="absolute bottom-full right-0 z-[220] mb-3 w-72 rounded-2xl border border-white/[0.14] bg-gradient-to-b from-[#12193f] to-[#0a0f28] p-4 shadow-[0_18px_45px_rgba(0,0,0,0.55)] backdrop-blur-sm"
+                            className="absolute bottom-full right-0 z-[220] mb-3 w-72 rounded-2xl border p-4 backdrop-blur-sm"
+                            style={{
+                              borderColor: "var(--border-medium)",
+                              background: "linear-gradient(to bottom, var(--popup-from), var(--popup-to))",
+                              boxShadow: "var(--shadow-popup)",
+                            }}
                           >
-                            <div className="absolute -bottom-2 right-7 h-4 w-4 rotate-45 border-b border-r border-white/[0.14] bg-[#0d1332]" />
-                            <p className="mb-2 text-[10px] uppercase tracking-[0.18em] text-white/45">
+                            <div
+                              className="absolute -bottom-2 right-7 h-4 w-4 rotate-45 border-b border-r"
+                              style={{ borderColor: "var(--border-medium)", backgroundColor: "var(--popup-arrow)" }}
+                            />
+                            <p className="mb-2 text-[10px] uppercase tracking-[0.18em]" style={{ color: "var(--text-faint)" }}>
                               Source Selection
                             </p>
-                            <p className="mb-3 truncate text-sm font-semibold text-white">
+                            <p className="mb-3 truncate text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
                               {activeSourcePopup.projectTitle}
                             </p>
 
@@ -175,7 +185,12 @@ export const RecentProjects = () => {
                                   target="_blank"
                                   rel="noreferrer noopener"
                                   onClick={() => setActiveSourcePopup(null)}
-                                  className="flex items-center justify-between rounded-xl border border-white/[0.12] bg-[#12183a] px-3 py-2.5 text-xs text-white/90 transition hover:border-purple/70 hover:bg-[#171f4a] hover:text-purple"
+                                  className="flex items-center justify-between rounded-xl border px-3 py-2.5 text-xs transition hover:border-purple/70 hover:text-purple"
+                                  style={{
+                                    borderColor: "var(--border-medium)",
+                                    backgroundColor: "var(--popup-item)",
+                                    color: "var(--text-primary)",
+                                  }}
                                 >
                                   <span>{option.label}</span>
                                   <FaLocationArrow className="h-3 w-3" />

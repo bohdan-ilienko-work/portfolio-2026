@@ -1,23 +1,31 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const World = dynamic(() => import("./ui/globe").then((m) => m.World), {
   ssr: false,
 });
 
 export const GridGlobe = () => {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const isDark = !mounted || resolvedTheme === "dark";
+
   const globeConfig = {
     pointSize: 4,
-    globeColor: "#062056",
+    globeColor: isDark ? "#062056" : "#c7d2fe",
     showAtmosphere: true,
-    atmosphereColor: "#FFFFFF",
+    atmosphereColor: isDark ? "#FFFFFF" : "#6366f1",
     atmosphereAltitude: 0.1,
-    emissive: "#062056",
-    emissiveIntensity: 0.1,
+    emissive: isDark ? "#062056" : "#a5b4fc",
+    emissiveIntensity: isDark ? 0.1 : 0.4,
     shininess: 0.9,
-    polygonColor: "rgba(255,255,255,0.7)",
-    ambientLight: "#38bdf8",
+    polygonColor: isDark ? "rgba(255,255,255,0.7)" : "rgba(99,102,241,0.6)",
+    ambientLight: isDark ? "#38bdf8" : "#818cf8",
     directionalLeftLight: "#ffffff",
     directionalTopLight: "#ffffff",
     pointLight: "#ffffff",
@@ -396,7 +404,7 @@ export const GridGlobe = () => {
   return (
     <div className="absolute inset-x-0 -bottom-12 flex h-full w-full items-end justify-center md:-left-5 md:top-40 md:items-center">
       <div className="relative mx-auto h-80 w-full max-w-7xl overflow-hidden px-4 md:h-96">
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-24 w-full select-none bg-gradient-to-b from-transparent to-white dark:to-black md:h-40" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-24 w-full select-none md:h-40" style={{ background: "linear-gradient(to bottom, transparent, var(--surface-card))" }} />
         <div className="absolute z-0 h-72 w-full opacity-90 md:h-full md:opacity-100">
           <World data={sampleArcs} globeConfig={globeConfig} />;
         </div>
