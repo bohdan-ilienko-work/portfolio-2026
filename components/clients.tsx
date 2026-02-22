@@ -1,20 +1,27 @@
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
-import { testimonials } from "@/data";
+import {useTranslations} from 'next-intl';
+
+import {testimonials} from '@/data';
+
+import {InfiniteMovingCards} from '@/components/ui/infinite-moving-cards';
 
 export const Clients = () => {
+  const t = useTranslations('testimonials');
+
+  const translatedTestimonials = testimonials.map((item) => ({
+    quote: t(item.quoteKey),
+    name: t(item.nameKey),
+    title: t(item.titleKey)
+  }));
+
   return (
     <section id="testimonials" className="py-20">
       <h1 className="heading">
-        Key <span className="text-purple">engineering highlights</span>
+        {t('headingPrefix')} <span className="text-purple">{t('headingHighlight')}</span>
       </h1>
 
       <div className="flex flex-col items-center max-lg:mt-10">
-        <div className="relative flex h-[50vh] flex-col items-center justify-center  overflow-hidden rounded-md antialiased md:h-[30rem]">
-          <InfiniteMovingCards
-            items={testimonials}
-            direction="right"
-            speed="slow"
-          />
+        <div className="relative flex h-[50vh] flex-col items-center justify-center overflow-hidden rounded-md antialiased md:h-[30rem]">
+          <InfiniteMovingCards items={translatedTestimonials} direction="right" speed="slow" />
         </div>
       </div>
     </section>

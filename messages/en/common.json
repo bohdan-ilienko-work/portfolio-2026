@@ -1,0 +1,34 @@
+{
+  "common": {
+    "profile": {
+      "ownerName": "Bohdan Ilienko"
+    },
+    "nav": {
+      "about": "About",
+      "experience": "Experience",
+      "education": "Education",
+      "cv": "My CV",
+      "projects": "Projects",
+      "highlights": "Highlights",
+      "approach": "Approach",
+      "contact": "Contact"
+    },
+    "languageSwitcherLabel": "Switch language",
+    "languages": {
+      "en": "EN",
+      "uk": "UK",
+      "ru": "RU"
+    },
+    "approach": {
+      "headingPrefix": "My",
+      "headingHighlight": "approach",
+      "phase": "Phase {number}",
+      "phase1Title": "Architecture & Delivery Plan",
+      "phase1Description": "Define scope, architecture, API contracts, and data flow. Choose stack deliberately: TypeScript, Node.js/NestJS, React/Next.js, PostgreSQL/MongoDB, and messaging where needed.",
+      "phase2Title": "Implementation & Quality",
+      "phase2Description": "Build features iteratively with code reviews and test coverage (unit/integration/e2e). Focus on reliability, clear ownership, and maintainable code that ships without regressions.",
+      "phase3Title": "Deployment, Mobile & Ops",
+      "phase3Description": "Deploy through CI/CD using Docker and GitHub Actions. For mobile, deliver React Native apps with Expo/EAS (Build + OTA updates), manage env configs, and support production releases."
+    }
+  }
+}

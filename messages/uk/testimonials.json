@@ -1,0 +1,28 @@
+{
+  "testimonials": {
+    "headingPrefix": "Ключові",
+    "headingHighlight": "інженерні досягнення",
+    "items": {
+      "artadian": {
+        "quote": "Розробляю та підтримую внутрішні сервіси й інженерний тулінг на TypeScript / Node.js / NestJS, включно з API-контрактами та інтеграціями.",
+        "name": "ARTADIAN GAMING LLP",
+        "title": "Full Stack Developer, Full Time · Feb 2025 - Present"
+      },
+      "backendDelivery": {
+        "quote": "Будую й розвиваю REST API, background jobs та асинхронні workflow на RabbitMQ, Kafka, MQTT і WebSockets.",
+        "name": "Backend Delivery",
+        "title": "Messaging, API Design, Integrations"
+      },
+      "performance": {
+        "quote": "Працюю з Redis sessions/caching та оптимізацією PostgreSQL/MongoDB, підвищуючи надійність і прибираючи production-регресії.",
+        "name": "Performance & Reliability",
+        "title": "Redis, PostgreSQL, MongoDB"
+      },
+      "process": {
+        "quote": "Беру участь у code review, рефакторингу та CI/CD delivery з Docker і GitHub Actions.",
+        "name": "Engineering Process",
+        "title": "Quality, Refactoring, CI/CD"
+      }
+    }
+  }
+}

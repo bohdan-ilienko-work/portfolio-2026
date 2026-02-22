@@ -1,0 +1,33 @@
+{
+  "projects": {
+    "headingPrefix": "Небольшая подборка",
+    "headingHighlight": "последних проектов",
+    "visit": "Перейти",
+    "sourceCode": "Source Code",
+    "sourceSelection": "Выбор репозитория",
+    "items": {
+      "bookPortfolio": {
+        "title": "Book Portfolio",
+        "description": "React-портфолио в формате книги с поддержкой мобильных устройств и i18n."
+      },
+      "skillHub": {
+        "title": "SkillHub",
+        "description": "Full-stack платформа: React/Redux клиент и NestJS API для auth, ролей, постов и обсуждений."
+      },
+      "ticketing": {
+        "title": "Ticketing",
+        "description": "Микросервисное ticketing-приложение с JWT auth и оплатой картой."
+      },
+      "pharmacyApi": {
+        "title": "Pharmacy API",
+        "description": "NestJS API с MS SQL, JWT auth и Swagger-документацией для аптечной отчётности."
+      }
+    },
+    "labels": {
+      "visitClient": "Открыть Client",
+      "visitBackend": "Открыть Backend",
+      "clientRepository": "Client Repository",
+      "apiRepository": "API Repository"
+    }
+  }
+}

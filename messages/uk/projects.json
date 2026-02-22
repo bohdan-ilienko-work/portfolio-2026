@@ -1,0 +1,33 @@
+{
+  "projects": {
+    "headingPrefix": "Невелика добірка",
+    "headingHighlight": "останніх проєктів",
+    "visit": "Перейти",
+    "sourceCode": "Source Code",
+    "sourceSelection": "Вибір репозиторію",
+    "items": {
+      "bookPortfolio": {
+        "title": "Book Portfolio",
+        "description": "React-портфоліо у форматі книги з підтримкою мобільних пристроїв та i18n."
+      },
+      "skillHub": {
+        "title": "SkillHub",
+        "description": "Full-stack платформа: React/Redux клієнт і NestJS API для auth, ролей, постів та обговорень."
+      },
+      "ticketing": {
+        "title": "Ticketing",
+        "description": "Мікросервісний ticketing-застосунок із JWT auth і картковими оплатами."
+      },
+      "pharmacyApi": {
+        "title": "Pharmacy API",
+        "description": "NestJS API з MS SQL, JWT auth і Swagger-документацією для аптечної звітності."
+      }
+    },
+    "labels": {
+      "visitClient": "Відкрити Client",
+      "visitBackend": "Відкрити Backend",
+      "clientRepository": "Client Repository",
+      "apiRepository": "API Repository"
+    }
+  }
+}
