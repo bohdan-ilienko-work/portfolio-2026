@@ -33,6 +33,77 @@
     --ring: 240 10% 3.9%;
 
     --radius: 0.5rem;
+
+    /* Surface colors */
+    --surface-1: #ffffff;
+    --surface-1-rgb: 255, 255, 255;
+    --surface-2: #f4f5f9;
+    --surface-3: #ebedf3;
+    --surface-card: #f8f9fc;
+    --surface-card-gradient: linear-gradient(90deg, #f8f9fc 0%, #f0f2f8 100%);
+
+    /* Popup / overlay */
+    --popup-from: #ffffff;
+    --popup-to: #f5f6fa;
+    --popup-item: #f0f2f8;
+    --popup-arrow: #f0f2f8;
+
+    /* Skill card */
+    --skill-from: rgba(240, 242, 248, 0.95);
+    --skill-to: rgba(235, 237, 243, 0.95);
+    --skill-icon-bg: rgba(0, 0, 0, 0.04);
+
+    /* Project card */
+    --project-bg: #f0f2f8;
+
+    /* Borders */
+    --border-subtle: rgba(0, 0, 0, 0.08);
+    --border-medium: rgba(0, 0, 0, 0.12);
+    --border-strong: rgba(0, 0, 0, 0.18);
+
+    /* Text */
+    --text-primary: #0a0d1a;
+    --text-secondary: #5a5d6a;
+    --text-muted: rgba(0, 0, 0, 0.5);
+    --text-faint: rgba(0, 0, 0, 0.4);
+
+    /* Gradient overlay for images */
+    --overlay-from: rgba(255, 255, 255, 0.4);
+    --overlay-subtle: rgba(0, 0, 0, 0.03);
+
+    /* Shadows */
+    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+    --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.10);
+    --shadow-popup: 0 18px 45px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 18px 40px rgba(0, 0, 0, 0.08);
+
+    /* Magic button */
+    --magic-btn-bg: #1e1b4b;
+
+    /* CV section */
+    --cv-header-bg: rgba(240, 242, 248, 0.6);
+    --cv-grid-line: rgba(0, 0, 0, 0.06);
+    --cv-preview-bg: #f4f5f9;
+    --cv-fade-to: rgba(244, 245, 249, 0.7);
+
+    /* Moving border card */
+    --moving-card-bg: rgba(248, 249, 252, 0.9);
+    --moving-card-border: #e2e4ea;
+
+    /* Social icons */
+    --social-bg: rgba(240, 242, 248, 0.85);
+    --social-border: rgba(0, 0, 0, 0.08);
+
+    /* Footer grid */
+    --footer-grid-filter: invert(1) opacity(0.06);
+
+    /* Spotlight opacity */
+    --spotlight-opacity: 0.35;
+
+    /* Bento grid overlay for id=5 */
+    --bento-overlay: rgba(255, 255, 255, 0.88);
+    --bento-overlay-mid: rgba(255, 255, 255, 0.62);
+    --bento-overlay-end: rgba(255, 255, 255, 0.28);
   }
 
   .dark {
@@ -63,6 +134,77 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
+
+    /* Surface colors */
+    --surface-1: #000319;
+    --surface-1-rgb: 0, 3, 25;
+    --surface-2: #0c1233;
+    --surface-3: #070b22;
+    --surface-card: rgb(4, 7, 29);
+    --surface-card-gradient: linear-gradient(90deg, rgba(4, 7, 29, 1) 0%, rgba(12, 14, 35, 1) 100%);
+
+    /* Popup / overlay */
+    --popup-from: #12193f;
+    --popup-to: #0a0f28;
+    --popup-item: #12183a;
+    --popup-arrow: #0d1332;
+
+    /* Skill card */
+    --skill-from: rgba(15, 20, 51, 0.95);
+    --skill-to: rgba(11, 16, 43, 0.95);
+    --skill-icon-bg: rgba(0, 0, 0, 0.25);
+
+    /* Project card */
+    --project-bg: #13162d;
+
+    /* Borders */
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-medium: rgba(255, 255, 255, 0.10);
+    --border-strong: rgba(255, 255, 255, 0.22);
+
+    /* Text */
+    --text-primary: #ffffff;
+    --text-secondary: #c1c2d3;
+    --text-muted: rgba(255, 255, 255, 0.55);
+    --text-faint: rgba(255, 255, 255, 0.45);
+
+    /* Gradient overlay for images */
+    --overlay-from: rgba(4, 7, 29, 0.4);
+    --overlay-subtle: rgba(255, 255, 255, 0.06);
+
+    /* Shadows */
+    --shadow-card: none;
+    --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-popup: 0 18px 45px rgba(0, 0, 0, 0.55);
+    --shadow-heavy: 0 18px 40px rgba(0, 0, 0, 0.45);
+
+    /* Magic button */
+    --magic-btn-bg: #020617;
+
+    /* CV section */
+    --cv-header-bg: rgba(0, 3, 25, 0.6);
+    --cv-grid-line: rgba(255, 255, 255, 0.06);
+    --cv-preview-bg: #000000;
+    --cv-fade-to: rgba(0, 0, 0, 0.7);
+
+    /* Moving border card */
+    --moving-card-bg: rgba(15, 23, 42, 0.8);
+    --moving-card-border: #1e293b;
+
+    /* Social icons */
+    --social-bg: rgba(17, 25, 40, 0.75);
+    --social-border: rgba(255, 255, 255, 0.125);
+
+    /* Footer grid */
+    --footer-grid-filter: none;
+
+    /* Spotlight opacity */
+    --spotlight-opacity: 1;
+
+    /* Bento grid overlay for id=5 */
+    --bento-overlay: rgba(4, 7, 29, 0.88);
+    --bento-overlay-mid: rgba(4, 7, 29, 0.62);
+    --bento-overlay-end: rgba(4, 7, 29, 0.28);
   }
 }
 

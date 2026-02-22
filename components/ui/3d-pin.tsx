@@ -50,8 +50,10 @@ export const PinContainer = ({
         <div
           style={{
             transform: transform,
+            borderColor: "var(--border-medium)",
+            boxShadow: "var(--shadow-card)",
           }}
-          className="absolute left-1/2 top-1/2 flex  items-start justify-start overflow-hidden  rounded-2xl  border border-white/[0.1] p-4 shadow-[0_8px_16px_rgb(0_0_0/0.4)] transition duration-700 group-hover/pin:border-white/[0.2]"
+          className="absolute left-1/2 top-1/2 flex items-start justify-start overflow-hidden rounded-2xl border p-4 transition duration-700"
         >
           <div className={cn(" relative z-50 ", className)}>{children}</div>
         </div>
@@ -84,7 +86,8 @@ export const PinPerspective = ({
               key={linkItem.label}
               href={linkItem.href}
               target="_blank"
-              className="relative z-10 flex items-center space-x-2 rounded-full bg-zinc-950 px-4 py-0.5 ring-1 ring-white/10"
+              className="relative z-10 flex items-center space-x-2 rounded-full px-4 py-0.5 ring-1"
+              style={{ backgroundColor: "var(--magic-btn-bg)", "--tw-ring-color": "var(--border-medium)" } as React.CSSProperties}
             >
               <span className="relative z-20 inline-block py-0.5 text-xs font-bold text-white">
                 {linkItem.label}

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import dynamic from "next/dynamic";
+import { useTheme } from "next-themes";
 
 import { links } from "@/config";
 import { techStack } from "@/data";
@@ -57,6 +58,8 @@ export const BentoGridItem = ({
   spareImg?: string;
 }) => {
   const [copied, setCopied] = useState(false);
+  const [copyTrigger, setCopyTrigger] = useState(0);
+  const { resolvedTheme } = useTheme();
   const skillCategoryMap: Record<string, string> = {
     TypeScript: "Language",
     JavaScript: "Language",
@@ -93,6 +96,7 @@ export const BentoGridItem = ({
   const handleCopy = () => {
     navigator.clipboard.writeText(links.ownerEmail);
     setCopied(true);
+    setCopyTrigger((current) => current + 1);
   };
 
   useEffect(() => {
@@ -105,16 +109,35 @@ export const BentoGridItem = ({
     return () => clearTimeout(copyTimeout);
   }, [copied]);
 
+  const descriptionColor =
+    id === 1 || id === 6
+      ? "#c1c2d3"
+      : id === 5
+      ? resolvedTheme === "light"
+        ? "#6b7280"
+        : "#c1c2d3"
+      : "var(--text-secondary)";
+
+  const titleColor =
+    id === 1 || id === 6
+      ? "#ffffff"
+      : id === 5
+      ? resolvedTheme === "light"
+        ? "#111827"
+        : "#ffffff"
+      : "var(--text-primary)";
+
   return (
     <div
       className={cn(
-        "group/bento relative row-span-1 flex flex-col justify-between space-y-4 overflow-hidden rounded-3xl border border-white/[0.1] shadow-input transition duration-200 hover:shadow-xl dark:shadow-none",
+        "group/bento relative row-span-1 flex flex-col justify-between space-y-4 overflow-hidden rounded-3xl border transition duration-200 hover:shadow-xl",
         className
       )}
       style={{
-        background: "rgb(4,7,29)",
-        backgroundColor:
-          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+        borderColor: "var(--border-medium)",
+        background: "var(--surface-card)",
+        backgroundImage: "var(--surface-card-gradient)",
+        boxShadow: "var(--shadow-card)",
       }}
     >
       <div className={cn("h-full", id === 6 && "flex justify-center")}>
@@ -136,7 +159,12 @@ export const BentoGridItem = ({
         </div>
 
         {id === 5 && (
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#04071d]/88 via-[#04071d]/62 to-[#04071d]/28" />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: "linear-gradient(to right, var(--bento-overlay), var(--bento-overlay-mid), var(--bento-overlay-end))",
+            }}
+          />
         )}
 
         <div
@@ -151,7 +179,10 @@ export const BentoGridItem = ({
               height={96}
               src={spareImg}
               alt={spareImg}
-              className="h-full w-full object-cover object-center"
+              className={cn(
+                "h-full w-full object-cover object-center",
+                id === 4 && "invert opacity-60 dark:invert-0 dark:opacity-100"
+              )}
             />
           )}
         </div>
@@ -164,11 +195,17 @@ export const BentoGridItem = ({
             titleClassName
           )}
         >
-          <div className="relative z-20 font-sans text-sm font-extralight text-[#c1c2d3] md:text-xs lg:text-base">
+          <div
+            className="relative z-20 font-sans text-sm font-extralight md:text-xs lg:text-base"
+            style={{ color: descriptionColor }}
+          >
             {description}
           </div>
 
-          <div className="relative z-20 max-w-96 font-sans text-lg font-bold lg:text-3xl">
+          <div
+            className="relative z-20 max-w-96 font-sans text-lg font-bold lg:text-3xl"
+            style={{ color: titleColor }}
+          >
             {title}
           </div>
 
@@ -176,21 +213,32 @@ export const BentoGridItem = ({
 
           {id === 3 && (
             <div className="relative mt-7 w-full">
-              <div className="pointer-events-none absolute inset-0 -z-10 rounded-2xl bg-gradient-to-b from-white/[0.06] to-transparent blur-xl" />
+              <div className="pointer-events-none absolute inset-0 -z-10 rounded-2xl blur-xl" style={{ background: "linear-gradient(to bottom, var(--overlay-subtle), transparent)" }} />
 
               <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 lg:gap-4">
                 {techItems.map((item) => (
                   <div
                     key={item.name}
-                    className="group/skill relative overflow-hidden rounded-2xl border border-white/[0.10] bg-gradient-to-b from-[#0f1433]/95 to-[#0b102b]/95 px-4 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition duration-300 hover:-translate-y-1 hover:border-white/[0.22] hover:shadow-[0_14px_36px_rgba(0,0,0,0.45)] lg:px-5 lg:py-4"
+                    className="group/skill relative overflow-hidden rounded-2xl border px-4 py-3 transition duration-300 hover:-translate-y-1 lg:px-5 lg:py-4"
+                    style={{
+                      borderColor: "var(--border-medium)",
+                      background: "linear-gradient(to bottom, var(--skill-from), var(--skill-to))",
+                      boxShadow: "var(--shadow-card)",
+                    }}
                   >
                     <div className="pointer-events-none absolute -inset-24 opacity-0 blur-2xl transition duration-300 group-hover/skill:opacity-100">
-                      <div className="h-40 w-40 rounded-full bg-white/[0.10]" />
+                      <div className="h-40 w-40 rounded-full" style={{ backgroundColor: "var(--overlay-subtle)" }} />
                     </div>
 
                     <div className="flex items-center gap-3 lg:gap-3.5">
-                      <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black/25 ring-1 ring-white/[0.10] lg:h-12 lg:w-12">
-                        <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-b from-white/[0.10] to-transparent opacity-60" />
+                      <div
+                        className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ring-1 lg:h-12 lg:w-12"
+                        style={{
+                          backgroundColor: "var(--skill-icon-bg)",
+                          "--tw-ring-color": "var(--border-medium)",
+                        } as React.CSSProperties}
+                      >
+                        <div className="pointer-events-none absolute inset-0 rounded-xl opacity-60" style={{ background: "linear-gradient(to bottom, var(--overlay-subtle), transparent)" }} />
                         <Image
                           src={item.icon}
                           alt={`${item.name} icon`}
@@ -202,17 +250,17 @@ export const BentoGridItem = ({
                       </div>
 
                       <div className="min-w-0">
-                        <div className="truncate font-sans text-sm font-semibold text-white/95 lg:text-base">
+                        <div className="truncate font-sans text-sm font-semibold lg:text-base" style={{ color: "var(--text-primary)" }}>
                           {item.name}
                         </div>
-                        <div className="mt-0.5 text-xs text-white/55">
+                        <div className="mt-0.5 text-xs" style={{ color: "var(--text-muted)" }}>
                           {skillCategoryMap[item.name] || "Engineering"}
                         </div>
                       </div>
                     </div>
 
-                    <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.18] to-transparent opacity-0 transition duration-300 group-hover/skill:opacity-100" />
-                    <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/[0.06]" />
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-0 transition duration-300 group-hover/skill:opacity-100" style={{ background: "linear-gradient(to right, transparent, var(--border-strong), transparent)" }} />
+                    <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1" style={{ "--tw-ring-color": "var(--border-subtle)" } as React.CSSProperties} />
                   </div>
                 ))}
               </div>
@@ -221,12 +269,12 @@ export const BentoGridItem = ({
 
           {id === 6 && (
             <div className="group relative mt-5">
-              <BentoGridLottie copied={copied} />
+              <BentoGridLottie trigger={copyTrigger} />
 
               <MagicButton
                 title={copied ? "Email copied!" : "Copy my email"}
                 icon={<IoCopyOutline />}
-                otherClasses="!bg-[#161a31]"
+                otherClasses="!bg-[--magic-btn-bg]"
                 handleClick={handleCopy}
                 asChild
               />

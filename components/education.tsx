@@ -15,9 +15,17 @@ export const Education = () => {
         {educationItems.map((item) => (
           <article
             key={item.id}
-            className="group relative overflow-hidden rounded-3xl border border-white/[0.12] bg-gradient-to-b from-[#0c1233] to-[#070b22] p-4 shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
+            className="group relative overflow-hidden rounded-3xl border p-4"
+            style={{
+              borderColor: "var(--border-medium)",
+              background: "linear-gradient(to bottom, var(--surface-2), var(--surface-3))",
+              boxShadow: "var(--shadow-heavy)",
+            }}
           >
-            <div className="relative overflow-hidden rounded-2xl border border-white/[0.12]">
+            <div
+              className="relative overflow-hidden rounded-2xl border"
+              style={{ borderColor: "var(--border-medium)" }}
+            >
               <Image
                 src={item.image}
                 alt={item.title}
@@ -25,21 +33,24 @@ export const Education = () => {
                 height={600}
                 className="h-56 w-full object-cover object-center transition duration-300 group-hover:scale-[1.02] md:h-64"
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#04071d]/40 via-transparent to-transparent" />
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{ background: "linear-gradient(to top, var(--overlay-from), transparent, transparent)" }}
+              />
             </div>
 
             <div className="mt-5">
-              <p className="text-xs uppercase tracking-[0.18em] text-white/50">
+              <p className="text-xs uppercase tracking-[0.18em]" style={{ color: "var(--text-muted)" }}>
                 {item.institution}
               </p>
-              <h3 className="mt-2 text-xl font-bold text-white md:text-2xl">
+              <h3 className="mt-2 text-xl font-bold md:text-2xl" style={{ color: "var(--text-primary)" }}>
                 {item.title}
               </h3>
-              <p className="mt-2 text-sm text-white/85 md:text-base">
+              <p className="mt-2 text-sm md:text-base" style={{ color: "var(--text-secondary)" }}>
                 {item.degree}
               </p>
               <p className="mt-1 text-sm text-purple">{item.period}</p>
-              <p className="mt-3 text-sm text-white/70">{item.description}</p>
+              <p className="mt-3 text-sm" style={{ color: "var(--text-muted)" }}>{item.description}</p>
 
               <Link
                 href={item.link}
