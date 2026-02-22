@@ -1,5 +1,6 @@
 "use client";
-import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
+import { useThree, Canvas, extend } from "@react-three/fiber";
+import type { ThreeElement } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
@@ -9,7 +10,7 @@ import countries from "@/data/globe.json";
 
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
+    threeGlobe: ThreeElement<typeof ThreeGlobe>;
   }
 }
 
@@ -190,8 +191,12 @@ export const Globe = ({ globeConfig, data }: WorldProps) => {
       .arcDashAnimateTime((e) => defaultProps.arcTime);
 
     globeRef.current
-      .pointsData(data)
-      .pointColor((e) => (e as { color: string }).color)
+      .pointsData(globeData)
+      .pointLat((d) => (d as { lat: number }).lat)
+      .pointLng((d) => (d as { lng: number }).lng)
+      .pointColor((d) =>
+        (d as { color: (t: number) => string }).color(0.5)
+      )
       .pointsMerge(true)
       .pointAltitude(0.0)
       .pointRadius(2);

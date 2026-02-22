@@ -397,7 +397,7 @@ export const GridGlobe = () => {
     <div className="absolute inset-x-0 -bottom-12 flex h-full w-full items-end justify-center md:-left-5 md:top-40 md:items-center">
       <div className="relative mx-auto h-80 w-full max-w-7xl overflow-hidden px-4 md:h-96">
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-24 w-full select-none bg-gradient-to-b from-transparent to-white dark:to-black md:h-40" />
-        <div className="absolute z-0 h-72 w-full opacity-90 md:z-10 md:h-full md:opacity-100">
+        <div className="absolute z-0 h-72 w-full opacity-90 md:h-full md:opacity-100">
           <World data={sampleArcs} globeConfig={globeConfig} />;
         </div>
       </div>
