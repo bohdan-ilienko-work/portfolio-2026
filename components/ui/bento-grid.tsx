@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import dynamic from "next/dynamic";
-import { useTheme } from "next-themes";
 
 import { links } from "@/config";
 import { techStack } from "@/data";
@@ -59,7 +58,6 @@ export const BentoGridItem = ({
 }) => {
   const [copied, setCopied] = useState(false);
   const [copyTrigger, setCopyTrigger] = useState(0);
-  const { resolvedTheme } = useTheme();
   const skillCategoryMap: Record<string, string> = {
     TypeScript: "Language",
     JavaScript: "Language",
@@ -108,24 +106,6 @@ export const BentoGridItem = ({
 
     return () => clearTimeout(copyTimeout);
   }, [copied]);
-
-  const descriptionColor =
-    id === 1 || id === 6
-      ? "#c1c2d3"
-      : id === 5
-      ? resolvedTheme === "light"
-        ? "#6b7280"
-        : "#c1c2d3"
-      : "var(--text-secondary)";
-
-  const titleColor =
-    id === 1 || id === 6
-      ? "#ffffff"
-      : id === 5
-      ? resolvedTheme === "light"
-        ? "#111827"
-        : "#ffffff"
-      : "var(--text-primary)";
 
   return (
     <div
@@ -196,15 +176,27 @@ export const BentoGridItem = ({
           )}
         >
           <div
-            className="relative z-20 font-sans text-sm font-extralight md:text-xs lg:text-base"
-            style={{ color: descriptionColor }}
+            className={cn(
+              "relative z-20 font-sans text-sm font-extralight md:text-xs lg:text-base",
+              id === 1 || id === 6
+                ? "text-[#c1c2d3]"
+                : id === 5
+                ? "text-[--text-secondary] dark:text-[#c1c2d3]"
+                : "text-[--text-secondary]"
+            )}
           >
             {description}
           </div>
 
           <div
-            className="relative z-20 max-w-96 font-sans text-lg font-bold lg:text-3xl"
-            style={{ color: titleColor }}
+            className={cn(
+              "relative z-20 max-w-96 font-sans text-lg font-bold lg:text-3xl",
+              id === 1 || id === 6
+                ? "text-white"
+                : id === 5
+                ? "text-[--text-primary] dark:text-white"
+                : "text-[--text-primary]"
+            )}
           >
             {title}
           </div>
