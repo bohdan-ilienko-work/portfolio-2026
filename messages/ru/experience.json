@@ -1,0 +1,20 @@
+{
+  "experience": {
+    "headingPrefix": "Мой",
+    "headingHighlight": "опыт",
+    "items": {
+      "artadian": {
+        "title": "Full Stack Developer, ARTADIAN GAMING LLP, Full Time",
+        "description": "Feb 2025 - Present · TypeScript/Node.js/NestJS сервисы, REST API, background jobs, messaging workflow и CI/CD delivery."
+      },
+      "silinexx": {
+        "title": "Full Stack Developer, Silinexx, Full Time",
+        "description": "Mar 2024 - Sept 2025 · Внутренние web-системы: backend/frontend, auth flow, тестовое покрытие и оптимизация запросов к БД."
+      },
+      "wnet": {
+        "title": "Full Stack Developer, Wnet, Full Time",
+        "description": "May 2022 - Nov 2023 · Разработка и поддержка внутренних приложений, REST endpoint-ы, оптимизация производительности и снижение техдолга."
+      }
+    }
+  }
+}

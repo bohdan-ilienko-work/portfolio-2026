@@ -1,0 +1,20 @@
+{
+  "footer": {
+    "headingPrefix": "Открыт к новым",
+    "headingHighlight": "full stack",
+    "headingSuffix": "возможностям.",
+    "description": "Напишите мне, чтобы обсудить продуктовую разработку, backend-архитектуру или mobile delivery.",
+    "contactButton": "Связаться",
+    "contactMethod": "Способ связи",
+    "telegram": "Telegram",
+    "email": "Email",
+    "copyright": "Copyright © {year}",
+    "sourceCode": "Source Code",
+    "social": {
+      "telegram": "Telegram",
+      "github": "GitHub",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    }
+  }
+}

@@ -1,13 +1,16 @@
-import Image from "next/image";
+import {useTranslations} from 'next-intl';
+import Image from 'next/image';
 
-import { Button } from "@/components/ui/moving-borders";
-import { workExperience } from "@/data";
+import {Button} from '@/components/ui/moving-borders';
+import {workExperience} from '@/data';
 
 export const Experience = () => {
+  const t = useTranslations('experience');
+
   return (
     <section id="experience" className="py-20">
       <h1 className="heading">
-        My <span className="text-purple">work experience</span>
+        {t('headingPrefix')} <span className="text-purple">{t('headingHighlight')}</span>
       </h1>
 
       <div className="mt-12 grid w-full grid-cols-1 gap-10 lg:grid-cols-4">
@@ -23,16 +26,16 @@ export const Experience = () => {
                 width={95}
                 height={87}
                 src={experience.thumbnail}
-                alt={experience.title}
+                alt={t(experience.titleKey)}
                 className="w-16 md:w-20 lg:w-32"
               />
 
               <div className="lg:ms-5">
-                <h1 className="text-start text-xl font-bold md:text-2xl" style={{ color: "var(--text-primary)" }}>
-                  {experience.title}
+                <h1 className="text-start text-xl font-bold md:text-2xl" style={{color: 'var(--text-primary)'}}>
+                  {t(experience.titleKey)}
                 </h1>
-                <p className="mt-3 text-start font-semibold" style={{ color: "var(--text-secondary)" }}>
-                  {experience.desc}
+                <p className="mt-3 text-start font-semibold" style={{color: 'var(--text-secondary)'}}>
+                  {t(experience.descKey)}
                 </p>
               </div>
             </div>

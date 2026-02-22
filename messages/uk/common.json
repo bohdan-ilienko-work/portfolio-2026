@@ -1,0 +1,34 @@
+{
+  "common": {
+    "profile": {
+      "ownerName": "Богдан Ільєнко"
+    },
+    "nav": {
+      "about": "Про мене",
+      "experience": "Досвід",
+      "education": "Освіта",
+      "cv": "Моє CV",
+      "projects": "Проєкти",
+      "highlights": "Досягнення",
+      "approach": "Підхід",
+      "contact": "Контакти"
+    },
+    "languageSwitcherLabel": "Змінити мову",
+    "languages": {
+      "en": "EN",
+      "uk": "UK",
+      "ru": "RU"
+    },
+    "approach": {
+      "headingPrefix": "Мій",
+      "headingHighlight": "підхід",
+      "phase": "Етап {number}",
+      "phase1Title": "Архітектура та план реалізації",
+      "phase1Description": "Визначаю scope, архітектуру, API-контракти й потоки даних. Стек підбираю свідомо: TypeScript, Node.js/NestJS, React/Next.js, PostgreSQL/MongoDB і брокери повідомлень за потреби.",
+      "phase2Title": "Реалізація та якість",
+      "phase2Description": "Розробляю функціонал ітераціями: code review, unit/integration/e2e тести, контроль регресій. Фокус — надійність, відповідальність за результат і підтримуваність коду.",
+      "phase3Title": "Деплой, мобайл та операційка",
+      "phase3Description": "Доставляю зміни через CI/CD на Docker і GitHub Actions. Для мобайлу випускаю React Native застосунки з Expo/EAS (Build + OTA), керую env-конфігами й підтримую production-релізи."
+    }
+  }
+}

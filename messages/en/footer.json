@@ -1,0 +1,20 @@
+{
+  "footer": {
+    "headingPrefix": "Open to new",
+    "headingHighlight": "full stack",
+    "headingSuffix": "opportunities.",
+    "description": "Contact me to discuss product engineering, backend architecture, or mobile delivery.",
+    "contactButton": "Let's get in touch",
+    "contactMethod": "Contact Method",
+    "telegram": "Telegram",
+    "email": "Email",
+    "copyright": "Copyright © {year}",
+    "sourceCode": "Source Code",
+    "social": {
+      "telegram": "Telegram",
+      "github": "GitHub",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    }
+  }
+}

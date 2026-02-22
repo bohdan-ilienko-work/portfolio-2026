@@ -1,0 +1,33 @@
+import {Approach} from '@/components/approach';
+import {Clients} from '@/components/clients';
+import {Cv} from '@/components/cv';
+import {Education} from '@/components/education';
+import {Experience} from '@/components/experience';
+import {Footer} from '@/components/footer';
+import {Grid} from '@/components/grid';
+import {Hero} from '@/components/hero';
+import {RecentProjects} from '@/components/recent-projects';
+import {FloatingNav} from '@/components/ui/floating-nav';
+import {navItems} from '@/data';
+
+const MainPage = () => {
+  return (
+    <main className="relative mx-auto flex flex-col items-center justify-center overflow-clip bg-[--surface-1] px-5 sm:px-10">
+      <FloatingNav navItems={navItems} />
+
+      <div className="w-full max-w-7xl">
+        <Hero />
+        <Grid />
+        <Experience />
+        <Education />
+        <Cv />
+        <RecentProjects />
+        <Clients />
+        <Approach />
+        <Footer />
+      </div>
+    </main>
+  );
+};
+
+export default MainPage;

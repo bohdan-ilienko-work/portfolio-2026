@@ -1,0 +1,33 @@
+{
+  "projects": {
+    "headingPrefix": "A small selection of",
+    "headingHighlight": "recent projects",
+    "visit": "Visit",
+    "sourceCode": "Source Code",
+    "sourceSelection": "Source Selection",
+    "items": {
+      "bookPortfolio": {
+        "title": "Book Portfolio",
+        "description": "React portfolio template in book format with mobile support and i18n."
+      },
+      "skillHub": {
+        "title": "SkillHub",
+        "description": "Full-stack platform: React/Redux client + NestJS API for auth, roles, posts, and discussions."
+      },
+      "ticketing": {
+        "title": "Ticketing",
+        "description": "Microservice ticketing app with JWT auth and card payment flow."
+      },
+      "pharmacyApi": {
+        "title": "Pharmacy API",
+        "description": "NestJS API with MS SQL, JWT auth, and Swagger docs for pharmacy reporting."
+      }
+    },
+    "labels": {
+      "visitClient": "Visit Client",
+      "visitBackend": "Visit Backend",
+      "clientRepository": "Client Repository",
+      "apiRepository": "API Repository"
+    }
+  }
+}
