@@ -26,7 +26,7 @@ if (remainingMonths === 0) {
 }
 
 export const links = {
-  sourceCode: "https://github.com/your-github-username/3d-portfolio-website",
+  sourceCode: "https://github.com/bohdan-ilienko-work/portfolio-2026",
   ownerCvFile: "/Bohdan-Ilienko-CV-FullStack-Developer_02.2026.pdf",
   ownerCvGoogle:
     "https://drive.google.com/file/d/1GxQb8ly5DRVi_AxjQ-1tPmRhCiCdc1II/view?usp=sharing",
