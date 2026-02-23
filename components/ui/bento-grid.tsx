@@ -12,10 +12,13 @@ import {cn} from '@/lib/utils';
 
 import {BackgroundGradientAnimation} from './background-gradient-animation';
 import {MagicButton} from './magic-button';
-
-import {GridGlobe} from '../grid-globe';
+import {InView} from './in-view';
 
 const BentoGridLottie = dynamic(() => import('./bento-grid-lottie'), {
+  ssr: false
+});
+
+const GridGlobe = dynamic(() => import('../grid-globe').then((module) => module.GridGlobe), {
   ssr: false
 });
 
@@ -176,7 +179,7 @@ export const BentoGridItem = ({
               width={689}
               height={541}
               src={img}
-              alt={img}
+              alt={descriptionKey ? t(descriptionKey) : 'Portfolio card background'}
               className={cn(
                 'object-cover object-center',
                 id === 5 &&
@@ -203,7 +206,7 @@ export const BentoGridItem = ({
               width={208}
               height={96}
               src={spareImg}
-              alt={spareImg}
+              alt="Decorative card overlay"
               className={cn(
                 'h-full w-full object-cover object-center',
                 id === 4 && 'invert opacity-60 dark:invert-0 dark:opacity-100'
@@ -246,7 +249,11 @@ export const BentoGridItem = ({
             {titleKey ? t(titleKey, {experience: formatExperience(links.totalExperienceMonths)}) : null}
           </div>
 
-          {id === 2 && <GridGlobe />}
+          {id === 2 && (
+            <InView className="h-full w-full">
+              <GridGlobe />
+            </InView>
+          )}
 
           {id === 3 && (
             <div className="relative mt-7 w-full">

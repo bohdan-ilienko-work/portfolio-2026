@@ -1,6 +1,6 @@
 'use client';
 
-import {AnimatePresence, motion} from 'framer-motion';
+import {AnimatePresence, LazyMotion, domAnimation, m} from 'framer-motion';
 import {useTranslations} from 'next-intl';
 import {useState} from 'react';
 
@@ -12,47 +12,49 @@ export const Approach = () => {
 
   return (
     <section id="approach" className="w-full py-20">
-      <h1 className="heading">
+      <h2 className="heading">
         {t('approach.headingPrefix')} <span className="text-purple">{t('approach.headingHighlight')}</span>
-      </h1>
+      </h2>
 
-      <div className="my-20 flex flex-col items-center justify-center gap-4 lg:flex-row">
-        <Card
-          title={t('approach.phase1Title')}
-          icon={<MagicButton title={t('approach.phase', {number: 1})} asChild />}
-          description={t('approach.phase1Description')}
-        >
-          <CanvasRevealEffect animationSpeed={5.1} containerClassName="bg-emerald-900" />
-        </Card>
+      <LazyMotion features={domAnimation}>
+        <div className="my-20 flex flex-col items-center justify-center gap-4 lg:flex-row">
+          <Card
+            title={t('approach.phase1Title')}
+            icon={<MagicButton title={t('approach.phase', {number: 1})} asChild />}
+            description={t('approach.phase1Description')}
+          >
+            <CanvasRevealEffect animationSpeed={5.1} containerClassName="bg-emerald-900" />
+          </Card>
 
-        <Card
-          title={t('approach.phase2Title')}
-          icon={<MagicButton title={t('approach.phase', {number: 2})} asChild />}
-          description={t('approach.phase2Description')}
-        >
-          <CanvasRevealEffect
-            animationSpeed={3}
-            containerClassName="bg-black"
-            colors={[
-              [236, 72, 153],
-              [232, 121, 249]
-            ]}
-            dotSize={2}
-          />
-        </Card>
+          <Card
+            title={t('approach.phase2Title')}
+            icon={<MagicButton title={t('approach.phase', {number: 2})} asChild />}
+            description={t('approach.phase2Description')}
+          >
+            <CanvasRevealEffect
+              animationSpeed={3}
+              containerClassName="bg-black"
+              colors={[
+                [236, 72, 153],
+                [232, 121, 249]
+              ]}
+              dotSize={2}
+            />
+          </Card>
 
-        <Card
-          title={t('approach.phase3Title')}
-          icon={<MagicButton title={t('approach.phase', {number: 3})} asChild />}
-          description={t('approach.phase3Description')}
-        >
-          <CanvasRevealEffect
-            animationSpeed={3}
-            containerClassName="bg-sky-600"
-            colors={[[125, 211, 252]]}
-          />
-        </Card>
-      </div>
+          <Card
+            title={t('approach.phase3Title')}
+            icon={<MagicButton title={t('approach.phase', {number: 3})} asChild />}
+            description={t('approach.phase3Description')}
+          >
+            <CanvasRevealEffect
+              animationSpeed={3}
+              containerClassName="bg-sky-600"
+              colors={[[125, 211, 252]]}
+            />
+          </Card>
+        </div>
+      </LazyMotion>
     </section>
   );
 };
@@ -81,9 +83,9 @@ const Card = ({title, description, icon, children}: CardProps) => {
 
       <AnimatePresence>
         {hovered && (
-          <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="absolute inset-0 h-full w-full">
+          <m.div initial={{opacity: 0}} animate={{opacity: 1}} className="absolute inset-0 h-full w-full">
             {children}
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 

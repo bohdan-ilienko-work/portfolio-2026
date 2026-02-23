@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, stagger, useAnimate } from "framer-motion";
+import { LazyMotion, domAnimation, m, stagger, useAnimate } from "framer-motion";
 import { useEffect } from "react";
 
 import { cn } from "@/lib/utils";
@@ -29,27 +29,27 @@ export const TextGenerateEffect = ({
 
   const renderWords = () => {
     return (
-      <motion.div ref={scope}>
+      <m.div ref={scope}>
         {wordsArray.map((word, idx) => {
           return (
-            <motion.span
+            <m.span
               key={word + idx}
               className={cn("text-[--text-primary] opacity-0", idx > 3 && "text-purple")}
             >
               {word}{" "}
-            </motion.span>
+            </m.span>
           );
         })}
-      </motion.div>
+      </m.div>
     );
   };
 
   return (
     <div className={cn("font-bold", className)}>
       <div className="my-4">
-        <div className="leading-snug tracking-wide text-[--text-primary]">
-          {renderWords()}
-        </div>
+        <LazyMotion features={domAnimation}>
+          <div className="leading-snug tracking-wide text-[--text-primary]">{renderWords()}</div>
+        </LazyMotion>
       </div>
     </div>
   );

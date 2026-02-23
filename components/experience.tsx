@@ -9,9 +9,9 @@ export const Experience = () => {
 
   return (
     <section id="experience" className="py-20">
-      <h1 className="heading">
+      <h2 className="heading">
         {t('headingPrefix')} <span className="text-purple">{t('headingHighlight')}</span>
-      </h1>
+      </h2>
 
       <div className="mt-12 grid w-full grid-cols-1 gap-10 lg:grid-cols-4">
         {workExperience.map((experience) => (
@@ -31,9 +31,9 @@ export const Experience = () => {
               />
 
               <div className="lg:ms-5">
-                <h1 className="text-start text-xl font-bold md:text-2xl" style={{color: 'var(--text-primary)'}}>
+                <h3 className="text-start text-xl font-bold md:text-2xl" style={{color: 'var(--text-primary)'}}>
                   {t(experience.titleKey)}
-                </h1>
+                </h3>
                 <p className="mt-3 text-start font-semibold" style={{color: 'var(--text-secondary)'}}>
                   {t(experience.descKey)}
                 </p>

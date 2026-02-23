@@ -16,8 +16,13 @@ The project was built to present engineering experience, stack, projects, and de
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
+
+Required env variable:
+
+- `NEXT_PUBLIC_SITE_URL` (example: `https://your-domain.com`)
 
 ## Repository
 

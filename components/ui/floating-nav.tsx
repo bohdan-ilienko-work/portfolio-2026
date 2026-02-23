@@ -1,6 +1,6 @@
 'use client';
 
-import {AnimatePresence, motion, useMotionValueEvent, useScroll} from 'framer-motion';
+import {AnimatePresence, LazyMotion, domAnimation, m, useMotionValueEvent, useScroll} from 'framer-motion';
 import {useTranslations} from 'next-intl';
 import Link from 'next/link';
 import {useEffect, useRef, useState} from 'react';
@@ -62,8 +62,9 @@ export const FloatingNav = ({navItems, className}: FloatingNavProps) => {
   }, [isMobileMenuOpen]);
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.nav
+    <LazyMotion features={domAnimation}>
+      <AnimatePresence mode="wait">
+        <m.nav
         ref={navRef}
         initial={{
           opacity: 1,
@@ -115,7 +116,7 @@ export const FloatingNav = ({navItems, className}: FloatingNavProps) => {
 
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div
+            <m.div
               initial={{opacity: 0, y: -8}}
               animate={{opacity: 1, y: 0}}
               exit={{opacity: 0, y: -8}}
@@ -138,10 +139,11 @@ export const FloatingNav = ({navItems, className}: FloatingNavProps) => {
               <div className="mt-3 border-t border-[--border-medium] pt-3">
                 <ThemeSwitcher />
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
-      </motion.nav>
-    </AnimatePresence>
+        </m.nav>
+      </AnimatePresence>
+    </LazyMotion>
   );
 };

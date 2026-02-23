@@ -15,9 +15,9 @@ export const Clients = () => {
 
   return (
     <section id="testimonials" className="py-20">
-      <h1 className="heading">
+      <h2 className="heading">
         {t('headingPrefix')} <span className="text-purple">{t('headingHighlight')}</span>
-      </h1>
+      </h2>
 
       <div className="flex flex-col items-center max-lg:mt-10">
         <div className="relative flex h-[50vh] flex-col items-center justify-center overflow-hidden rounded-md antialiased md:h-[30rem]">
