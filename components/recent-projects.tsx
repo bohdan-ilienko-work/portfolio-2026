@@ -52,9 +52,9 @@ export const RecentProjects = () => {
 
   return (
     <section id="projects" className="py-20">
-      <h1 className="heading">
+      <h2 className="heading">
         {t('headingPrefix')} <span className="text-purple">{t('headingHighlight')}</span>
-      </h1>
+      </h2>
 
       <div className="mt-10 flex flex-wrap items-center justify-center gap-x-24 gap-y-24 p-4">
         {projects.map(
@@ -101,7 +101,7 @@ export const RecentProjects = () => {
                         height={330}
                         width={552}
                         src="/bg.png"
-                        alt="bg-img"
+                        alt="Project card background"
                         className="h-full w-full object-cover object-center"
                       />
                     </div>
@@ -115,12 +115,12 @@ export const RecentProjects = () => {
                     />
                   </div>
 
-                  <h1
+                  <h3
                     className="line-clamp-1 text-base font-bold md:text-xl lg:text-2xl"
                     style={{color: 'var(--text-primary)'}}
                   >
                     {title}
-                  </h1>
+                  </h3>
 
                   <p
                     className="line-clamp-2 text-sm font-light lg:text-xl lg:font-normal"
@@ -145,7 +145,7 @@ export const RecentProjects = () => {
                             height={40}
                             width={40}
                             src={icon}
-                            alt={icon}
+                            alt="Technology icon"
                             unoptimized
                             className="p-2"
                           />

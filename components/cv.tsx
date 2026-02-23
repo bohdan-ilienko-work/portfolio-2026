@@ -30,9 +30,9 @@ export const Cv = () => {
 
   return (
     <section id="cv" className="py-20">
-      <h1 className="heading">
+      <h2 className="heading">
         {t('headingPrefix')} <span className="text-purple">{t('headingHighlight')}</span>
-      </h1>
+      </h2>
 
       <p className="mx-auto mt-4 max-w-3xl text-center" style={{color: 'var(--text-secondary)'}}>
         {t('description')}

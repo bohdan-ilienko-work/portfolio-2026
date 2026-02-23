@@ -1,13 +1,23 @@
 import type {Metadata, Viewport} from 'next';
 import {Inter} from 'next/font/google';
 import {NextIntlClientProvider} from 'next-intl';
-import {getMessages, setRequestLocale} from 'next-intl/server';
+import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import type {PropsWithChildren} from 'react';
 
-import {siteConfig} from '@/config';
+import {JsonLdScript, personJsonLd, websiteJsonLd} from '@/components/seo/jsonld';
+import {
+  defaultDescription,
+  defaultTitle,
+  getAlternatesLanguages,
+  getLocaleUrl,
+  localeLanguageTags,
+  localeMeta,
+  siteName,
+  siteUrl
+} from '@/config/seo';
 
-import {defaultLocale, locales, type Locale} from '@/i18n/routing';
+import {locales, type Locale} from '@/i18n/routing';
 
 import {ThemeProvider} from '../provider';
 
@@ -36,25 +46,67 @@ export const generateMetadata = async ({
   const {locale} = await params;
 
   if (!isSupportedLocale(locale)) {
-    return siteConfig;
+    return {
+      title: defaultTitle,
+      description: defaultDescription
+    };
   }
 
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000').replace(/\/$/, '');
+  const tCommon = await getTranslations({locale, namespace: 'common'});
+  const tHero = await getTranslations({locale, namespace: 'hero'});
+  const profileName = tCommon('profile.ownerName');
+  const localizedMeta = localeMeta[locale];
+  const title = `${profileName} | ${tHero('role')}`;
+  const description = localizedMeta.description;
+  const canonical = getLocaleUrl(locale);
+  const languages = getAlternatesLanguages();
 
   return {
-    ...siteConfig,
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: title,
+      template: `%s | ${profileName}`
+    },
+    description,
     alternates: {
-      canonical: `${siteUrl}/${locale}`,
-      languages: {
-        en: `${siteUrl}/en`,
-        uk: `${siteUrl}/uk`,
-        ru: `${siteUrl}/ru`,
-        pl: `${siteUrl}/pl`,
-        de: `${siteUrl}/de`,
-        es: `${siteUrl}/es`,
-        'x-default': `${siteUrl}/${defaultLocale}`
-      }
-    }
+      canonical,
+      languages
+    },
+    openGraph: {
+      type: 'website',
+      locale: localeLanguageTags[locale],
+      url: canonical,
+      siteName,
+      title,
+      description,
+      images: [
+        {
+          url: `${siteUrl}/og.jpg`,
+          width: 1200,
+          height: 630,
+          alt: `${profileName} portfolio preview`
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${siteUrl}/og.jpg`]
+    },
+    keywords: [
+      profileName,
+      localizedMeta.title,
+      tHero('role'),
+      'TypeScript',
+      'Node.js',
+      'NestJS',
+      'React',
+      'Next.js',
+      'React Native',
+      'Full Stack Engineer'
+    ],
+    category: 'technology'
   };
 };
 
@@ -75,6 +127,8 @@ const LocaleLayout = async ({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
+        <JsonLdScript data={personJsonLd(locale)} />
+        <JsonLdScript data={websiteJsonLd(locale)} />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

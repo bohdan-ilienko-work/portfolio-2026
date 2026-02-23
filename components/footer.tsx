@@ -53,7 +53,7 @@ export const Footer = () => {
       <div className="absolute -bottom-72 left-0 min-h-96 w-full">
         <Image
           src="/footer-grid.svg"
-          alt="grid"
+          alt="Decorative footer grid background"
           className="h-full w-full opacity-50"
           style={{filter: 'var(--footer-grid-filter)'}}
           width={1260}
@@ -62,10 +62,10 @@ export const Footer = () => {
       </div>
 
       <div className="flex flex-col items-center">
-        <h1 className="heading lg:max-w-[45vw]">
+        <h2 className="heading lg:max-w-[45vw]">
           {t('headingPrefix')} <span className="text-purple">{t('headingHighlight')}</span>{' '}
           {t('headingSuffix')}
-        </h1>
+        </h2>
 
         <p className="mb-4 mt-5 text-center md:mb-3 md:mt-6" style={{color: 'var(--text-secondary)'}}>
           {t('description')}
@@ -175,7 +175,7 @@ export const Footer = () => {
                 key={profile.nameKey}
                 href={profile.link}
                 target="_blank"
-                rel="noreferrer noopener"
+                rel="me noreferrer noopener"
                 className="saturate-180 flex size-10 items-center justify-center rounded-lg border backdrop-blur-lg backdrop-filter"
                 style={{
                   borderColor: 'var(--social-border)',

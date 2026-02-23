@@ -10,9 +10,9 @@ export const Education = () => {
 
   return (
     <section id="education" className="py-20">
-      <h1 className="heading">
+      <h2 className="heading">
         {t('education.headingPrefix')} <span className="text-purple">{t('education.headingHighlight')}</span>
-      </h1>
+      </h2>
 
       <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
         {educationItems.map((item) => (
