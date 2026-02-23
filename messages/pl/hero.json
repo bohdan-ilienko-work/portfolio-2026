@@ -1,0 +1,8 @@
+{
+  "hero": {
+    "role": "Full Stack Engineer",
+    "headline": "Dostarczam produkcyjne systemy web i mobile",
+    "intro": "Cześć, jestem {name}, {role} z doświadczeniem {experience}. Pracuję zdalnie z zespołami na całym świecie.",
+    "cta": "Zobacz moje projekty"
+  }
+}

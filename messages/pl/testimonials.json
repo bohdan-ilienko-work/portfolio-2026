@@ -1,0 +1,28 @@
+{
+  "testimonials": {
+    "headingPrefix": "Najważniejsze",
+    "headingHighlight": "osiągnięcia inżynierskie",
+    "items": {
+      "artadian": {
+        "quote": "Tworzę i utrzymuję wewnętrzne serwisy oraz narzędzia w TypeScript / Node.js / NestJS, w tym kontrakty API i integracje.",
+        "name": "ARTADIAN GAMING LLP",
+        "title": "Full Stack Developer, Full Time · Feb 2025 - Present"
+      },
+      "backendDelivery": {
+        "quote": "Projektowałem i rozwijałem REST API, background jobs i asynchroniczne workflow w RabbitMQ, Kafka, MQTT oraz WebSockets.",
+        "name": "Backend Delivery",
+        "title": "Messaging, API Design, Integrations"
+      },
+      "performance": {
+        "quote": "Pracowałem z sesjami/cache w Redis oraz optymalizacją PostgreSQL/MongoDB, aby zwiększać niezawodność i eliminować regresje produkcyjne.",
+        "name": "Performance & Reliability",
+        "title": "Redis, PostgreSQL, MongoDB"
+      },
+      "process": {
+        "quote": "Współtworzyłem code review, refaktoryzację i delivery oparte na CI/CD z Dockerem i GitHub Actions.",
+        "name": "Engineering Process",
+        "title": "Quality, Refactoring, CI/CD"
+      }
+    }
+  }
+}

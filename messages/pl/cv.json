@@ -1,0 +1,34 @@
+{
+  "cv": {
+    "headingPrefix": "Moje",
+    "headingHighlight": "CV",
+    "description": "Podejrzyj aktualne CV bezpośrednio na stronie lub pobierz wersję z Google Drive.",
+    "loadingPreview": "Ładowanie podglądu…",
+    "resumePreview": "Podgląd CV",
+    "resumePreviewHint": "Otwórz pierwszą stronę tutaj lub pobierz pełną wersję CV z Google Drive.",
+    "open": "Otwórz",
+    "download": "Pobierz",
+    "education": {
+      "headingPrefix": "Moja",
+      "headingHighlight": "edukacja",
+      "items": {
+        "bachelor": {
+          "title": "Dyplom licencjata",
+          "institution": "Kharkiv National University of Radioelectronics",
+          "degree": "Software Engineering, Bachelor's degree",
+          "period": "2021 - 2025",
+          "description": "Dyplom ukończenia pełnego programu licencjackiego na kierunku Software Engineering.",
+          "cta": "Zobacz dyplom"
+        },
+        "udemy": {
+          "title": "Certyfikat kursu Udemy",
+          "institution": "Udemy",
+          "degree": "Profesjonalny kurs inżynierii oprogramowania",
+          "period": "Ukończono",
+          "description": "Certyfikat potwierdzający ukończenie praktycznego szkolenia inżynierskiego.",
+          "cta": "Zobacz certyfikat"
+        }
+      }
+    }
+  }
+}

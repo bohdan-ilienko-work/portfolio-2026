@@ -49,6 +49,9 @@ export const generateMetadata = async ({
         en: `${siteUrl}/en`,
         uk: `${siteUrl}/uk`,
         ru: `${siteUrl}/ru`,
+        pl: `${siteUrl}/pl`,
+        de: `${siteUrl}/de`,
+        es: `${siteUrl}/es`,
         'x-default': `${siteUrl}/${defaultLocale}`
       }
     }

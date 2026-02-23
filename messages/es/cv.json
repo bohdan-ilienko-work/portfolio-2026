@@ -1,0 +1,34 @@
+{
+  "cv": {
+    "headingPrefix": "Mi",
+    "headingHighlight": "CV",
+    "description": "Consulta mi CV más reciente directamente en la página o descarga la versión de Google Drive.",
+    "loadingPreview": "Cargando vista previa…",
+    "resumePreview": "Vista previa del CV",
+    "resumePreviewHint": "Abre la primera página aquí o descarga el CV completo desde Google Drive.",
+    "open": "Abrir",
+    "download": "Descargar",
+    "education": {
+      "headingPrefix": "Mi",
+      "headingHighlight": "educación",
+      "items": {
+        "bachelor": {
+          "title": "Diploma de grado",
+          "institution": "Kharkiv National University of Radioelectronics",
+          "degree": "Software Engineering, Bachelor's degree",
+          "period": "2021 - 2025",
+          "description": "Diploma universitario en Ingeniería de Software tras completar el programa completo de grado.",
+          "cta": "Ver diploma"
+        },
+        "udemy": {
+          "title": "Certificado de curso de Udemy",
+          "institution": "Udemy",
+          "degree": "Curso profesional de ingeniería de software",
+          "period": "Completado",
+          "description": "Certificado de finalización que acredita formación práctica en ingeniería.",
+          "cta": "Ver certificado"
+        }
+      }
+    }
+  }
+}

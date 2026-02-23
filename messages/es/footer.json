@@ -1,0 +1,20 @@
+{
+  "footer": {
+    "headingPrefix": "Abierto a nuevas",
+    "headingHighlight": "oportunidades full stack",
+    "headingSuffix": ".",
+    "description": "Escríbeme para hablar de ingeniería de producto, arquitectura backend o delivery mobile.",
+    "contactButton": "Hablemos",
+    "contactMethod": "Método de contacto",
+    "telegram": "Telegram",
+    "email": "Email",
+    "copyright": "Copyright © {year}",
+    "sourceCode": "Código fuente",
+    "social": {
+      "telegram": "Telegram",
+      "github": "GitHub",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    }
+  }
+}
