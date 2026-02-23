@@ -1,0 +1,33 @@
+{
+  "projects": {
+    "headingPrefix": "Eine Auswahl meiner",
+    "headingHighlight": "aktuellen Projekte",
+    "visit": "Öffnen",
+    "sourceCode": "Source Code",
+    "sourceSelection": "Repository-Auswahl",
+    "items": {
+      "bookPortfolio": {
+        "title": "Book Portfolio",
+        "description": "React-Portfolio-Template im Buchformat mit Mobile-Support und i18n."
+      },
+      "skillHub": {
+        "title": "SkillHub",
+        "description": "Full-Stack-Plattform: React/Redux-Client + NestJS-API für Auth, Rollen, Posts und Diskussionen."
+      },
+      "ticketing": {
+        "title": "Ticketing",
+        "description": "Mikroservice-Ticketing-App mit JWT-Auth und Kartenzahlungs-Flow."
+      },
+      "pharmacyApi": {
+        "title": "Pharmacy API",
+        "description": "NestJS-API mit MS SQL, JWT-Auth und Swagger-Dokumentation für Apotheken-Reporting."
+      }
+    },
+    "labels": {
+      "visitClient": "Client öffnen",
+      "visitBackend": "Backend öffnen",
+      "clientRepository": "Client Repository",
+      "apiRepository": "API Repository"
+    }
+  }
+}

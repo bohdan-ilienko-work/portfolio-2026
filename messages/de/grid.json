@@ -1,0 +1,48 @@
+{
+  "grid": {
+    "items": {
+      "summary": {
+        "label": "Kurzprofil",
+        "title": "Full Stack Engineer mit {experience} Erfahrung, der Web- und Mobile-Anwendungen end-to-end umsetzt."
+      },
+      "collaboration": {
+        "label": "Zusammenarbeit",
+        "title": "Remote-first Engineer, effektiv in verteilten Teams über verschiedene Zeitzonen hinweg."
+      },
+      "stack": {
+        "label": "Tools für System Engineering",
+        "title": "Kern-Tech-Stack"
+      },
+      "languages": {
+        "label": "Sprachen",
+        "title": "Englisch und Ukrainisch."
+      },
+      "focus": {
+        "label": "Engineering-Fokus",
+        "title": "Bekannt für klare Ownership, das Lösen komplexer Probleme und zuverlässige Delivery in Production."
+      },
+      "contact": {
+        "label": "Kontakt",
+        "title": "Offen für Full-Stack-Rollen und Produktentwicklung."
+      }
+    },
+    "copyMyEmail": "E-Mail kopieren",
+    "emailCopied": "E-Mail kopiert!",
+    "categories": {
+      "language": "Sprache",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "mobile": "Mobile",
+      "state": "State",
+      "styling": "Styling",
+      "data": "Daten",
+      "caching": "Caching",
+      "devops": "DevOps",
+      "cicd": "CI/CD",
+      "messaging": "Messaging",
+      "api": "API",
+      "realtime": "Realtime",
+      "engineering": "Engineering"
+    }
+  }
+}

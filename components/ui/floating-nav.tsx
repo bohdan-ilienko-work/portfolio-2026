@@ -3,7 +3,7 @@
 import {AnimatePresence, motion, useMotionValueEvent, useScroll} from 'framer-motion';
 import {useTranslations} from 'next-intl';
 import Link from 'next/link';
-import {useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {HiBars3, HiXMark} from 'react-icons/hi2';
 
 import {navItems} from '@/data';
@@ -20,6 +20,7 @@ type FloatingNavProps = {
 export const FloatingNav = ({navItems, className}: FloatingNavProps) => {
   const {scrollY} = useScroll();
   const t = useTranslations('common');
+  const navRef = useRef<HTMLElement | null>(null);
 
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -39,9 +40,31 @@ export const FloatingNav = ({navItems, className}: FloatingNavProps) => {
     }
   });
 
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const onPointerDown = (event: MouseEvent | TouchEvent) => {
+      const targetNode = event.target as Node | null;
+      if (!targetNode) return;
+
+      if (!navRef.current?.contains(targetNode)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', onPointerDown);
+    document.addEventListener('touchstart', onPointerDown);
+
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown);
+      document.removeEventListener('touchstart', onPointerDown);
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <AnimatePresence mode="wait">
       <motion.nav
+        ref={navRef}
         initial={{
           opacity: 1,
           y: -100
@@ -75,7 +98,7 @@ export const FloatingNav = ({navItems, className}: FloatingNavProps) => {
           <ThemeSwitcher />
         </div>
 
-        <div className="flex w-full items-center justify-between md:hidden">
+        <div className="flex w-full items-center gap-3 md:hidden">
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -85,7 +108,9 @@ export const FloatingNav = ({navItems, className}: FloatingNavProps) => {
             {isMobileMenuOpen ? <HiXMark className="h-5 w-5" /> : <HiBars3 className="h-5 w-5" />}
           </button>
 
-          <LanguageSwitcher />
+          <div className="min-w-0 flex-1">
+            <LanguageSwitcher />
+          </div>
         </div>
 
         <AnimatePresence>

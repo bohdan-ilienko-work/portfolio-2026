@@ -1,0 +1,48 @@
+{
+  "grid": {
+    "items": {
+      "summary": {
+        "label": "Resumen profesional",
+        "title": "Full Stack Engineer con {experience} de experiencia, entregando aplicaciones web y mobile end-to-end."
+      },
+      "collaboration": {
+        "label": "Colaboración",
+        "title": "Ingeniero remote-first, eficaz en equipos distribuidos en distintas zonas horarias."
+      },
+      "stack": {
+        "label": "Herramientas de ingeniería de sistemas",
+        "title": "Stack tecnológico principal"
+      },
+      "languages": {
+        "label": "Idiomas",
+        "title": "Inglés y ucraniano."
+      },
+      "focus": {
+        "label": "Enfoque de ingeniería",
+        "title": "Reconocido por asumir ownership de funcionalidades, resolver problemas complejos y entregar con fiabilidad en producción."
+      },
+      "contact": {
+        "label": "Contacto",
+        "title": "Abierto a oportunidades full stack y desarrollo de producto."
+      }
+    },
+    "copyMyEmail": "Copiar mi email",
+    "emailCopied": "¡Email copiado!",
+    "categories": {
+      "language": "Lenguaje",
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "mobile": "Mobile",
+      "state": "Estado",
+      "styling": "Estilos",
+      "data": "Datos",
+      "caching": "Caché",
+      "devops": "DevOps",
+      "cicd": "CI/CD",
+      "messaging": "Mensajería",
+      "api": "API",
+      "realtime": "Tiempo real",
+      "engineering": "Ingeniería"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "common": {
+    "profile": {
+      "ownerName": "Bohdan Ilienko"
+    },
+    "nav": {
+      "about": "Über mich",
+      "experience": "Erfahrung",
+      "education": "Ausbildung",
+      "cv": "Mein CV",
+      "projects": "Projekte",
+      "highlights": "Highlights",
+      "approach": "Vorgehen",
+      "contact": "Kontakt"
+    },
+    "languageSwitcherLabel": "Sprache wählen",
+    "languages": {
+      "en": "English",
+      "uk": "Українська",
+      "ru": "Русский",
+      "pl": "Polski",
+      "de": "Deutsch",
+      "es": "Español"
+    },
+    "approach": {
+      "headingPrefix": "Mein",
+      "headingHighlight": "Vorgehen",
+      "phase": "Phase {number}",
+      "phase1Title": "Architektur- und Delivery-Plan",
+      "phase1Description": "Ich definiere Scope, Architektur, API-Verträge und Datenflüsse. Den Stack wähle ich bewusst: TypeScript, Node.js/NestJS, React/Next.js, PostgreSQL/MongoDB und Messaging, wo es sinnvoll ist.",
+      "phase2Title": "Umsetzung & Qualität",
+      "phase2Description": "Features liefere ich iterativ: Code Reviews, Unit-/Integration-/E2E-Tests und konsequente Regression-Kontrolle. Fokus auf Zuverlässigkeit, Ownership und wartbaren Code.",
+      "phase3Title": "Deployment, Mobile & Operations",
+      "phase3Description": "Deployments laufen über CI/CD mit Docker und GitHub Actions. Im Mobile-Bereich liefere ich React-Native-Apps mit Expo/EAS (Build + OTA), manage Env-Konfigurationen und betreue Production-Releases."
+    }
+  }
+}
