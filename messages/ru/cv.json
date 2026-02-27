@@ -8,6 +8,8 @@
     "resumePreviewHint": "Откройте первую страницу здесь или скачайте полную версию CV из Google Drive.",
     "open": "Открыть",
     "download": "Скачать",
+    "mobilePreviewUnavailable": "Просмотр PDF недоступен на мобильных. Используйте кнопки выше, чтобы",
+    "mobilePreviewHighlight": "открыть или скачать.",
     "education": {
       "headingPrefix": "Моё",
       "headingHighlight": "образование",

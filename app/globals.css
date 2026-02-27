@@ -85,6 +85,9 @@
     --cv-grid-line: rgba(0, 0, 0, 0.06);
     --cv-preview-bg: #f4f5f9;
     --cv-fade-to: rgba(244, 245, 249, 0.7);
+    --cv-mobile-overlay: rgba(244, 245, 249, 0.42);
+    --cv-mobile-vignette: rgba(248, 249, 252, 0.88);
+    --cv-mobile-text: #1a1d2e;
 
     /* Moving border card */
     --moving-card-bg: rgba(248, 249, 252, 0.9);
@@ -186,6 +189,9 @@
     --cv-grid-line: rgba(255, 255, 255, 0.06);
     --cv-preview-bg: #000000;
     --cv-fade-to: rgba(0, 0, 0, 0.7);
+    --cv-mobile-overlay: rgba(0, 3, 25, 0.60);
+    --cv-mobile-vignette: rgba(248, 249, 252, 0.88);
+    --cv-mobile-text: #1a1d2e;
 
     /* Moving border card */
     --moving-card-bg: rgba(15, 23, 42, 0.8);
