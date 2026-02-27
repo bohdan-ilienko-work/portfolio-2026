@@ -8,6 +8,8 @@
     "resumePreviewHint": "Open the first page here or download the full CV from Google Drive.",
     "open": "Open",
     "download": "Download",
+    "mobilePreviewUnavailable": "PDF preview is not available on mobile. Use the buttons above to",
+    "mobilePreviewHighlight": "open or download.",
     "education": {
       "headingPrefix": "My",
       "headingHighlight": "education",
