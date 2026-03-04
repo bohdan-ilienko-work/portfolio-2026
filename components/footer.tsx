@@ -149,7 +149,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="relative z-[999] mt-16 flex flex-col items-center justify-between md:flex-row">
+      <div className="relative z-[999] mt-16 flex flex-col items-center justify-between gap-4 md:mt-16 md:flex-row md:gap-0">
         <p className="text-sm font-light md:text-base md:font-normal">
           {t('copyright', {year: new Date().getFullYear()})}{' '}
           <Link
