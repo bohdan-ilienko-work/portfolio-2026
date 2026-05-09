@@ -65,10 +65,16 @@
     "email": "bogdan.ilienko.work@gmail.com"
   },
   "dependencies": {
+    "@langchain/classic": "^1.0.32",
+    "@langchain/core": "^1.1.45",
+    "@langchain/langgraph": "^1.3.0",
+    "@langchain/openai": "^1.4.5",
+    "@langchain/textsplitters": "^1.0.1",
     "@react-three/drei": "10.7.7",
     "@react-three/fiber": "9.5.0",
     "clsx": "^2.1.1",
     "framer-motion": "12.34.3",
+    "langchain": "^1.4.0",
     "mini-svg-data-uri": "^1.4.4",
     "next": "16.1.6",
     "next-intl": "^4.8.3",

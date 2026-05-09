@@ -5,6 +5,7 @@ import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import type {PropsWithChildren} from 'react';
 
+import {AskBohdanChatWrapper} from '@/components/ask-bohdan-chat-wrapper';
 import {JsonLdScript, personJsonLd, websiteJsonLd} from '@/components/seo/jsonld';
 import {
   defaultDescription,
@@ -135,7 +136,10 @@ const LocaleLayout = async ({
           enableSystem
           disableTransitionOnChange
         >
-          <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+          <NextIntlClientProvider messages={messages}>
+            {children}
+            <AskBohdanChatWrapper />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>
