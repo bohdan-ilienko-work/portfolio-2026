@@ -1,0 +1,100 @@
+{
+  "person": {
+    "name": "Bohdan Ilienko",
+    "title": "Full Stack Engineer",
+    "location": "Remote worldwide",
+    "experienceStart": "2022-08"
+  },
+  "contacts": {
+    "email": "bohdan.ilienko.work@gmail.com",
+    "phone": "+380954755708",
+    "telegram": "https://t.me/b0urgeois",
+    "github": "https://github.com/NureBohdanIlienko",
+    "linkedin": "https://www.linkedin.com/in/bohdan-ilienko-692b232a5/"
+  },
+  "skills": {
+    "languages": ["TypeScript", "JavaScript"],
+    "backend": ["Node.js", "NestJS", "Express.js", "REST API"],
+    "frontend": ["React", "Next.js", "Redux Toolkit"],
+    "mobile": ["React Native"],
+    "databases": ["PostgreSQL", "MongoDB", "Redis", "MS SQL"],
+    "devops": ["Docker", "Kubernetes", "GitHub Actions", "CI/CD"]
+  },
+  "experience": [
+    {
+      "company": "ARTADIAN GAMING LLP",
+      "role": "Full Stack Developer",
+      "employmentType": "Full Time",
+      "start": "2025-02",
+      "end": "Present",
+      "highlights": [
+        "TypeScript/Node.js/NestJS services",
+        "REST APIs",
+        "Background jobs",
+        "Messaging workflows",
+        "CI/CD delivery"
+      ]
+    },
+    {
+      "company": "Silinexx",
+      "role": "Full Stack Developer",
+      "employmentType": "Full Time",
+      "start": "2024-03",
+      "end": "2025-09",
+      "highlights": [
+        "Internal web systems across backend and frontend",
+        "Authentication flows",
+        "Test coverage",
+        "Database query optimization"
+      ]
+    },
+    {
+      "company": "Wnet",
+      "role": "Full Stack Developer",
+      "employmentType": "Full Time",
+      "start": "2022-05",
+      "end": "2023-11",
+      "highlights": [
+        "Built and supported internal apps",
+        "Implemented REST endpoints",
+        "Performance improvements",
+        "Technical debt reduction"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Kharkiv National University of Radioelectronics",
+      "degree": "Software Engineering, Bachelor's degree",
+      "period": "2021-2025"
+    },
+    {
+      "institution": "Udemy",
+      "degree": "Professional software engineering course",
+      "period": "Completed"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Book Portfolio",
+      "summary": "React portfolio template in book format with mobile support and i18n"
+    },
+    {
+      "name": "SkillHub",
+      "summary": "Full-stack platform with React/Redux client and NestJS API for auth, roles, posts, and discussions"
+    },
+    {
+      "name": "Ticketing",
+      "summary": "Microservice ticketing app with JWT auth and card payment flow"
+    },
+    {
+      "name": "Pharmacy API",
+      "summary": "NestJS API with MS SQL, JWT auth, and Swagger docs for reporting"
+    }
+  ],
+  "source": {
+    "fromRepository": true,
+    "linkedinParsedDirectly": false,
+    "note": "LinkedIn profile could not be parsed directly in this environment because of authwall"
+  }
+}

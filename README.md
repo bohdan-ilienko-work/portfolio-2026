@@ -23,6 +23,7 @@ npm run dev
 Required env variable:
 
 - `NEXT_PUBLIC_SITE_URL` (example: `https://your-domain.com`)
+- `OPENAI_API_KEY` (for RAG chat)
 
 ## Repository
 
@@ -35,6 +36,23 @@ Required env variable:
 - GitHub: https://github.com/NureBohdanIlienko
 - Instagram: https://www.instagram.com/b0urgeo1s/
 - LinkedIn: https://www.linkedin.com/in/bohdan-ilienko-692b232a5/
+
+## RAG chat (LangGraph + OpenAI)
+
+This project now includes a small RAG chatbot that answers questions about Bohdan Ilienko using local knowledge files.
+
+- Chat page: `/{locale}/ask-bohdan`
+- API route: `POST /api/rag-chat`
+- Knowledge base folder: `data/rag/`
+
+How it works:
+
+1. Markdown/JSON/TXT files from `data/rag/` are loaded and chunked.
+2. Chunks are embedded with OpenAI embeddings and stored in memory vector store.
+3. LangGraph runs retrieval and answer generation nodes.
+4. The assistant answers only from retrieved context.
+
+To add new facts, extend files in `data/rag/`.
 
 ## i18n and SEO routing
 

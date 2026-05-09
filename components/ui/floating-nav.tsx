@@ -25,6 +25,11 @@ export const FloatingNav = ({ navItems, className }: FloatingNavProps) => {
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useMotionValueEvent(scrollY, 'change', (current) => {
     if (typeof current === 'number') {
@@ -95,6 +100,17 @@ export const FloatingNav = ({ navItems, className }: FloatingNavProps) => {
               </Link>
             ))}
 
+            {mounted && (
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event('open-ask-bohdan'))}
+                className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 px-3 py-1.5 text-xs font-semibold text-black transition hover:from-cyan-400 hover:to-blue-400"
+              >
+                <span aria-hidden>✦</span>
+                Ask AI
+              </button>
+            )}
+
             <LanguageSwitcher />
             <ThemeSwitcher />
           </div>
@@ -138,6 +154,18 @@ export const FloatingNav = ({ navItems, className }: FloatingNavProps) => {
                       {t(navItem.nameKey)}
                     </Link>
                   ))}
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      window.dispatchEvent(new Event('open-ask-bohdan'));
+                    }}
+                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-3 py-2 text-sm font-semibold text-black transition hover:from-cyan-400 hover:to-blue-400"
+                  >
+                    <span aria-hidden>✦</span>
+                    Ask Bohdan AI
+                  </button>
                 </div>
 
                 {/* Theme switcher in dropdown only on mobile (< md) */}
