@@ -30,8 +30,8 @@
             "phase1Title": "Архитектура и план за доставка",
             "phase1Description": "Дефинирам scope, архитектура, API договори и потоци на данни. Избирам стека целенасочено: TypeScript, Node.js/NestJS, React/Next.js, PostgreSQL/MongoDB и messaging при нужда.",
             "phase2Title": "Реализация и качество",
-            "phase2Description": "Изграждам функционалности итеративно с code review и тестово покритие (unit/integration/e2e). Фокусът е върху надеждност, ownership и поддържаем код без регресии.",
-            "phase3Title": "Deployment, mobile и operations",
+            "phase2Description": "Изграждам функционалности поетапно с преглед на кода и тестово покритие. Фокусът е върху надеждността, отговорността за резултата и поддържаем код без регресии.",
+            "phase3Title": "Внедряване, мобилна разработка и поддръжка",
             "phase3Description": "Доставям чрез CI/CD с Docker и GitHub Actions. За mobile разработка пускам React Native приложения с Expo/EAS (Build + OTA updates), управлявам env конфигурации и поддържам production релийзи."
         },
         "askBohdan": {

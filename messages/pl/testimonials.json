@@ -9,19 +9,19 @@
         "title": "Full Stack Developer, Full Time · Feb 2025 - Present"
       },
       "backendDelivery": {
-        "quote": "Projektowałem i rozwijałem REST API, background jobs i asynchroniczne workflow w RabbitMQ, Kafka, MQTT oraz WebSockets.",
-        "name": "Backend Delivery",
+        "quote": "Projektowałem i rozwijałem REST API, zadania działające w tle oraz asynchroniczne przepływy komunikatów w RabbitMQ, Kafka, MQTT i WebSockets.",
+        "name": "Backend i integracje",
         "title": "Messaging, API Design, Integrations"
       },
       "performance": {
         "quote": "Pracowałem z sesjami/cache w Redis oraz optymalizacją PostgreSQL/MongoDB, aby zwiększać niezawodność i eliminować regresje produkcyjne.",
-        "name": "Performance & Reliability",
+        "name": "Wydajność i niezawodność",
         "title": "Redis, PostgreSQL, MongoDB"
       },
       "process": {
-        "quote": "Współtworzyłem code review, refaktoryzację i delivery oparte na CI/CD z Dockerem i GitHub Actions.",
-        "name": "Engineering Process",
-        "title": "Quality, Refactoring, CI/CD"
+        "quote": "Brałem udział w przeglądach kodu, refaktoryzacji i procesie wdrożeń opartym na CI/CD z użyciem Dockera i GitHub Actions.",
+        "name": "Proces inżynierski",
+        "title": "Jakość, refaktoryzacja, CI/CD"
       }
     }
   }

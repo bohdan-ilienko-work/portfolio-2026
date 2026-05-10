@@ -30,9 +30,9 @@
       "phase1Title": "Архітектура та план реалізації",
       "phase1Description": "Визначаю scope, архітектуру, API-контракти й потоки даних. Стек підбираю свідомо: TypeScript, Node.js/NestJS, React/Next.js, PostgreSQL/MongoDB і брокери повідомлень за потреби.",
       "phase2Title": "Реалізація та якість",
-      "phase2Description": "Розробляю функціонал ітераціями: code review, unit/integration/e2e тести, контроль регресій. Фокус — надійність, відповідальність за результат і підтримуваність коду.",
+      "phase2Description": "Розробляю функціонал ітераціями: рев'ю коду, тестове покриття та контроль регресій. Фокус — надійність, відповідальність за результат і підтримуваність коду.",
       "phase3Title": "Деплой, мобайл та операційка",
-      "phase3Description": "Доставляю зміни через CI/CD на Docker і GitHub Actions. Для мобайлу випускаю React Native застосунки з Expo/EAS (Build + OTA), керую env-конфігами й підтримую production-релізи."
+      "phase3Description": "Впроваджую зміни через CI/CD з Docker і GitHub Actions. Для мобільної розробки випускаю React Native застосунки з Expo/EAS, керую конфігураціями середовища й підтримую продакшен-релізи."
     },
     "askBohdan": {
       "assistantLabel": "AI Асистент",

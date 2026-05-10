@@ -27,12 +27,12 @@
       "headingPrefix": "Mein",
       "headingHighlight": "Vorgehen",
       "phase": "Phase {number}",
-      "phase1Title": "Architektur- und Delivery-Plan",
+      "phase1Title": "Architektur und Umsetzungsplan",
       "phase1Description": "Ich definiere Scope, Architektur, API-Verträge und Datenflüsse. Den Stack wähle ich bewusst: TypeScript, Node.js/NestJS, React/Next.js, PostgreSQL/MongoDB und Messaging, wo es sinnvoll ist.",
       "phase2Title": "Umsetzung & Qualität",
-      "phase2Description": "Features liefere ich iterativ: Code Reviews, Unit-/Integration-/E2E-Tests und konsequente Regression-Kontrolle. Fokus auf Zuverlässigkeit, Ownership und wartbaren Code.",
-      "phase3Title": "Deployment, Mobile & Operations",
-      "phase3Description": "Deployments laufen über CI/CD mit Docker und GitHub Actions. Im Mobile-Bereich liefere ich React-Native-Apps mit Expo/EAS (Build + OTA), manage Env-Konfigurationen und betreue Production-Releases."
+      "phase2Description": "Ich entwickle Features iterativ: mit Code Reviews, Testabdeckung und konsequenter Kontrolle von Regressionen. Der Fokus liegt auf Zuverlässigkeit, Verantwortung für das Ergebnis und wartbarem Code.",
+      "phase3Title": "Deployment, Mobile und Betrieb",
+      "phase3Description": "Deployments laufen über CI/CD mit Docker und GitHub Actions. Im Mobile-Bereich veröffentliche ich React-Native-Apps mit Expo/EAS, verwalte Umgebungsvariablen und betreue Releases für die Produktionsumgebung."
     },
     "askBohdan": {
       "assistantLabel": "KI-Assistent",

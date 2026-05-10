@@ -3,11 +3,11 @@
     "items": {
       "summary": {
         "label": "Kurzprofil",
-        "title": "Full Stack Engineer mit {experience} Erfahrung, der Web- und Mobile-Anwendungen end-to-end umsetzt."
+        "title": "Full Stack Engineer mit {experience} Erfahrung in der end-to-end Entwicklung von Web- und Mobile-Anwendungen."
       },
       "collaboration": {
         "label": "Zusammenarbeit",
-        "title": "Remote-first Engineer, effektiv in verteilten Teams über verschiedene Zeitzonen hinweg."
+        "title": "Ich arbeite remote und arbeite effektiv mit Teams über verschiedene Zeitzonen hinweg zusammen."
       },
       "stack": {
         "label": "Tools für System Engineering",
@@ -19,7 +19,7 @@
       },
       "focus": {
         "label": "Engineering-Fokus",
-        "title": "Bekannt für klare Ownership, das Lösen komplexer Probleme und zuverlässige Delivery in Production."
+        "title": "Bekannt dafür, Verantwortung für Features zu übernehmen, komplexe Probleme zu lösen und zuverlässig in Produktion auszuliefern."
       },
       "contact": {
         "label": "Kontakt",

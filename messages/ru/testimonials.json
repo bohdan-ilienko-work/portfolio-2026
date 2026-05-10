@@ -19,7 +19,7 @@
         "title": "Redis, PostgreSQL, MongoDB"
       },
       "process": {
-        "quote": "Участвую в code review, рефакторинге и CI/CD delivery с Docker и GitHub Actions.",
+        "quote": "Участвую в ревью кода, рефакторинге и процессе поставки изменений через CI/CD с Docker и GitHub Actions.",
         "name": "Engineering Process",
         "title": "Quality, Refactoring, CI/CD"
       }

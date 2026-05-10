@@ -3,11 +3,11 @@
     "items": {
       "summary": {
         "label": "Professional Summary",
-        "title": "Full Stack Engineer with {experience} of experience, delivering end-to-end web and mobile applications."
+        "title": "Full Stack Engineer with {experience} building web and mobile products end-to-end."
       },
       "collaboration": {
         "label": "Collaboration",
-        "title": "Remote-first engineer, effective with distributed teams across time zones."
+        "title": "Remote engineer who collaborates effectively with teams across time zones."
       },
       "stack": {
         "label": "Systems engineering tools",
@@ -19,7 +19,7 @@
       },
       "focus": {
         "label": "Engineering Focus",
-        "title": "Known for ownership of features, solving complex problems, and reliable production delivery."
+        "title": "Known for taking features from idea to release, solving complex problems, and shipping reliably to production."
       },
       "contact": {
         "label": "Contact",

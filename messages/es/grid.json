@@ -3,11 +3,11 @@
     "items": {
       "summary": {
         "label": "Resumen profesional",
-        "title": "Full Stack Engineer con {experience} de experiencia, entregando aplicaciones web y mobile end-to-end."
+        "title": "Full Stack Engineer con {experience} de experiencia en desarrollo end-to-end de productos web y mobile."
       },
       "collaboration": {
         "label": "Colaboración",
-        "title": "Ingeniero remote-first, eficaz en equipos distribuidos en distintas zonas horarias."
+        "title": "Trabajo en remoto y colaboro eficazmente con equipos en distintas zonas horarias."
       },
       "stack": {
         "label": "Herramientas de ingeniería de sistemas",
@@ -19,7 +19,7 @@
       },
       "focus": {
         "label": "Enfoque de ingeniería",
-        "title": "Reconocido por asumir ownership de funcionalidades, resolver problemas complejos y entregar con fiabilidad en producción."
+        "title": "Destaco por hacerme responsable de las funcionalidades, resolver problemas complejos y llevar cambios a producción con fiabilidad."
       },
       "contact": {
         "label": "Contacto",
