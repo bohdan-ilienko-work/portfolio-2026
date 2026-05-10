@@ -1,14 +1,21 @@
-import {Document} from '@langchain/core/documents';
-import {ChatOpenAI, OpenAIEmbeddings} from '@langchain/openai';
-import {MemoryVectorStore} from '@langchain/classic/vectorstores/memory';
-import {Annotation, END, START, StateGraph} from '@langchain/langgraph';
-import {RecursiveCharacterTextSplitter} from '@langchain/textsplitters';
-import {promises as fs} from 'node:fs';
+import { Document } from '@langchain/core/documents';
+import { ChatOpenAI, OpenAIEmbeddings } from '@langchain/openai';
+import { MemoryVectorStore } from '@langchain/classic/vectorstores/memory';
+import { Annotation, END, START, StateGraph } from '@langchain/langgraph';
+import { RecursiveCharacterTextSplitter } from '@langchain/textsplitters';
+import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 type ChatHistoryMessage = {
   role: 'user' | 'assistant';
   content: string;
+};
+
+type ChatScenarioContext = {
+  categoryId: string;
+  categoryLabel: string;
+  topicId: string | null;
+  topicLabel: string | null;
 };
 
 type Source = {
@@ -20,6 +27,10 @@ const knowledgeBaseDir = path.join(process.cwd(), 'data', 'rag');
 
 const ChatState = Annotation.Root({
   question: Annotation<string>(),
+  scenario: Annotation<ChatScenarioContext | null>({
+    reducer: (_, value) => value,
+    default: () => null
+  }),
   history: Annotation<ChatHistoryMessage[]>({
     reducer: (_, value) => value,
     default: () => []
@@ -38,7 +49,29 @@ const ChatState = Annotation.Root({
   })
 });
 
-let retrieverPromise: Promise<ReturnType<MemoryVectorStore['asRetriever']>> | null = null;
+let retrieverCache:
+  | {
+    signature: string;
+    promise: Promise<ReturnType<MemoryVectorStore['asRetriever']>>;
+  }
+  | null = null;
+
+const getKnowledgeSignature = async () => {
+  const files = await fs.readdir(knowledgeBaseDir);
+  const supportedFiles = files
+    .filter((file) => ['.md', '.txt', '.json'].includes(path.extname(file).toLowerCase()))
+    .sort();
+
+  const stats = await Promise.all(
+    supportedFiles.map(async (fileName) => {
+      const fullPath = path.join(knowledgeBaseDir, fileName);
+      const stat = await fs.stat(fullPath);
+      return `${fileName}:${stat.mtimeMs}`;
+    })
+  );
+
+  return stats.join('|');
+};
 
 const readKnowledgeFiles = async () => {
   const files = await fs.readdir(knowledgeBaseDir);
@@ -65,7 +98,7 @@ const readKnowledgeFiles = async () => {
     docs.push(
       new Document({
         pageContent: content,
-        metadata: {source: path.join('data', 'rag', fileName)}
+        metadata: { source: path.join('data', 'rag', fileName) }
       })
     );
   }
@@ -90,30 +123,57 @@ const buildRetriever = async () => {
     return doc;
   });
 
-  const embeddings = new OpenAIEmbeddings({model: 'text-embedding-3-small'});
+  const embeddings = new OpenAIEmbeddings({ model: 'text-embedding-3-small' });
   const store = await MemoryVectorStore.fromDocuments(docsWithChunk, embeddings);
 
-  return store.asRetriever(4);
+  return store.asRetriever(6);
 };
 
 const getRetriever = async () => {
-  if (!retrieverPromise) {
-    retrieverPromise = buildRetriever();
+  const signature = await getKnowledgeSignature();
+
+  if (!retrieverCache || retrieverCache.signature !== signature) {
+    retrieverCache = {
+      signature,
+      promise: buildRetriever()
+    };
   }
 
-  return retrieverPromise;
+  return retrieverCache.promise;
 };
 
 const retrieveNode = async (state: typeof ChatState.State) => {
   const retriever = await getRetriever();
-  const contextDocs = await retriever.invoke(state.question);
+  const retrievalQuery = [state.scenario?.categoryLabel, state.scenario?.topicLabel, state.question]
+    .filter(Boolean)
+    .join('\n');
+
+  const docsFromQuestion = await retriever.invoke(state.question);
+
+  const docsFromScenarioQuery =
+    retrievalQuery && retrievalQuery !== state.question
+      ? await retriever.invoke(retrievalQuery)
+      : [];
+
+  const mergedDocs = [...docsFromQuestion, ...docsFromScenarioQuery];
+  const uniqueDocs = mergedDocs.filter((doc, index, self) => {
+    const key = `${doc.metadata.source ?? 'unknown'}:${doc.metadata.chunk ?? -1}`;
+    return (
+      self.findIndex(
+        (candidate) =>
+          `${candidate.metadata.source ?? 'unknown'}:${candidate.metadata.chunk ?? -1}` === key
+      ) === index
+    );
+  });
+
+  const contextDocs = uniqueDocs.slice(0, 8);
 
   const sources = contextDocs.map((doc: Document) => ({
     source: String(doc.metadata.source ?? 'unknown'),
     chunk: Number(doc.metadata.chunk ?? -1)
   }));
 
-  return {contextDocs, sources};
+  return { contextDocs, sources };
 };
 
 const generateNode = async (state: typeof ChatState.State) => {
@@ -131,14 +191,23 @@ const generateNode = async (state: typeof ChatState.State) => {
     .map((message) => `${message.role}: ${message.content}`)
     .join('\n');
 
+  const scenarioText = state.scenario
+    ? `Category: ${state.scenario.categoryLabel}\nTopic: ${state.scenario.topicLabel || 'not selected yet'}`
+    : 'No scenario selected.';
+
   const prompt = [
     'You are a personal assistant for Bohdan Ilienko.',
+    'Name spelling rules are strict: English -> "Bohdan Ilienko", Russian -> "Богдан Ильенко", Ukrainian -> "Богдан Ільєнко".',
+    'Never use these misspellings: "Иленко", "Илиенко".',
     'Answer only using the provided context.',
     'If information is missing, clearly say that the data is not in the knowledge base yet.',
     'Keep answers concise and factual.',
     '',
     'Conversation history:',
     historyText || 'No previous history.',
+    '',
+    'Selected scenario:',
+    scenarioText,
     '',
     'Context:',
     context || 'No context found.',
@@ -149,7 +218,7 @@ const generateNode = async (state: typeof ChatState.State) => {
   const response = await model.invoke(prompt);
   const answer = typeof response.content === 'string' ? response.content : JSON.stringify(response.content);
 
-  return {answer};
+  return { answer };
 };
 
 const graph = new StateGraph(ChatState)
@@ -160,10 +229,19 @@ const graph = new StateGraph(ChatState)
   .addEdge('generate', END)
   .compile();
 
-export const runBohdanRag = async ({question, history}: {question: string; history: ChatHistoryMessage[]}) => {
+export const runBohdanRag = async ({
+  question,
+  history,
+  scenario
+}: {
+  question: string;
+  history: ChatHistoryMessage[];
+  scenario?: ChatScenarioContext | null;
+}) => {
   const result = await graph.invoke({
     question,
-    history
+    history,
+    scenario: scenario ?? null
   });
 
   return {
@@ -172,4 +250,5 @@ export const runBohdanRag = async ({question, history}: {question: string; histo
   };
 };
 
-export type {ChatHistoryMessage};
+export type { ChatHistoryMessage };
+export type { ChatScenarioContext };

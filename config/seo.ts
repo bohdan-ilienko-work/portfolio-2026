@@ -1,5 +1,5 @@
-import {links} from '@/config';
-import {defaultLocale, locales, type Locale} from '@/i18n/routing';
+import { links } from '@/config';
+import { defaultLocale, locales, type Locale } from '@/i18n/routing';
 
 const fallbackSiteUrl = 'https://portfolio-2026.vercel.app';
 
@@ -21,7 +21,8 @@ export const localeLanguageTags: Record<Locale, string> = {
   ru: 'ru-RU',
   pl: 'pl-PL',
   de: 'de-DE',
-  es: 'es-ES'
+  es: 'es-ES',
+  bg: 'bg-BG'
 };
 
 export const localeLanguageNames: Record<Locale, string> = {
@@ -30,7 +31,8 @@ export const localeLanguageNames: Record<Locale, string> = {
   ru: 'Русский',
   pl: 'Polski',
   de: 'Deutsch',
-  es: 'Español'
+  es: 'Español',
+  bg: 'Български'
 };
 
 export const localeHomeLabels: Record<Locale, string> = {
@@ -39,10 +41,11 @@ export const localeHomeLabels: Record<Locale, string> = {
   ru: 'Главная',
   pl: 'Strona główna',
   de: 'Startseite',
-  es: 'Inicio'
+  es: 'Inicio',
+  bg: 'Начало'
 };
 
-export const localeMeta: Record<Locale, {title: string; description: string}> = {
+export const localeMeta: Record<Locale, { title: string; description: string }> = {
   en: {
     title: 'Full Stack Engineer Portfolio',
     description:
@@ -72,6 +75,11 @@ export const localeMeta: Record<Locale, {title: string; description: string}> = 
     title: 'Portfolio de Full Stack Engineer',
     description:
       'Portfolio de Bohdan Ilienko: desarrollo web y mobile de nivel producción con TypeScript, Node.js/NestJS, React/Next.js y arquitectura backend escalable.'
+  },
+  bg: {
+    title: 'Портфолио на Full Stack инженер',
+    description:
+      'Портфолио на Богдан Ильенко: production-ready web и mobile разработка с TypeScript, Node.js/NestJS, React/Next.js и мащабируема backend архитектура.'
   }
 };
 

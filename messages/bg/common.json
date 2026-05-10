@@ -1,0 +1,106 @@
+{
+    "common": {
+        "profile": {
+            "ownerName": "Богдан Ильенко"
+        },
+        "nav": {
+            "about": "За мен",
+            "experience": "Опит",
+            "education": "Образование",
+            "cv": "Моето CV",
+            "projects": "Проекти",
+            "highlights": "Акценти",
+            "approach": "Подход",
+            "contact": "Контакт"
+        },
+        "languageSwitcherLabel": "Смени езика",
+        "languages": {
+            "en": "EN",
+            "uk": "UK",
+            "ru": "RU",
+            "pl": "PL",
+            "de": "DE",
+            "es": "ES",
+            "bg": "BG"
+        },
+        "approach": {
+            "headingPrefix": "Моят",
+            "headingHighlight": "подход",
+            "phase": "Етап {number}",
+            "phase1Title": "Архитектура и план за доставка",
+            "phase1Description": "Дефинирам scope, архитектура, API договори и потоци на данни. Избирам стека целенасочено: TypeScript, Node.js/NestJS, React/Next.js, PostgreSQL/MongoDB и messaging при нужда.",
+            "phase2Title": "Реализация и качество",
+            "phase2Description": "Изграждам функционалности итеративно с code review и тестово покритие (unit/integration/e2e). Фокусът е върху надеждност, ownership и поддържаем код без регресии.",
+            "phase3Title": "Deployment, mobile и operations",
+            "phase3Description": "Доставям чрез CI/CD с Docker и GitHub Actions. За mobile разработка пускам React Native приложения с Expo/EAS (Build + OTA updates), управлявам env конфигурации и поддържам production релийзи."
+        },
+        "askBohdan": {
+            "assistantLabel": "AI Асистент",
+            "title": "Попитай Богдан",
+            "triggerHint": "AI асистент: опит, умения, проекти и контакт",
+            "placeholder": "Попитай нещо за Богдан...",
+            "send": "Изпрати",
+            "emptyStateTitle": "Попитай ме всичко за Богдан",
+            "emptyStateSubtitle": "Опит · Умения · Контакт · Проекти",
+            "categories": {
+                "about": "За Богдан",
+                "projects": "Проекти",
+                "tech": "Технологии",
+                "experience": "Опит",
+                "contact": "Контакт"
+            },
+            "scenario": {
+                "pickCategory": "Избери тема",
+                "pickTopic": "Избери конкретен въпрос",
+                "active": "Текущ контекст",
+                "clear": "Изчисти",
+                "back": "Назад"
+            },
+            "contactFlow": {
+                "intro": "Чудесно, нека подготвим твоята заявка за контакт с Богдан.",
+                "askName": "Стъпка 1/4: Представи се, моля (име).",
+                "askContact": "Стъпка 2/4: Остави контакт (email, Telegram, LinkedIn или телефон).",
+                "askProposal": "Стъпка 3/4: Опиши накратко твоята оферта/идея за проект.",
+                "askCallTime": "Стъпка 4/4 (по желание): Предложи удобен час за разговор (например Google Meet). Напиши 'skip', ако не е необходимо.",
+                "invalidName": "Моля, въведи валидно име (поне 2 символа).",
+                "invalidContact": "Моля, въведи валиден контакт (email/телефон/линк).",
+                "invalidProposal": "Моля, дай малко повече детайли за предложението си (поне 10 символа).",
+                "abusive": "Мога да помагам само с уважителни професионални заявки за контакт. Потокът за контакт е спрян.",
+                "cancelled": "Потокът за заявка за контакт е отменен. Можеш да започнеш отново по всяко време.",
+                "success": "Благодаря. Заявката ти е изпратена на Богдан в Telegram. Богдан със сигурност ще види предложението ти и ще се свърже с теб възможно най-скоро.",
+                "error": "В момента не успях да изпратя заявката"
+            },
+            "aria": {
+                "chatPanel": "Чат Попитай Богдан",
+                "openChat": "Попитай Богдан",
+                "closeChat": "Затвори чата"
+            },
+            "starters": {
+                "focus": "Върху какво е фокусиран Богдан като инженер?",
+                "tech": "Кои технологии Богдан използва най-често?",
+                "contact": "Как мога да се свържа с Богдан?",
+                "projects": "Кои са най-значимите проекти на Богдан?",
+                "experience": "Колко опит има Богдан в backend и fullstack?",
+                "english": "Може ли Богдан да работи в англоезични екипи?",
+                "aboutStrengths": "Кои са най-силните инженерни умения на Богдан?",
+                "aboutRoleFit": "Коя роля и тип проект подхождат най-добре на Богдан?",
+                "projectBookPortfolio": "Разкажи ми повече за проекта Book Portfolio.",
+                "projectSkillHub": "За какво отговаряше Богдан в SkillHub?",
+                "projectTicketing": "Как е проектирана архитектурата на проекта Ticketing?",
+                "projectPharmacyApi": "Какви предизвикателства бяха решени в Pharmacy API?",
+                "techFrontend": "Какъв frontend стек и практики използва Богдан?",
+                "techBackend": "Каква backend архитектура и инструменти използва Богдан?",
+                "techMobile": "Какъв mobile стек използва Богдан с React Native?",
+                "techAi": "Как Богдан използва AI/LLM инструменти в продуктите?",
+                "techDevops": "Какви DevOps и CI/CD практики следва Богдан?",
+                "expArtadian": "Разкажи ми за работата на Богдан в ARTADIAN GAMING LLP.",
+                "expSilinexx": "Какво изгради Богдан в Silinexx?",
+                "expWnet": "С какво се занимаваше Богдан в Wnet?",
+                "expGrowth": "Как Богдан се разви от Wnet до ARTADIAN?",
+                "contactHiring": "Как можем да се свържем с Богдан за наемане?",
+                "contactTimezone": "Коя часова зона и формат на работа предпочита Богдан?",
+                "contactAvailability": "Отворен ли е Богдан в момента към нови възможности?"
+            }
+        }
+    }
+}

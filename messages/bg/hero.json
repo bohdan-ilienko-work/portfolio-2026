@@ -1,0 +1,8 @@
+{
+    "hero": {
+        "role": "Full Stack инженер",
+        "headline": "Изграждам production-ready web и mobile системи",
+        "intro": "Здравей, аз съм {name}, {role} с {experience} професионален опит, работя дистанционно с екипи по целия свят.",
+        "cta": "Покажи проектите ми"
+    }
+}

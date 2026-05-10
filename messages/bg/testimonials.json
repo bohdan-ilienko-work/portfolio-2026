@@ -1,0 +1,28 @@
+{
+    "testimonials": {
+        "headingPrefix": "Ключови",
+        "headingHighlight": "инженерни акценти",
+        "items": {
+            "artadian": {
+                "quote": "Разработвам и поддържам вътрешни услуги и инструменти с TypeScript / Node.js / NestJS, включително API договори и интеграции.",
+                "name": "ARTADIAN GAMING LLP",
+                "title": "Full Stack Developer, Full Time · Feb 2025 - Present"
+            },
+            "backendDelivery": {
+                "quote": "Изградих и развих REST API, background jobs и асинхронни процеси с RabbitMQ, Kafka, MQTT и WebSockets.",
+                "name": "Backend Delivery",
+                "title": "Messaging, API Design, Integrations"
+            },
+            "performance": {
+                "quote": "Работих с Redis сесии/кеширане и оптимизация на PostgreSQL/MongoDB, за да повиша надеждността и да отстраня production регресии.",
+                "name": "Производителност и надеждност",
+                "title": "Redis, PostgreSQL, MongoDB"
+            },
+            "process": {
+                "quote": "Участвах в code review, рефакториране и delivery процес, управляван от CI/CD с Docker и GitHub Actions.",
+                "name": "Инженерен процес",
+                "title": "Качество, рефакториране, CI/CD"
+            }
+        }
+    }
+}

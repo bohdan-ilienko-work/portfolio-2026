@@ -20,7 +20,8 @@
       "ru": "Русский",
       "pl": "Polski",
       "de": "Deutsch",
-      "es": "Español"
+      "es": "Español",
+      "bg": "Български"
     },
     "approach": {
       "headingPrefix": "Mein",
@@ -32,6 +33,74 @@
       "phase2Description": "Features liefere ich iterativ: Code Reviews, Unit-/Integration-/E2E-Tests und konsequente Regression-Kontrolle. Fokus auf Zuverlässigkeit, Ownership und wartbaren Code.",
       "phase3Title": "Deployment, Mobile & Operations",
       "phase3Description": "Deployments laufen über CI/CD mit Docker und GitHub Actions. Im Mobile-Bereich liefere ich React-Native-Apps mit Expo/EAS (Build + OTA), manage Env-Konfigurationen und betreue Production-Releases."
+    },
+    "askBohdan": {
+      "assistantLabel": "KI-Assistent",
+      "title": "Frag Bohdan",
+      "triggerHint": "KI-Assistent: Erfahrung, Skills, Projekte und Kontakt",
+      "placeholder": "Frag etwas über Bohdan...",
+      "send": "Senden",
+      "emptyStateTitle": "Frag mich alles über Bohdan",
+      "emptyStateSubtitle": "Erfahrung · Skills · Kontakt · Projekte",
+      "categories": {
+        "about": "Über Bohdan",
+        "projects": "Projekte",
+        "tech": "Technologien",
+        "experience": "Erfahrung",
+        "contact": "Kontakt"
+      },
+      "scenario": {
+        "pickCategory": "Wähle ein Thema",
+        "pickTopic": "Wähle eine konkrete Frage",
+        "active": "Aktueller Kontext",
+        "clear": "Zurücksetzen",
+        "back": "Zurück"
+      },
+      "contactFlow": {
+        "intro": "Super, dann erstellen wir jetzt deine Kontaktanfrage an Bohdan.",
+        "askName": "Schritt 1/4: Stell dich bitte kurz vor (Name).",
+        "askContact": "Schritt 2/4: Teile deinen Kontakt (E-Mail, Telegram, LinkedIn oder Telefon).",
+        "askProposal": "Schritt 3/4: Beschreibe kurz dein Angebot/Projektvorhaben.",
+        "askCallTime": "Schritt 4/4 (optional): Schlage eine Zeit für ein Gespräch vor (z. B. Google Meet). Tippe 'skip', wenn nicht nötig.",
+        "invalidName": "Bitte gib einen gültigen Namen an (mindestens 2 Zeichen).",
+        "invalidContact": "Bitte gib einen gültigen Kontakt an (E-Mail/Telefon/Link).",
+        "invalidProposal": "Bitte gib etwas mehr Details zu deinem Vorschlag an (mindestens 10 Zeichen).",
+        "abusive": "Ich helfe nur bei respektvollen, professionellen Kontaktanfragen. Der Kontakt-Flow wurde gestoppt.",
+        "cancelled": "Der Kontakt-Flow wurde abgebrochen. Du kannst ihn jederzeit erneut starten.",
+        "success": "Danke. Deine Anfrage wurde an Bohdan per Telegram gesendet. Bohdan wird dein Angebot auf jeden Fall sehen und sich so schnell wie möglich bei dir melden.",
+        "error": "Die Anfrage konnte gerade nicht gesendet werden"
+      },
+      "aria": {
+        "chatPanel": "Frag-Bohdan-Chat",
+        "openChat": "Frag Bohdan",
+        "closeChat": "Chat schließen"
+      },
+      "starters": {
+        "focus": "Worauf ist Bohdan als Engineer spezialisiert?",
+        "tech": "Welche Technologien nutzt Bohdan am meisten?",
+        "contact": "Wie kann ich Bohdan kontaktieren?",
+        "projects": "Welche Projekte von Bohdan sind besonders hervorzuheben?",
+        "experience": "Wie viel Erfahrung hat Bohdan im Backend und Fullstack?",
+        "english": "Kann Bohdan in englischsprachigen Teams arbeiten?",
+        "aboutStrengths": "Was sind Bohdans stärkste Engineering-Kompetenzen?",
+        "aboutRoleFit": "Welche Rolle und welcher Projekttyp passen am besten zu Bohdan?",
+        "projectBookPortfolio": "Erzähl mir mehr über das Projekt Book Portfolio.",
+        "projectSkillHub": "Wofür war Bohdan in SkillHub verantwortlich?",
+        "projectTicketing": "Wie ist die Architektur des Ticketing-Projekts aufgebaut?",
+        "projectPharmacyApi": "Welche Herausforderungen wurden in Pharmacy API gelöst?",
+        "techFrontend": "Welchen Frontend-Stack und welche Patterns nutzt Bohdan?",
+        "techBackend": "Welche Backend-Architektur und Tools nutzt Bohdan?",
+        "techMobile": "Welchen Mobile-Stack nutzt Bohdan mit React Native?",
+        "techAi": "Wie nutzt Bohdan AI/LLM-Tools in Produkten?",
+        "techDevops": "Welche DevOps- und CI/CD-Praktiken setzt Bohdan ein?",
+        "expArtadian": "Erzähl mir von Bohdans Arbeit bei ARTADIAN GAMING LLP.",
+        "expSilinexx": "Was hat Bohdan bei Silinexx gebaut?",
+        "expWnet": "Was hat Bohdan bei Wnet gemacht?",
+        "expGrowth": "Wie hat sich Bohdan von Wnet zu ARTADIAN entwickelt?",
+        "contactHiring": "Wie können wir Bohdan für eine Zusammenarbeit kontaktieren?",
+        "contactTimezone": "Welche Zeitzone und welches Zusammenarbeitsmodell bevorzugt Bohdan?",
+        "contactAvailability": "Ist Bohdan aktuell offen für neue Möglichkeiten?"
+      }
     }
   }
 }
