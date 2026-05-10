@@ -61,8 +61,8 @@
       },
       "contactFlow": {
         "contactDirectInfo": "You can contact Bohdan via email {email}, phone {phone}, or Telegram {telegram}.",
-        "contactFlowOffer": "Would you like me to help you submit a contact request in 4 quick steps? If it works for you, just reply with \"yes\" or \"no\".",
-        "contactFlowConsentInvalid": "If it works for you, just reply with \"yes\" or \"no\".",
+        "contactFlowOffer": "Would you like me to help you submit a contact request in 4 quick steps?",
+        "contactFlowConsentInvalid": "If you want, I can help you start the contact request right away.",
         "contactFlowConsentDeclined": "No problem. If you change your mind, just say you want to submit a request.",
         "intro": "Great, let's prepare your contact request for Bohdan.",
         "askName": "Step 1/4: Please introduce yourself (name).",

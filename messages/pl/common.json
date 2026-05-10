@@ -61,8 +61,8 @@
       },
       "contactFlow": {
         "contactDirectInfo": "Z Bohdanem można skontaktować się przez email {email}, telefon {phone} lub Telegram {telegram}.",
-        "contactFlowOffer": "Czy chcesz, żebym pomógł złożyć zgłoszenie kontaktowe w 4 krokach? Jeśli Ci wygodnie, po prostu napisz \"tak\" albo \"nie\".",
-        "contactFlowConsentInvalid": "Jeśli Ci wygodnie, po prostu napisz \"tak\" albo \"nie\".",
+        "contactFlowOffer": "Czy chcesz, żebym pomógł złożyć zgłoszenie kontaktowe w 4 krokach?",
+        "contactFlowConsentInvalid": "Jeśli chcesz, mogę od razu pomóc wypełnić zgłoszenie kontaktowe.",
         "contactFlowConsentDeclined": "Jasne. Jeśli zmienisz zdanie, po prostu napisz, że chcesz zostawić zgłoszenie.",
         "intro": "Super, przygotujmy Twoje zgłoszenie kontaktowe do Bohdana.",
         "askName": "Krok 1/4: Przedstaw się proszę (imię).",
