@@ -12,7 +12,7 @@ He delivers end-to-end web and mobile products with a focus on clean architectur
 
 ## Role and location
 - Current role: Full Stack Engineer
-- Location: Kyiv, Ukraine
+- Location: Varna, Bulgaria
 - Work mode: Remote and distributed collaboration
 - Professional experience start: May 2022
 
