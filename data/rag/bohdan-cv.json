@@ -1,9 +1,19 @@
 {
   "person": {
     "name": "Bohdan Ilienko",
+    "nameVariants": {
+      "en": "Bohdan Ilienko",
+      "ru": "Богдан Ильенко",
+      "uk": "Богдан Ільєнко"
+    },
     "title": "Full Stack Engineer",
-    "location": "Remote worldwide",
-    "experienceStart": "2022-08"
+    "location": "Kyiv, Ukraine",
+    "experienceStart": "2022-05",
+    "experienceYears": "3.5+",
+    "professionalSummary": "Full Stack Engineer with 3.5 years of experience and a Computer Science degree, delivering end-to-end web and mobile applications. Skilled in TypeScript, NestJS, React, and React Native, with practical experience in system design, API development, mobile deployment (Expo, EAS), and CI/CD.",
+    "primaryTimezone": "GMT+2 (GMT+3 during daylight saving time)",
+    "timezoneFlexibility": "+/-2 hours",
+    "availability": "Open to part-time and project-oriented collaboration"
   },
   "contacts": {
     "email": "bohdan.ilienko.work@gmail.com",
@@ -13,12 +23,161 @@
     "linkedin": "https://www.linkedin.com/in/bohdan-ilienko-692b232a5/"
   },
   "skills": {
-    "languages": ["TypeScript", "JavaScript"],
-    "backend": ["Node.js", "NestJS", "Express.js", "REST API"],
-    "frontend": ["React", "Next.js", "Redux Toolkit"],
-    "mobile": ["React Native"],
-    "databases": ["PostgreSQL", "MongoDB", "Redis", "MS SQL"],
-    "devops": ["Docker", "Kubernetes", "GitHub Actions", "CI/CD"]
+    "languages": [
+      "JavaScript",
+      "TypeScript",
+      "SQL",
+      "Bash"
+    ],
+    "versionControl": [
+      "Git",
+      "GitHub",
+      "GitLab",
+      "Git Flow",
+      "Monorepo architecture"
+    ],
+    "databasesAndTools": [
+      "MongoDB",
+      "Redis",
+      "PostgreSQL",
+      "MySQL",
+      "DynamoDB",
+      "TypeORM",
+      "Mongoose",
+      "Sequelize",
+      "Prisma"
+    ],
+    "backend": [
+      "Node.js",
+      "NestJS",
+      "Express.js",
+      "REST API",
+      "Microservices",
+      "Swagger/OpenAPI",
+      "Passport.js",
+      "JWT",
+      "Cron",
+      "SSO auth",
+      "Session-based authentication",
+      "Jest",
+      "Mocha",
+      "Unit/Integration/E2E testing"
+    ],
+    "frontend": [
+      "React",
+      "Redux Toolkit",
+      "RTK Query",
+      "Material UI",
+      "Ant Design",
+      "Tailwind CSS",
+      "HTML/CSS",
+      "SASS",
+      "Bootstrap",
+      "Axios",
+      "GraphQL (Apollo Client)"
+    ],
+    "mobile": [
+      "React Native",
+      "Expo",
+      "Expo Application Services (EAS)",
+      "EAS Build",
+      "EAS Update (OTA)",
+      "TestFlight",
+      "App Store deployment"
+    ],
+    "mobileDetails": {
+      "workflow": [
+        "Expo",
+        "EAS Build",
+        "EAS Update (OTA)"
+      ],
+      "navigation": [
+        "React Navigation",
+        "Expo Router (when file-based routing is beneficial)"
+      ],
+      "stateManagement": [
+        "Redux Toolkit",
+        "RTK Query / React Query depending on project"
+      ],
+      "api": [
+        "Axios",
+        "Typed API contracts"
+      ],
+      "styling": [
+        "React Native StyleSheet",
+        "NativeWind/Tailwind-style utilities",
+        "Utility-first responsive styling patterns"
+      ],
+      "animationAndGestures": [
+        "Reanimated",
+        "Gesture Handler"
+      ],
+      "expoModules": [
+        "Notifications",
+        "Secure storage",
+        "Deep linking",
+        "Media modules as needed"
+      ]
+    },
+    "databases": [
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "MS SQL"
+    ],
+    "devops": [
+      "Docker",
+      "Kubernetes",
+      "CI/CD pipelines",
+      "GitHub Actions",
+      "DigitalOcean",
+      "AWS EC2",
+      "AWS RDS",
+      "AWS EKS",
+      "AWS Cognito",
+      "AWS S3",
+      "AWS Lambda",
+      "AWS Amplify",
+      "Application deployment",
+      "Environment configuration"
+    ],
+    "protocols": [
+      "REST",
+      "GraphQL",
+      "WebSockets",
+      "AMQP (RabbitMQ, Apache Kafka)",
+      "MQTT",
+      "JSTP",
+      "gRPC"
+    ],
+    "aiAssistedDevelopment": [
+      "Cursor",
+      "GitHub Copilot",
+      "LLM assistants for drafting, refactoring, and debugging",
+      "LangGraph",
+      "Dify",
+      "OpenAI / Gemini / Anthropic APIs",
+      "RAG",
+      "Embeddings",
+      "Semantic search (Qdrant)",
+      "Prompt engineering",
+      "Tool/function calling",
+      "Redis-based context memory"
+    ]
+  },
+  "engineeringApproach": {
+    "vibeCoding": "No, does not rely on vibe coding as a development method",
+    "methodology": [
+      "Architecture-first implementation",
+      "Clear requirements and API contracts",
+      "Code review and testing before release",
+      "Manual validation of AI-generated output for correctness, security, performance, and maintainability"
+    ]
+  },
+  "chatbotOwnership": {
+    "askBohdanAssistantBuiltByBohdan": true,
+    "ragSystemBuiltByBohdan": true,
+    "note": "Bohdan implemented and maintains the portfolio chatbot and its RAG integration"
   },
   "experience": [
     {
@@ -28,11 +187,12 @@
       "start": "2025-02",
       "end": "Present",
       "highlights": [
-        "TypeScript/Node.js/NestJS services",
-        "REST APIs",
-        "Background jobs",
-        "Messaging workflows",
-        "CI/CD delivery"
+        "Develop and maintain internal services and tooling using TypeScript/Node.js/NestJS",
+        "Build and evolve REST APIs, background jobs, and service integrations",
+        "Maintain API contracts and documentation (Swagger/OpenAPI)",
+        "Work with Redis sessions/caching and MongoDB/PostgreSQL for performance and reliability",
+        "Support asynchronous and realtime workflows (RabbitMQ/Kafka/MQTT, WebSockets, gRPC)",
+        "Participate in code reviews, refactoring, and CI/CD-driven delivery (Docker, GitHub Actions)"
       ]
     },
     {
@@ -42,10 +202,11 @@
       "start": "2024-03",
       "end": "2025-09",
       "highlights": [
-        "Internal web systems across backend and frontend",
-        "Authentication flows",
-        "Test coverage",
-        "Database query optimization"
+        "Delivered features for internal web systems across backend and frontend (JavaScript, Express.js)",
+        "Implemented and maintained session-based auth and access control",
+        "Improved quality with refactoring, reviews, and test coverage (unit/integration/e2e; Jest/Mocha)",
+        "Optimized PostgreSQL/MongoDB queries/indexing and resolved production regressions",
+        "Collaborated on planning, estimates, and stable release cycles"
       ]
     },
     {
@@ -55,41 +216,79 @@
       "start": "2022-05",
       "end": "2023-11",
       "highlights": [
-        "Built and supported internal apps",
-        "Implemented REST endpoints",
-        "Performance improvements",
-        "Technical debt reduction"
+        "Built and supported internal web applications and implemented backend REST endpoints",
+        "Improved performance and stability with profiling and query optimization",
+        "Reviewed and refactored legacy modules to improve maintainability and reduce technical debt",
+        "Contributed to delivery planning, code-review conventions, and release support"
       ]
     }
   ],
   "education": [
     {
       "institution": "Kharkiv National University of Radioelectronics",
-      "degree": "Software Engineering, Bachelor's degree",
-      "period": "2021-2025"
-    },
-    {
-      "institution": "Udemy",
-      "degree": "Professional software engineering course",
-      "period": "Completed"
+      "degree": "Bachelor of Science, Computer Science",
+      "period": "2021-2025",
+      "note": "Actively uses HNURE resources and platform materials for ongoing professional development"
     }
   ],
   "projects": [
     {
       "name": "Book Portfolio",
-      "summary": "React portfolio template in book format with mobile support and i18n"
+      "period": "2024-01",
+      "summary": "React portfolio template in book format with mobile responsiveness",
+      "technologies": [
+        "React",
+        "Vite",
+        "TypeScript",
+        "i18n"
+      ]
     },
     {
       "name": "SkillHub",
-      "summary": "Full-stack platform with React/Redux client and NestJS API for auth, roles, posts, and discussions"
+      "period": "2023-09 to 2023-12",
+      "summary": "Full-stack platform for creative users with posts, discussions, chat rooms, and forums",
+      "technologies": [
+        "Node.js",
+        "NestJS",
+        "React",
+        "Redux Toolkit",
+        "TypeScript",
+        "REST",
+        "MongoDB",
+        "TypeORM",
+        "Docker",
+        "Kubernetes"
+      ]
     },
     {
       "name": "Ticketing",
-      "summary": "Microservice ticketing app with JWT auth and card payment flow"
+      "period": "2023-09 to 2023-11",
+      "summary": "Microservice ticketing app with JWT auth and card payment booking flow",
+      "technologies": [
+        "Node.js",
+        "TypeScript",
+        "Express.js",
+        "REST",
+        "MongoDB",
+        "Mongoose",
+        "Docker",
+        "DigitalOcean",
+        "Kubernetes"
+      ]
     },
     {
       "name": "Pharmacy API",
       "summary": "NestJS API with MS SQL, JWT auth, and Swagger docs for reporting"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "level": "Working proficiency"
+    },
+    {
+      "name": "Ukrainian",
+      "level": "Fluent"
     }
   ],
   "source": {

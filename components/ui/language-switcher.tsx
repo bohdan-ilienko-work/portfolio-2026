@@ -1,8 +1,8 @@
 'use client';
 
-import {usePathname, useRouter, useSearchParams} from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import {locales, type Locale} from '@/i18n/routing';
+import { locales, type Locale } from '@/i18n/routing';
 
 type LanguageOption = {
   locale: Locale;
@@ -10,12 +10,13 @@ type LanguageOption = {
 };
 
 const languageOptions: LanguageOption[] = [
-  {locale: 'en', label: '🇬🇧 English (en)'},
-  {locale: 'uk', label: '🇺🇦 Українська (uk)'},
-  {locale: 'ru', label: '🇷🇺 Русский (ru)'},
-  {locale: 'pl', label: '🇵🇱 Polski (pl)'},
-  {locale: 'de', label: '🇩🇪 Deutsch (de)'},
-  {locale: 'es', label: '🇪🇸 Español (es)'}
+  { locale: 'en', label: '🇬🇧 English (en)' },
+  { locale: 'uk', label: '🇺🇦 Українська (uk)' },
+  { locale: 'ru', label: '🇷🇺 Русский (ru)' },
+  { locale: 'pl', label: '🇵🇱 Polski (pl)' },
+  { locale: 'de', label: '🇩🇪 Deutsch (de)' },
+  { locale: 'es', label: '🇪🇸 Español (es)' },
+  { locale: 'bg', label: '🇧🇬 Български (bg)' }
 ];
 
 export const LanguageSwitcher = () => {

@@ -1,0 +1,48 @@
+{
+    "grid": {
+        "items": {
+            "summary": {
+                "label": "Професионално резюме",
+                "title": "Full Stack инженер с {experience} опит, който изгражда цялостни web и mobile приложения."
+            },
+            "collaboration": {
+                "label": "Сътрудничество",
+                "title": "Инженер с remote-first подход, ефективен в разпределени екипи и различни часови зони."
+            },
+            "stack": {
+                "label": "Инструменти за системно инженерство",
+                "title": "Основен технологичен стек"
+            },
+            "languages": {
+                "label": "Езици",
+                "title": "Английски и украински."
+            },
+            "focus": {
+                "label": "Инженерен фокус",
+                "title": "Известен с ownership върху фийчъри, решаване на сложни проблеми и надеждно production delivery."
+            },
+            "contact": {
+                "label": "Контакт",
+                "title": "Отворен съм към full stack роли и продуктова разработка."
+            }
+        },
+        "copyMyEmail": "Копирай имейла ми",
+        "emailCopied": "Имейлът е копиран!",
+        "categories": {
+            "language": "Език",
+            "backend": "Backend",
+            "frontend": "Frontend",
+            "mobile": "Mobile",
+            "state": "State",
+            "styling": "Styling",
+            "data": "Данни",
+            "caching": "Кеширане",
+            "devops": "DevOps",
+            "cicd": "CI/CD",
+            "messaging": "Съобщения",
+            "api": "API",
+            "realtime": "Реално време",
+            "engineering": "Инженеринг"
+        }
+    }
+}

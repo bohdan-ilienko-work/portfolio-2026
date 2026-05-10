@@ -1,0 +1,20 @@
+{
+    "footer": {
+        "headingPrefix": "Отворен съм към нови",
+        "headingHighlight": "full stack",
+        "headingSuffix": "възможности.",
+        "description": "Свържи се с мен, за да обсъдим продуктово инженерство, backend архитектура или mobile delivery.",
+        "contactButton": "Нека се свържем",
+        "contactMethod": "Начин за контакт",
+        "telegram": "Telegram",
+        "email": "Имейл",
+        "copyright": "Авторски права © {year}",
+        "sourceCode": "Изходен код",
+        "social": {
+            "telegram": "Telegram",
+            "github": "GitHub",
+            "instagram": "Instagram",
+            "linkedin": "LinkedIn"
+        }
+    }
+}
