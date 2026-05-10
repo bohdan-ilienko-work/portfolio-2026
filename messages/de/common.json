@@ -40,6 +40,9 @@
       "triggerHint": "KI-Assistent: Erfahrung, Skills, Projekte und Kontakt",
       "placeholder": "Frag etwas über Bohdan...",
       "send": "Senden",
+      "resumeCtaText": "Klar. Du kannst Bohdans CV mit dem Button unten herunterladen.",
+      "resumeCtaButton": "CV herunterladen",
+      "resumeCtaAltText": "Falls der Download nicht startet, öffne es in Google Drive:",
       "emptyStateTitle": "Frag mich alles über Bohdan",
       "emptyStateSubtitle": "Erfahrung · Skills · Kontakt · Projekte",
       "categories": {
@@ -57,6 +60,10 @@
         "back": "Zurück"
       },
       "contactFlow": {
+        "contactDirectInfo": "Du kannst Bohdan per E-Mail {email}, Telefon {phone} oder über Telegram {telegram} kontaktieren.",
+        "contactFlowOffer": "Möchtest du, dass ich dir helfe, in 4 Schritten eine Kontaktanfrage zu senden? Wenn es für dich passt, antworte einfach mit \"ja\" oder \"nein\".",
+        "contactFlowConsentInvalid": "Wenn es für dich passt, antworte einfach mit \"ja\" oder \"nein\".",
+        "contactFlowConsentDeclined": "Kein Problem. Wenn du es dir anders überlegst, sag einfach, dass du eine Anfrage senden möchtest.",
         "intro": "Super, dann erstellen wir jetzt deine Kontaktanfrage an Bohdan.",
         "askName": "Schritt 1/4: Stell dich bitte kurz vor (Name).",
         "askContact": "Schritt 2/4: Teile deinen Kontakt (E-Mail, Telegram, LinkedIn oder Telefon).",
@@ -99,7 +106,8 @@
         "expGrowth": "Wie hat sich Bohdan von Wnet zu ARTADIAN entwickelt?",
         "contactHiring": "Wie können wir Bohdan für eine Zusammenarbeit kontaktieren?",
         "contactTimezone": "Welche Zeitzone und welches Zusammenarbeitsmodell bevorzugt Bohdan?",
-        "contactAvailability": "Ist Bohdan aktuell offen für neue Möglichkeiten?"
+        "contactAvailability": "Ist Bohdan aktuell offen für neue Möglichkeiten?",
+        "resumeDownload": "Ich möchte Bohdans Lebenslauf herunterladen"
       }
     }
   }
