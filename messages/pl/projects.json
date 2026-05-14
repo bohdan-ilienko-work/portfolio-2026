@@ -10,9 +10,9 @@
         "title": "Book Portfolio",
         "description": "Szablon portfolio w React w formie książki, z obsługą mobile i i18n."
       },
-      "skillHub": {
-        "title": "SkillHub",
-        "description": "Platforma full stack: klient React/Redux + API NestJS do auth, ról, postów i dyskusji."
+      "rixLogger": {
+        "title": "Rix Logger",
+        "description": "Bot Telegram + miniaplikacja do opieki nad zwierzętami: spacery z GPS, karmienie, waga, notatki i role wielu użytkowników."
       },
       "ticketing": {
         "title": "Ticketing",
@@ -26,8 +26,10 @@
     "labels": {
       "visitClient": "Otwórz klienta",
       "visitBackend": "Otwórz backend",
+      "visitBot": "Otwórz bota",
       "clientRepository": "Repozytorium klienta",
-      "apiRepository": "Repozytorium API"
+      "apiRepository": "Repozytorium API",
+      "miniappRepository": "Repozytorium miniaplikacji"
     }
   }
 }

@@ -10,9 +10,9 @@
         "title": "Book Portfolio",
         "description": "React portfolio template in book format with mobile support and i18n."
       },
-      "skillHub": {
-        "title": "SkillHub",
-        "description": "Full-stack platform: React/Redux client + NestJS API for auth, roles, posts, and discussions."
+      "rixLogger": {
+        "title": "Rix Logger",
+        "description": "Telegram bot + miniapp for pet care tracking: walks with GPS, feeding, weight, notes, and multi-user roles."
       },
       "ticketing": {
         "title": "Ticketing",
@@ -26,8 +26,10 @@
     "labels": {
       "visitClient": "Visit Client",
       "visitBackend": "Visit Backend",
+      "visitBot": "Open Bot",
       "clientRepository": "Client Repository",
-      "apiRepository": "API Repository"
+      "apiRepository": "API Repository",
+      "miniappRepository": "Miniapp Repository"
     }
   }
 }

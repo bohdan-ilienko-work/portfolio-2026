@@ -2,18 +2,18 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import {useTranslations} from 'next-intl';
-import {useEffect, useRef, useState} from 'react';
-import {FaLocationArrow} from 'react-icons/fa6';
+import { useTranslations } from 'next-intl';
+import { useEffect, useRef, useState } from 'react';
+import { FaLocationArrow } from 'react-icons/fa6';
 
-import {projects} from '@/data';
+import { projects } from '@/data';
 
-import {PinContainer} from './ui/3d-pin';
+import { PinContainer } from './ui/3d-pin';
 
 type PopupState = null | {
   projectId: number;
   projectTitle: string;
-  options: Array<{label: string; href: string}>;
+  options: Array<{ label: string; href: string }>;
 };
 
 export const RecentProjects = () => {
@@ -58,17 +58,19 @@ export const RecentProjects = () => {
 
       <div className="mt-10 flex flex-wrap items-center justify-center gap-x-24 gap-y-24 p-4">
         {projects.map(
-          ({
-            id,
-            desKey,
-            iconLists,
-            img,
-            link,
-            sourceCode,
-            sourceOptions,
-            titleKey,
-            visitLinks
-          }) => {
+          (project) => {
+            const {
+              id,
+              desKey,
+              iconLists,
+              img,
+              link,
+              sourceCode,
+              sourceOptions,
+              titleKey,
+              visitLinks
+            } = project;
+            const imgPosition = 'imgPosition' in project ? project.imgPosition : undefined;
             const title = t(titleKey);
             const description = t(desKey);
             const mappedVisitLinks = visitLinks.map((visitLink) => ({
@@ -95,7 +97,7 @@ export const RecentProjects = () => {
                   <div className="relative mb-8 flex aspect-[16/10] w-[80vw] items-center justify-center overflow-hidden sm:w-[570px]">
                     <div
                       className="relative h-full w-full overflow-hidden lg:rounded-3xl"
-                      style={{backgroundColor: 'var(--project-bg)'}}
+                      style={{ backgroundColor: 'var(--project-bg)' }}
                     >
                       <Image
                         height={330}
@@ -111,20 +113,20 @@ export const RecentProjects = () => {
                       width={464}
                       src={img}
                       alt={title}
-                      className="absolute bottom-0 z-10 h-auto w-[86%]"
+                      className={`absolute ${imgPosition === 'top' ? 'top-0' : 'bottom-0'} z-10 h-auto w-[86%]`}
                     />
                   </div>
 
                   <h3
                     className="line-clamp-1 text-base font-bold md:text-xl lg:text-2xl"
-                    style={{color: 'var(--text-primary)'}}
+                    style={{ color: 'var(--text-primary)' }}
                   >
                     {title}
                   </h3>
 
                   <p
                     className="line-clamp-2 text-sm font-light lg:text-xl lg:font-normal"
-                    style={{color: 'var(--text-secondary)'}}
+                    style={{ color: 'var(--text-secondary)' }}
                   >
                     {description}
                   </p>
@@ -164,10 +166,10 @@ export const RecentProjects = () => {
                                 prev?.projectId === id
                                   ? null
                                   : {
-                                      projectId: id,
-                                      projectTitle: title,
-                                      options: [...mappedSourceOptions]
-                                    }
+                                    projectId: id,
+                                    projectTitle: title,
+                                    options: [...mappedSourceOptions]
+                                  }
                               )
                             }
                             className="flex text-sm text-purple transition-opacity hover:opacity-80 md:text-xs lg:text-xl"
@@ -198,13 +200,13 @@ export const RecentProjects = () => {
                               />
                               <p
                                 className="mb-2 text-[10px] uppercase tracking-[0.18em]"
-                                style={{color: 'var(--text-faint)'}}
+                                style={{ color: 'var(--text-faint)' }}
                               >
                                 {t('sourceSelection')}
                               </p>
                               <p
                                 className="mb-3 truncate text-sm font-semibold"
-                                style={{color: 'var(--text-primary)'}}
+                                style={{ color: 'var(--text-primary)' }}
                               >
                                 {activeSourcePopup.projectTitle}
                               </p>

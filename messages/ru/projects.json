@@ -10,9 +10,9 @@
         "title": "Book Portfolio",
         "description": "React-портфолио в формате книги с поддержкой мобильных устройств и i18n."
       },
-      "skillHub": {
-        "title": "SkillHub",
-        "description": "Full-stack платформа: React/Redux клиент и NestJS API для auth, ролей, постов и обсуждений."
+      "rixLogger": {
+        "title": "Rix Logger",
+        "description": "Telegram-бот + мини-приложение для ухода за питомцами: прогулки с GPS, кормление, вес, заметки и мультипользовательские роли."
       },
       "ticketing": {
         "title": "Ticketing",
@@ -26,8 +26,10 @@
     "labels": {
       "visitClient": "Открыть Client",
       "visitBackend": "Открыть Backend",
+      "visitBot": "Открыть бота",
       "clientRepository": "Client Repository",
-      "apiRepository": "API Repository"
+      "apiRepository": "API Repository",
+      "miniappRepository": "Miniapp Repository"
     }
   }
 }

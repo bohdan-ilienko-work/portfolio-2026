@@ -1,14 +1,14 @@
-import {links} from '@/config';
+import { links } from '@/config';
 
 export const navItems = [
-  {nameKey: 'nav.about', link: '#about'},
-  {nameKey: 'nav.experience', link: '#experience'},
-  {nameKey: 'nav.education', link: '#education'},
-  {nameKey: 'nav.cv', link: '#cv'},
-  {nameKey: 'nav.projects', link: '#projects'},
-  {nameKey: 'nav.highlights', link: '#testimonials'},
-  {nameKey: 'nav.approach', link: '#approach'},
-  {nameKey: 'nav.contact', link: '#contact'}
+  { nameKey: 'nav.about', link: '#about' },
+  { nameKey: 'nav.experience', link: '#experience' },
+  { nameKey: 'nav.education', link: '#education' },
+  { nameKey: 'nav.cv', link: '#cv' },
+  { nameKey: 'nav.projects', link: '#projects' },
+  { nameKey: 'nav.highlights', link: '#testimonials' },
+  { nameKey: 'nav.approach', link: '#approach' },
+  { nameKey: 'nav.contact', link: '#contact' }
 ] as const;
 
 export const gridItems = [
@@ -94,38 +94,33 @@ export const projects = [
   },
   {
     id: 2,
-    titleKey: 'items.skillHub.title',
-    desKey: 'items.skillHub.description',
-    img: '/p3.svg',
+    titleKey: 'items.rixLogger.title',
+    desKey: 'items.rixLogger.description',
+    img: '/p3.jpg',
+    imgPosition: 'top',
     iconLists: [
       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg',
       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
+      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg'
     ],
-    link: 'https://github.com/NureBohdanIlienko/skillhub-client',
+    link: 'https://t.me/rix_logger_bot',
     visitLinks: [
       {
-        labelKey: 'labels.visitClient',
-        href: 'https://github.com/NureBohdanIlienko/avpz-client'
-      },
-      {
-        labelKey: 'labels.visitBackend',
-        href: 'https://github.com/NureBohdanIlienko/avpz-mono-api'
+        labelKey: 'labels.visitBot',
+        href: 'https://t.me/rix_logger_bot'
       }
     ],
-    sourceCode: 'https://github.com/NureBohdanIlienko/avpz-client',
+    sourceCode: 'https://github.com/bohdan-ilienko-work/rix-logger',
     sourceOptions: [
       {
-        labelKey: 'labels.clientRepository',
-        href: 'https://github.com/NureBohdanIlienko/avpz-client'
+        labelKey: 'labels.apiRepository',
+        href: 'https://github.com/bohdan-ilienko-work/rix-logger'
       },
       {
-        labelKey: 'labels.apiRepository',
-        href: 'https://github.com/NureBohdanIlienko/avpz-mono-api'
+        labelKey: 'labels.miniappRepository',
+        href: 'https://github.com/bohdan-ilienko-work/rix-logger-miniapp'
       }
     ]
   },
