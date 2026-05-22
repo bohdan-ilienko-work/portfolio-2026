@@ -244,20 +244,16 @@
       ]
     },
     {
-      "name": "SkillHub",
-      "period": "2023-09 to 2023-12",
-      "summary": "Full-stack platform for creative users with posts, discussions, chat rooms, and forums",
+      "name": "Rix Logger",
+      "period": "2025",
+      "summary": "Telegram bot and miniapp for pet care tracking with GPS walks, feeding, weight, notes, and multi-user roles",
       "technologies": [
-        "Node.js",
-        "NestJS",
         "React",
-        "Redux Toolkit",
         "TypeScript",
-        "REST",
-        "MongoDB",
-        "TypeORM",
+        "NestJS",
+        "PostgreSQL",
         "Docker",
-        "Kubernetes"
+        "Telegram Bot API"
       ]
     },
     {

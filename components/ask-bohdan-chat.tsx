@@ -75,7 +75,7 @@ const TOPIC_ICONS: Record<string, string> = {
   roleFit: '🧩',
   projects: '🗂️',
   bookPortfolio: '📘',
-  skillHub: '🧠',
+  rixLogger: '📱',
   ticketing: '🎟️',
   pharmacyApi: '💊',
   tech: '🛠️',
@@ -110,6 +110,8 @@ const CONTACT_SKIP_REGEX =
 const CONTACT_CANCEL_REGEX =
   /^(cancel|stop|abort|скасувати|стоп|відміна|отмена|откажи|отказ|прекрати)$/i;
 const ASSISTANT_TYPING_DELAY_MS = 320;
+const FLOATING_AVOIDANCE_GAP_PX = 12;
+const FLOATING_AVOIDANCE_SELECTOR = '[data-ask-bohdan-avoid]';
 
 const createInitialContactFlowState = (): ContactFlowState => ({
   active: false,
@@ -121,6 +123,15 @@ const createInitialContactFlowState = (): ContactFlowState => ({
 });
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const getFloatingAvoidanceTargets = () => {
+  const markedTargets = Array.from(
+    document.querySelectorAll<HTMLElement>(FLOATING_AVOIDANCE_SELECTOR),
+  );
+  const footerBottomRow = document.querySelector<HTMLElement>('footer#contact > div:last-child');
+
+  return Array.from(new Set([...markedTargets, ...(footerBottomRow ? [footerBottomRow] : [])]));
+};
 
 const renderMessageContent = (content: string) => {
   const parts = content.split(URL_SPLIT_REGEX);
@@ -161,6 +172,8 @@ export const AskBohdanChat = () => {
   const [awaitingContactFlowConsent, setAwaitingContactFlowConsent] = useState(false);
   const [selectedCategoryId, setSelectedCategoryId] = useState<ScenarioCategoryId | null>(null);
   const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null);
+  const [footerAvoidancePx, setFooterAvoidancePx] = useState(0);
+  const floatingRef = useRef<HTMLDivElement | null>(null);
   const messagesRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -188,7 +201,7 @@ export const AskBohdanChat = () => {
       projects: [
         { id: 'projects', label: t('starters.projects'), question: t('starters.projects') },
         { id: 'bookPortfolio', label: t('starters.projectBookPortfolio'), question: t('starters.projectBookPortfolio') },
-        { id: 'skillHub', label: t('starters.projectSkillHub'), question: t('starters.projectSkillHub') },
+        { id: 'rixLogger', label: t('starters.projectRixLogger'), question: t('starters.projectRixLogger') },
         { id: 'ticketing', label: t('starters.projectTicketing'), question: t('starters.projectTicketing') },
         { id: 'pharmacyApi', label: t('starters.projectPharmacyApi'), question: t('starters.projectPharmacyApi') },
       ],
@@ -662,12 +675,103 @@ export const AskBohdanChat = () => {
     }
   }, [messages, isLoading]);
 
+  useEffect(() => {
+    let frameId: number | null = null;
+    const timeoutIds: number[] = [];
+
+    const updateAvoidance = () => {
+      frameId = null;
+
+      if (isOpen) {
+        setFooterAvoidancePx((current) => (current === 0 ? current : 0));
+        return;
+      }
+
+      const floatingRect = floatingRef.current?.getBoundingClientRect();
+      if (!floatingRect) return;
+
+      const viewportHeight = window.innerHeight;
+      const viewportWidth = window.innerWidth;
+      const avoidTargets = getFloatingAvoidanceTargets();
+
+      const nextAvoidancePx = avoidTargets.reduce((maxOffset, target) => {
+        const targetRect = target.getBoundingClientRect();
+        const isVisible =
+          targetRect.bottom > 0 &&
+          targetRect.top < viewportHeight &&
+          targetRect.right > 0 &&
+          targetRect.left < viewportWidth;
+
+        if (!isVisible) return maxOffset;
+
+        const overlapsHorizontally =
+          targetRect.left < floatingRect.right + FLOATING_AVOIDANCE_GAP_PX &&
+          targetRect.right > floatingRect.left - FLOATING_AVOIDANCE_GAP_PX;
+
+        if (!overlapsHorizontally) return maxOffset;
+
+        const offsetAboveTarget = viewportHeight - targetRect.top + FLOATING_AVOIDANCE_GAP_PX;
+        return Math.max(maxOffset, Math.ceil(offsetAboveTarget));
+      }, 0);
+
+      setFooterAvoidancePx((current) => (current === nextAvoidancePx ? current : nextAvoidancePx));
+    };
+
+    const scheduleAvoidanceUpdate = () => {
+      if (frameId !== null) return;
+      frameId = window.requestAnimationFrame(updateAvoidance);
+    };
+
+    const scheduleSettledUpdate = (delay: number) => {
+      const timeoutId = window.setTimeout(scheduleAvoidanceUpdate, delay);
+      timeoutIds.push(timeoutId);
+    };
+
+    scheduleAvoidanceUpdate();
+    scheduleSettledUpdate(120);
+    scheduleSettledUpdate(360);
+    scheduleSettledUpdate(900);
+
+    const resizeObserver = new ResizeObserver(scheduleAvoidanceUpdate);
+    resizeObserver.observe(document.documentElement);
+    resizeObserver.observe(document.body);
+    getFloatingAvoidanceTargets().forEach((target) => {
+      resizeObserver.observe(target);
+    });
+
+    const mutationObserver = new MutationObserver(scheduleAvoidanceUpdate);
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['data-ask-bohdan-avoid', 'class', 'style'],
+    });
+
+    window.addEventListener('scroll', scheduleAvoidanceUpdate, { passive: true });
+    window.addEventListener('resize', scheduleAvoidanceUpdate);
+    window.addEventListener('orientationchange', scheduleAvoidanceUpdate);
+
+    return () => {
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+
+      timeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId));
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
+      window.removeEventListener('scroll', scheduleAvoidanceUpdate);
+      window.removeEventListener('resize', scheduleAvoidanceUpdate);
+      window.removeEventListener('orientationchange', scheduleAvoidanceUpdate);
+    };
+  }, [isOpen]);
+
   return (
     <div
-      className="fixed z-[9999] flex flex-col items-end gap-3"
+      ref={floatingRef}
+      className="fixed z-[9999] flex flex-col items-end gap-3 transition-[bottom] duration-200 ease-out"
       style={{
         right: 'calc(env(safe-area-inset-right) + clamp(0.75rem, 2vw, 3rem))',
-        bottom: 'calc(env(safe-area-inset-bottom) + clamp(0.75rem, 2vw, 3rem))',
+        bottom: `calc(env(safe-area-inset-bottom) + clamp(0.75rem, 2vw, 3rem) + ${footerAvoidancePx}px)`,
       }}
     >
       {/* Panel */}

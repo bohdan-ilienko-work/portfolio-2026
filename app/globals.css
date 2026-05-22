@@ -234,4 +234,11 @@
   .black-gradient {
     background: linear-gradient(90deg, #161a31 0%, #06091f 100%);
   }
+
+  @media (max-width: 767px) {
+    #contact {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+    }
+  }
 }

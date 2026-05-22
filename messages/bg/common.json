@@ -92,7 +92,6 @@
                 "aboutStrengths": "Кои са най-силните инженерни умения на Богдан?",
                 "aboutRoleFit": "Коя роля и тип проект подхождат най-добре на Богдан?",
                 "projectBookPortfolio": "Разкажи ми повече за проекта Book Portfolio.",
-                "projectSkillHub": "За какво отговаряше Богдан в SkillHub?",
                 "projectTicketing": "Как е проектирана архитектурата на проекта Ticketing?",
                 "projectPharmacyApi": "Какви предизвикателства бяха решени в Pharmacy API?",
                 "techFrontend": "Какъв frontend стек и практики използва Богдан?",
@@ -107,7 +106,8 @@
                 "contactHiring": "Как можем да се свържем с Богдан за наемане?",
                 "contactTimezone": "Коя часова зона и формат на работа предпочита Богдан?",
                 "contactAvailability": "Отворен ли е Богдан в момента към нови възможности?",
-                "resumeDownload": "Искам да изтегля CV-то на Богдан"
+                "resumeDownload": "Искам да изтегля CV-то на Богдан",
+                "projectRixLogger": "Какво беше реализирано в Rix Logger?"
             }
         }
     }

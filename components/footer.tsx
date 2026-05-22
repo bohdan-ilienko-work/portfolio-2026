@@ -2,15 +2,15 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import {useTranslations} from 'next-intl';
-import {useEffect, useRef, useState} from 'react';
-import {FaTelegramPlane} from 'react-icons/fa';
-import {FaLocationArrow} from 'react-icons/fa6';
-import {MdOutlineEmail} from 'react-icons/md';
+import { useTranslations } from 'next-intl';
+import { useEffect, useRef, useState } from 'react';
+import { FaTelegramPlane } from 'react-icons/fa';
+import { FaLocationArrow } from 'react-icons/fa6';
+import { MdOutlineEmail } from 'react-icons/md';
 
-import {MagicButton} from '@/components/ui/magic-button';
-import {links} from '@/config';
-import {socialMedia} from '@/data';
+import { MagicButton } from '@/components/ui/magic-button';
+import { links } from '@/config';
+import { socialMedia } from '@/data';
 
 export const Footer = () => {
   const [isContactPopupOpen, setIsContactPopupOpen] = useState(false);
@@ -55,7 +55,7 @@ export const Footer = () => {
           src="/footer-grid.svg"
           alt="Decorative footer grid background"
           className="h-full w-full opacity-50"
-          style={{filter: 'var(--footer-grid-filter)'}}
+          style={{ filter: 'var(--footer-grid-filter)' }}
           width={1260}
           height={863}
         />
@@ -67,7 +67,7 @@ export const Footer = () => {
           {t('headingSuffix')}
         </h2>
 
-        <p className="mb-4 mt-5 text-center md:mb-3 md:mt-6" style={{color: 'var(--text-secondary)'}}>
+        <p className="mb-4 mt-5 text-center md:mb-3 md:mt-6" style={{ color: 'var(--text-secondary)' }}>
           {t('description')}
         </p>
 
@@ -99,9 +99,9 @@ export const Footer = () => {
             >
               <div
                 className="absolute -bottom-[8px] left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 border-b border-r"
-                style={{borderColor: 'var(--border-medium)', backgroundColor: 'var(--popup-arrow)'}}
+                style={{ borderColor: 'var(--border-medium)', backgroundColor: 'var(--popup-arrow)' }}
               />
-              <p className="mb-2 text-[10px] uppercase tracking-[0.18em]" style={{color: 'var(--text-faint)'}}>
+              <p className="mb-2 text-[10px] uppercase tracking-[0.18em]" style={{ color: 'var(--text-faint)' }}>
                 {t('contactMethod')}
               </p>
 
@@ -151,7 +151,7 @@ export const Footer = () => {
 
       <div className="relative z-[999] mt-16 flex flex-col items-center justify-between gap-4 md:mt-16 md:flex-row md:gap-0">
         <p className="text-sm font-light md:text-base md:font-normal">
-          {t('copyright', {year: new Date().getFullYear()})}{' '}
+          {t('copyright', { year: new Date().getFullYear() })}{' '}
           <Link
             href={links.ownerInsta}
             target="_blank"

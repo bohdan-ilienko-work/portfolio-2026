@@ -120,11 +120,10 @@ He delivers end-to-end web and mobile products with a focus on clean architectur
 - React portfolio template in book format with mobile responsiveness
 - Technologies: React, Vite, TypeScript, i18n
 
-### SkillHub
-- Period: Sep 2023 - Dec 2023
-- Full-stack platform for content sharing and discussions
-- Features: auth, roles, posts/articles, comments, likes, chat rooms, forums
-- Technologies: Node.js, NestJS, React, Redux Toolkit, TypeScript, REST, MongoDB, TypeORM, Docker, Kubernetes
+### Rix Logger
+- Telegram bot and miniapp for pet care tracking
+- Features: GPS walks, feeding, weight, notes, and multi-user roles
+- Technologies: React, TypeScript, NestJS, PostgreSQL, Docker, Telegram Bot API
 
 ### Ticketing
 - Period: Sep 2023 - Nov 2023
@@ -157,4 +156,3 @@ He delivers end-to-end web and mobile products with a focus on clean architectur
 ## Notes
 This file is used as the main RAG knowledge base for chatbot answers.
 Add new facts in short sections to keep retrieval quality stable.
-

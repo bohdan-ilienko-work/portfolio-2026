@@ -92,7 +92,6 @@
         "aboutStrengths": "Jakie są najmocniejsze strony inżynierskie Bohdana?",
         "aboutRoleFit": "Jaka rola i typ projektów najlepiej pasują do Bohdana?",
         "projectBookPortfolio": "Opowiedz więcej o projekcie Book Portfolio.",
-        "projectSkillHub": "Za co Bohdan odpowiadał w SkillHub?",
         "projectTicketing": "Jak zaprojektowana jest architektura projektu Ticketing?",
         "projectPharmacyApi": "Jakie wyzwania zostały rozwiązane w Pharmacy API?",
         "techFrontend": "Jakiego stacku frontendowego i podejść używa Bohdan?",
@@ -107,7 +106,8 @@
         "contactHiring": "Jak skontaktować się z Bohdanem w sprawie współpracy?",
         "contactTimezone": "Jaka strefa czasowa i format współpracy pasują Bohdanowi?",
         "contactAvailability": "Czy Bohdan jest obecnie otwarty na nowe możliwości?",
-        "resumeDownload": "Chcę pobrać CV Bohdana"
+        "resumeDownload": "Chcę pobrać CV Bohdana",
+        "projectRixLogger": "Co zostało zbudowane w Rix Logger?"
       }
     }
   }
