@@ -1,10 +1,12 @@
 import { Document } from '@langchain/core/documents';
-import { ChatOpenAI, OpenAIEmbeddings } from '@langchain/openai';
+import { OpenAIEmbeddings } from '@langchain/openai';
 import { MemoryVectorStore } from '@langchain/classic/vectorstores/memory';
 import { Annotation, END, START, StateGraph } from '@langchain/langgraph';
 import { RecursiveCharacterTextSplitter } from '@langchain/textsplitters';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+
+import { createChatModel } from './chat-model';
 
 type ChatHistoryMessage = {
   role: 'user' | 'assistant';
@@ -177,10 +179,7 @@ const retrieveNode = async (state: typeof ChatState.State) => {
 };
 
 const generateNode = async (state: typeof ChatState.State) => {
-  const model = new ChatOpenAI({
-    model: 'gpt-4.1-mini',
-    temperature: 0.2
-  });
+  const model = createChatModel();
 
   const context = state.contextDocs
     .map((doc, index) => `Source ${index + 1}:\n${doc.pageContent}`)

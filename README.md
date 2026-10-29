@@ -52,6 +52,8 @@ How it works:
 3. LangGraph runs retrieval and answer generation nodes.
 4. The assistant answers only from retrieved context.
 
+Answers and the contact-flow validators run on `gpt-6-luna`; the model and its reasoning params live in `lib/rag/chat-model.ts`.
+
 To add new facts, extend files in `data/rag/`.
 
 ## i18n and SEO routing

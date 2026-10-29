@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ChatOpenAI } from '@langchain/openai';
+import { createChatModel } from '@/lib/rag/chat-model';
 
 type ContactIntentPayload = {
     userInput?: string;
@@ -52,7 +52,7 @@ export const POST = async (request: NextRequest) => {
         return NextResponse.json({ ok: true, result: { intent: 'other', confidence: 0 } }, { status: 200 });
     }
 
-    const model = new ChatOpenAI({ model: 'gpt-4.1-mini', temperature: 0 });
+    const model = createChatModel();
 
     const prompt = [
         'Classify whether a user message is trying to contact/hire/collaborate with Bohdan.',

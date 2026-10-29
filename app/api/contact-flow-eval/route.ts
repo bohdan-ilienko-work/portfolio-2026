@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ChatOpenAI } from '@langchain/openai';
+import { createChatModel } from '@/lib/rag/chat-model';
 
 type ContactFlowStep = 'name' | 'contact' | 'proposal' | 'callTime';
 type ContactFlowEvalPayload = {
@@ -58,7 +58,7 @@ export const POST = async (request: NextRequest) => {
         return NextResponse.json({ ok: true, result: { status: 'cancel' } }, { status: 200 });
     }
 
-    const model = new ChatOpenAI({ model: 'gpt-4.1-mini', temperature: 0 });
+    const model = createChatModel();
 
     const prompt = [
         'You are a validator for a professional contact form chat flow.',
