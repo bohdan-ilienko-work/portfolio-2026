@@ -82,9 +82,10 @@ export const generateMetadata = async ({
       description,
       images: [
         {
-          url: `${siteUrl}/og.jpg`,
+          url: `${siteUrl}/og-portfolio-v2.jpg`,
           width: 1200,
           height: 630,
+          type: 'image/jpeg',
           alt: `${profileName} portfolio preview`
         }
       ]
@@ -93,7 +94,7 @@ export const generateMetadata = async ({
       card: 'summary_large_image',
       title,
       description,
-      images: [`${siteUrl}/og.jpg`]
+      images: [`${siteUrl}/og-portfolio-v2.jpg`]
     },
     keywords: [
       profileName,
