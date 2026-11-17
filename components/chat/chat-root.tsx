@@ -2,99 +2,47 @@
 
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useLocale } from 'next-intl';
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react';
 
 import { ChatPanel } from '@/components/chat/chat-panel';
-import { ChatTrigger } from '@/components/chat/chat-trigger';
-import { useIsMac } from '@/components/chat/use-is-mac';
 import { useMediaQuery } from '@/components/chat/use-media-query';
 import { SECTION_ANCHORS, type SectionId } from '@/lib/chat/protocol';
 import type { SendOptions } from '@/lib/chat/types';
 import { useChat } from '@/lib/chat/use-chat';
-import { useFooterAvoidance } from '@/lib/chat/use-footer-avoidance';
 
 const MOBILE_QUERY = '(max-width: 639px)';
-const OPEN_EVENT = 'open-ask-bohdan';
 
 const scrollToSection = (section: SectionId) => {
   document.querySelector(SECTION_ANCHORS[section])?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 };
 
-// The chord is the physical K key. On a Cyrillic layout (ru, uk, bg) it reports "л", so the letter alone would miss
-// it; a different Latin letter on that key (Dvorak, Colemak) is a layout that really moved K, and stays the browser's.
-const isShortcutKey = (event: KeyboardEvent) =>
-  event.key?.toLowerCase() === 'k' || (event.code === 'KeyK' && !/^[a-z]$/i.test(event.key ?? ''));
-
 type ChatRootProps = {
-  /** The chat was asked for (nav button, event) before this chunk finished loading. */
-  initialOpen?: boolean;
+  open: boolean;
+  onClose: () => void;
+  triggerRef: RefObject<HTMLButtonElement | null>;
+  openerRef: RefObject<HTMLElement | null>;
+  panelRef: RefObject<HTMLElement | null>;
 };
 
-/** The floating assistant: a trigger that opens a panel (a popover on desktop, a bottom sheet on phones). */
-export const ChatRoot = ({ initialOpen = false }: ChatRootProps) => {
+/** The popover on desktop and bottom sheet on phones. It stays mounted between opens to keep the conversation. */
+export const ChatRoot = ({ open: requestedOpen, onClose, triggerRef, openerRef, panelRef }: ChatRootProps) => {
   const locale = useLocale();
   const chat = useChat({ locale });
   const isMobile = useMediaQuery(MOBILE_QUERY);
-  const isMac = useIsMac();
   const reduceMotion = useReducedMotion() ?? false;
-
-  const [open, setOpen] = useState(initialOpen);
   const [draft, setDraft] = useState('');
-  const { ref: containerRef, offsetPx } = useFooterAvoidance(open);
+  const [ready, setReady] = useState(false);
 
-  const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const panelRef = useRef<HTMLElement | null>(null);
+  // useChat restores the session during its first effect. Mount the live region with that history already in place.
+  useEffect(() => setReady(true), []);
+  const open = ready && requestedOpen;
+
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const wasOpenRef = useRef(false);
-  const openerRef = useRef<HTMLElement | null>(null);
   const lastFocusedRef = useRef<Element | null>(null);
   const pendingSectionRef = useRef<SectionId | null>(null);
 
   const { send, reset, startContactFlow } = chat;
-
-  const close = useCallback(() => setOpen(false), []);
-
-  // Where focus was when the chat was asked for, so closing returns there and not to the floating trigger.
-  const rememberOpener = useCallback(() => {
-    const active = document.activeElement;
-
-    if (active instanceof HTMLElement && active !== document.body && !panelRef.current?.contains(active)) {
-      openerRef.current = active;
-    }
-  }, []);
-
-  const openChat = useCallback(() => {
-    rememberOpener();
-    setOpen(true);
-  }, [rememberOpener]);
-
-  // Ctrl/Cmd+K toggles from anywhere, including while typing in the composer; the nav's "Ask AI" button fires the event.
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.isComposing) return;
-
-      if ((event.metaKey || event.ctrlKey) && !event.altKey && !event.shiftKey && isShortcutKey(event)) {
-        event.preventDefault();
-
-        if (!event.repeat) {
-          rememberOpener();
-          setOpen((value) => !value);
-        }
-
-        return;
-      }
-
-      if (event.key === 'Escape' && !event.defaultPrevented) setOpen(false);
-    };
-
-    window.addEventListener('keydown', onKeyDown);
-    window.addEventListener(OPEN_EVENT, openChat);
-
-    return () => {
-      window.removeEventListener('keydown', onKeyDown);
-      window.removeEventListener(OPEN_EVENT, openChat);
-    };
-  }, [openChat, rememberOpener]);
 
   // The sheet covers the page, so the page behind it must not scroll.
   useEffect(() => {
@@ -124,7 +72,7 @@ export const ChatRoot = ({ initialOpen = false }: ChatRootProps) => {
       if (opener?.isConnected) opener.focus({ preventScroll: true });
       if (document.activeElement !== opener) triggerRef.current?.focus({ preventScroll: true });
     }
-  }, [open, isMobile]);
+  }, [open, isMobile, openerRef, panelRef, triggerRef]);
 
   // A control that unmounts while it holds focus (Stop turns into Send, Retry and Cancel vanish, a chip goes with its
   // answer) drops focus on <body>, and on the modal sheet the next Tab would leave the dialog. So the focus inside the
@@ -148,7 +96,7 @@ export const ChatRoot = ({ initialOpen = false }: ChatRootProps) => {
       document.removeEventListener('pointerdown', onPointerDown, true);
       lastFocusedRef.current = null;
     };
-  }, [open]);
+  }, [open, panelRef]);
 
   useLayoutEffect(() => {
     const lost = lastFocusedRef.current;
@@ -204,20 +152,13 @@ export const ChatRoot = ({ initialOpen = false }: ChatRootProps) => {
       }
 
       pendingSectionRef.current = section;
-      setOpen(false);
+      onClose();
     },
-    [isMobile],
+    [isMobile, onClose],
   );
 
   return (
-    <div
-      ref={containerRef}
-      className="fixed z-[9999] transition-[bottom] duration-200 ease-out motion-reduce:transition-none"
-      style={{
-        right: 'calc(env(safe-area-inset-right) + clamp(0.75rem, 2vw, 3rem))',
-        bottom: `calc(env(safe-area-inset-bottom) + clamp(0.75rem, 2vw, 3rem) + ${offsetPx}px)`,
-      }}
-    >
+    <>
       <AnimatePresence>
         {open && isMobile && (
           <motion.div
@@ -228,7 +169,7 @@ export const ChatRoot = ({ initialOpen = false }: ChatRootProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: reduceMotion ? 0 : 0.16 }}
-            onClick={close}
+            onClick={onClose}
           />
         )}
       </AnimatePresence>
@@ -247,14 +188,12 @@ export const ChatRoot = ({ initialOpen = false }: ChatRootProps) => {
             onNewChat={handleNewChat}
             onStartRequest={handleStartRequest}
             onNavigate={handleNavigate}
-            onClose={close}
+            onClose={onClose}
             panelRef={panelRef}
             textareaRef={textareaRef}
           />
         )}
       </AnimatePresence>
-
-      {!open && <ChatTrigger ref={triggerRef} isMac={isMac} reduceMotion={reduceMotion} onClick={openChat} />}
-    </div>
+    </>
   );
 };

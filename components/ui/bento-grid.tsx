@@ -179,7 +179,10 @@ export const BentoGridItem = ({
               width={689}
               height={541}
               src={img}
-              alt={descriptionKey ? t(descriptionKey) : 'Portfolio card background'}
+              alt=""
+              sizes={id === 1
+                ? '(min-width: 1360px) 768px, (min-width: 768px) 60vw, calc(100vw - 40px)'
+                : '(min-width: 1360px) 512px, (min-width: 768px) 40vw, calc(100vw - 40px)'}
               className={cn(
                 'object-cover object-center',
                 id === 5 &&
@@ -206,7 +209,8 @@ export const BentoGridItem = ({
               width={208}
               height={96}
               src={spareImg}
-              alt="Decorative card overlay"
+              alt=""
+              sizes="(min-width: 1360px) 768px, (min-width: 768px) 60vw, calc(100vw - 40px)"
               className={cn(
                 'h-full w-full object-cover object-center',
                 id === 4 && 'invert opacity-60 dark:invert-0 dark:opacity-100'
@@ -335,7 +339,7 @@ export const BentoGridItem = ({
 
           {id === 6 && (
             <div className="group relative mt-5">
-              <BentoGridLottie trigger={copyTrigger} />
+              {copyTrigger > 0 && <BentoGridLottie trigger={copyTrigger} />}
 
               <MagicButton
                 title={copied ? t('emailCopied') : t('copyMyEmail')}

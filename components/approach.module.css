@@ -1,0 +1,40 @@
+.background {
+  opacity: 0;
+}
+
+.background::before {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 8px 8px;
+  mask-image: radial-gradient(ellipse at center, transparent 5%, black 90%);
+  opacity: 0.55;
+  content: '';
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .badge {
+    position: absolute;
+  }
+
+  .details,
+  .card:is(:hover, :focus-visible) .badge {
+    opacity: 0;
+  }
+
+  .card:is(:hover, :focus-visible) :is(.background, .details) {
+    opacity: 1;
+  }
+
+  .card:is(:hover, :focus-visible) .details {
+    color: #e4ecff;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .background,
+  .badge,
+  .details {
+    transition: opacity 180ms ease-out;
+  }
+}

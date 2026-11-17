@@ -31,6 +31,7 @@ export const Education = () => {
                 alt={t(item.titleKey)}
                 width={960}
                 height={600}
+                sizes="(min-width: 1360px) 590px, (min-width: 1024px) 46vw, (min-width: 640px) calc(100vw - 114px), calc(100vw - 74px)"
                 className="h-56 w-full object-cover object-center transition duration-300 group-hover:scale-[1.02] md:h-64"
               />
               <div

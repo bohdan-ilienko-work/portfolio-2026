@@ -1,4 +1,5 @@
-import {getTranslations} from 'next-intl/server';
+import {getTranslations, setRequestLocale} from 'next-intl/server';
+import {notFound} from 'next/navigation';
 
 import {Approach} from '@/components/approach';
 import {Clients} from '@/components/clients';
@@ -19,7 +20,9 @@ import {
 import {localeHomeLabels, localeMeta} from '@/config/seo';
 import {FloatingNav} from '@/components/ui/floating-nav';
 import {navItems} from '@/data';
-import {locales, type Locale} from '@/i18n/routing';
+import {isLocale} from '@/i18n/routing';
+
+export const revalidate = 86400;
 
 type MainPageProps = {
   params: Promise<{
@@ -28,8 +31,11 @@ type MainPageProps = {
 };
 
 const MainPage = async ({params}: MainPageProps) => {
-  const {locale: routeLocale} = await params;
-  const locale = locales.includes(routeLocale as Locale) ? (routeLocale as Locale) : 'en';
+  const {locale} = await params;
+  if (!isLocale(locale)) {
+    notFound();
+  }
+  setRequestLocale(locale);
   const tProjects = await getTranslations({locale, namespace: 'projects'});
   const meta = localeMeta[locale];
   const localizedProjects = getLocalizedProjectsForJsonLd((key) => tProjects(key));

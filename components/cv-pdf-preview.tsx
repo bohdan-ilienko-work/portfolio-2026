@@ -18,6 +18,7 @@ export const CvPdfPreview = ({ fileUrl }: { fileUrl: string }) => {
                 <iframe
                     src={`${fileUrl}#view=FitH`}
                     title="CV PDF preview"
+                    loading="lazy"
                     className="h-full w-full"
                 />
             ) : (
@@ -28,7 +29,7 @@ export const CvPdfPreview = ({ fileUrl }: { fileUrl: string }) => {
                         fill
                         className="object-cover object-top"
                         style={{ filter: 'blur(3px)', transform: 'scale(1.06)' }}
-                        sizes="100vw"
+                        sizes="calc(100vw - 56px)"
                     />
                     <div
                         className="absolute inset-0"

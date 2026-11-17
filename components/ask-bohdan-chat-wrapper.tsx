@@ -1,40 +1,100 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 
-const ChatRootDynamic = dynamic(
-  () => import('@/components/chat/chat-root').then((m) => ({default: m.ChatRoot})),
-  {ssr: false},
-);
+import { ChatTrigger } from '@/components/chat/chat-trigger';
+import { useIsMac } from '@/components/chat/use-is-mac';
+import { useFooterAvoidance } from '@/lib/chat/use-footer-avoidance';
+
+const OPEN_EVENT = 'open-ask-bohdan';
+
+const ChatRoot = lazy(() => import('@/components/chat/chat-root').then((m) => ({ default: m.ChatRoot })));
 
 // The first version of the assistant stays reachable at ?chat=legacy.
 const LegacyChatDynamic = dynamic(
-  () => import('@/components/ask-bohdan-chat').then((m) => ({default: m.AskBohdanChat})),
-  {ssr: false},
+  () => import('@/components/ask-bohdan-chat').then((m) => ({ default: m.AskBohdanChat })),
+  { ssr: false },
 );
+
+// Cyrillic layouts report "л" for the physical K key. Layouts that move K to another Latin key keep their mapping.
+const isShortcutKey = (event: KeyboardEvent) =>
+  event.key?.toLowerCase() === 'k' || (event.code === 'KeyK' && !/^[a-z]$/i.test(event.key ?? ''));
+
+const CurrentChat = () => {
+  const [open, setOpen] = useState(false);
+  const [hasOpened, setHasOpened] = useState(false);
+  const { ref: containerRef, offsetPx } = useFooterAvoidance(open);
+  const isMac = useIsMac();
+
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
+  const panelRef = useRef<HTMLElement | null>(null);
+
+  const openChat = useCallback(() => {
+    const active = document.activeElement;
+    if (active instanceof HTMLElement && active !== document.body && !panelRef.current?.contains(active)) {
+      openerRef.current = active;
+    }
+
+    setHasOpened(true);
+    setOpen(true);
+  }, []);
+
+  const close = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.isComposing) return;
+
+      if ((event.metaKey || event.ctrlKey) && !event.altKey && !event.shiftKey && isShortcutKey(event)) {
+        event.preventDefault();
+        if (event.repeat) return;
+
+        if (open) close();
+        else openChat();
+        return;
+      }
+
+      if (event.key === 'Escape' && !event.defaultPrevented) close();
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener(OPEN_EVENT, openChat);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener(OPEN_EVENT, openChat);
+    };
+  }, [close, open, openChat]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="fixed z-[9999] transition-[bottom] duration-200 ease-out motion-reduce:transition-none"
+      style={{
+        right: 'calc(env(safe-area-inset-right) + clamp(0.75rem, 2vw, 3rem))',
+        bottom: `calc(env(safe-area-inset-bottom) + clamp(0.75rem, 2vw, 3rem) + ${offsetPx}px)`,
+      }}
+    >
+      {hasOpened && (
+        <Suspense fallback={open ? <ChatTrigger isMac={isMac} pending onClick={openChat} /> : null}>
+          <ChatRoot open={open} onClose={close} triggerRef={triggerRef} openerRef={openerRef} panelRef={panelRef} />
+        </Suspense>
+      )}
+      {!open && <ChatTrigger ref={triggerRef} isMac={isMac} onClick={openChat} />}
+    </div>
+  );
+};
 
 export const AskBohdanChatWrapper = () => {
   const [variant, setVariant] = useState<'current' | 'legacy' | null>(null);
-  const [openRequested, setOpenRequested] = useState(false);
 
-  // Read after mount so the server render and the first client render both show nothing.
+  // The query-dependent variant is only known on the client.
   useEffect(() => {
     setVariant(new URLSearchParams(window.location.search).get('chat') === 'legacy' ? 'legacy' : 'current');
   }, []);
 
-  // The nav button can be clicked while the chat chunk is still loading, before the chat listens for the event. This
-  // wrapper is mounted by then, so it keeps the request and hands it to the chat as its starting state.
-  useEffect(() => {
-    const onOpen = () => setOpenRequested(true);
-
-    window.addEventListener('open-ask-bohdan', onOpen);
-
-    return () => window.removeEventListener('open-ask-bohdan', onOpen);
-  }, []);
-
   if (variant === 'legacy') return <LegacyChatDynamic />;
-  if (variant === 'current') return <ChatRootDynamic initialOpen={openRequested} />;
-
+  if (variant === 'current') return <CurrentChat />;
   return null;
 };

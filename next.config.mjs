@@ -1,9 +1,13 @@
+import {fileURLToPath} from 'node:url';
 import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  turbopack: {
+    root: fileURLToPath(new URL('.', import.meta.url))
+  },
   images: {
     remotePatterns: [
       {

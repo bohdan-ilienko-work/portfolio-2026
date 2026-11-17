@@ -26,6 +26,7 @@ export const InfiniteMovingCards = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLUListElement>(null);
   const [start, setStart] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const addAnimation = () => {
     if (containerRef.current && scrollerRef.current) {
@@ -33,6 +34,9 @@ export const InfiniteMovingCards = ({
 
       scrollerContent.forEach((item) => {
         const duplicatedItem = item.cloneNode(true);
+        if (duplicatedItem instanceof HTMLElement) {
+          duplicatedItem.setAttribute('aria-hidden', 'true');
+        }
         if (scrollerRef.current) {
           scrollerRef.current.appendChild(duplicatedItem);
         }
@@ -67,7 +71,20 @@ export const InfiniteMovingCards = ({
   };
 
   useEffect(() => {
-    addAnimation();
+    const container = containerRef.current;
+    if (!container || !('IntersectionObserver' in window) ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let started = false;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        addAnimation();
+      }
+      setIsVisible(entry.isIntersecting);
+    });
+    observer.observe(container);
+    return () => observer.disconnect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -75,7 +92,7 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        'scroller relative z-20 w-screen overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]',
+        'scroller relative z-20 w-screen overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)] motion-reduce:overflow-x-auto motion-reduce:[mask-image:none]',
         className
       )}
     >
@@ -83,7 +100,8 @@ export const InfiniteMovingCards = ({
         ref={scrollerRef}
         className={cn(
           'flex w-max min-w-full shrink-0 flex-nowrap gap-16 py-4',
-          start && 'animate-scroll',
+          start && 'motion-safe:animate-scroll',
+          !isVisible && '[animation-play-state:paused]',
           pauseOnHover && 'hover:[animation-play-state:paused]'
         )}
       >

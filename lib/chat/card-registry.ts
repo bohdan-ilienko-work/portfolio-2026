@@ -30,7 +30,11 @@ const PROJECT_TITLE_KEYS: Record<ProjectId, string> = {
   'pharmacy-api': 'items.pharmacyApi.title'
 };
 
-const ICON_SLUG_PATTERNS = [/\/devicon\/icons\/([^/?#]+)\//i, /simpleicons\.org\/([^/?#]+)/i];
+const ICON_SLUG_PATTERNS = [
+  /^\/tech-icons\/([^/?#]+)\.svg$/i,
+  /\/devicon\/icons\/([^/?#]+)\//i,
+  /simpleicons\.org\/([^/?#]+)/i
+];
 
 // Slugs that techStack does not list, so there is no name to borrow from the data.
 const EXTRA_TECH_NAMES: Record<string, string> = {

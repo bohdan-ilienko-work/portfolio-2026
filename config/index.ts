@@ -2,12 +2,6 @@ import type { Metadata } from "next";
 
 const startDate = new Date(2022, 7);
 
-const now = new Date();
-
-const totalMonths =
-  (now.getFullYear() - startDate.getFullYear()) * 12 +
-  (now.getMonth() - startDate.getMonth());
-
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-2026.vercel.app";
 
 export const links = {
@@ -24,7 +18,11 @@ export const links = {
   ownerInsta: "https://www.instagram.com/b0urgeo1s/",
   ownerGithub: "https://github.com/NureBohdanIlienko",
   ownerLinkedin: "https://www.linkedin.com/in/bohdan-ilienko-692b232a5/",
-  totalExperienceMonths: totalMonths,
+  get totalExperienceMonths() {
+    const now = new Date();
+    return (now.getFullYear() - startDate.getFullYear()) * 12 +
+      now.getMonth() - startDate.getMonth();
+  },
 } as const;
 
 export const siteConfig: Metadata = {

@@ -103,7 +103,8 @@ export const RecentProjects = () => {
                         height={330}
                         width={552}
                         src="/bg.png"
-                        alt="Project card background"
+                        alt=""
+                        sizes="(min-width: 640px) 570px, 80vw"
                         className="h-full w-full object-cover object-center"
                       />
                     </div>
@@ -113,6 +114,7 @@ export const RecentProjects = () => {
                       width={464}
                       src={img}
                       alt={title}
+                      sizes="(min-width: 640px) 490px, 69vw"
                       className={`absolute ${imgPosition === 'top' ? 'top-0' : 'bottom-0'} z-10 h-auto w-[86%]`}
                     />
                   </div>

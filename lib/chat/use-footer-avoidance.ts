@@ -1,21 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
 
 const AVOIDANCE_GAP_PX = 12;
-const AVOIDANCE_SELECTOR = '[data-ask-bohdan-avoid]';
-const SETTLE_DELAYS_MS = [120, 360, 900];
+const FOOTER_SELECTOR = 'footer#contact';
+const TARGET_SELECTOR = `[data-ask-bohdan-avoid], ${FOOTER_SELECTOR} > div:last-child`;
+const CONTAINER_SELECTOR = `[data-ask-bohdan-avoid], ${FOOTER_SELECTOR}`;
 
-const getAvoidanceTargets = () => {
-  const marked = Array.from(document.querySelectorAll<HTMLElement>(AVOIDANCE_SELECTOR));
-  const footerBottomRow = document.querySelector<HTMLElement>('footer#contact > div:last-child');
+const canChangeTargets = (node: Node) =>
+  node instanceof Element && (node.matches(CONTAINER_SELECTOR) || node.querySelector(CONTAINER_SELECTOR) !== null);
 
-  return Array.from(new Set([...marked, ...(footerBottomRow ? [footerBottomRow] : [])]));
-};
-
-/**
- * Lifts the floating trigger above the page elements marked `data-ask-bohdan-avoid` and the footer's bottom row
- * while they are on screen and overlap it horizontally. Pass `suspended` while the panel is open: the panel does
- * not move, so nothing is measured. Ported from the legacy chat.
- */
+/** Lifts the floating trigger above marked elements and the footer's bottom row when they overlap. */
 export const useFooterAvoidance = (suspended: boolean) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [offsetPx, setOffsetPx] = useState(0);
@@ -26,70 +19,111 @@ export const useFooterAvoidance = (suspended: boolean) => {
       return;
     }
 
+    const floating = ref.current;
+    if (!floating) return;
+
     let frameId: number | null = null;
-    const timeoutIds: number[] = [];
+    let targets = new Set<HTMLElement>();
+    const nearbyTargets = new Set<HTMLElement>();
 
     const update = () => {
       frameId = null;
 
-      const floatingRect = ref.current?.getBoundingClientRect();
-      if (!floatingRect) return;
+      if (!nearbyTargets.size) {
+        setOffsetPx(0);
+        return;
+      }
 
+      const floatingRect = floating.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
       const viewportWidth = window.innerWidth;
+      let next = 0;
 
-      const next = getAvoidanceTargets().reduce((maxOffset, target) => {
+      for (const target of nearbyTargets) {
         const rect = target.getBoundingClientRect();
         const isVisible =
           rect.bottom > 0 && rect.top < viewportHeight && rect.right > 0 && rect.left < viewportWidth;
-
-        if (!isVisible) return maxOffset;
-
         const overlapsHorizontally =
           rect.left < floatingRect.right + AVOIDANCE_GAP_PX && rect.right > floatingRect.left - AVOIDANCE_GAP_PX;
 
-        if (!overlapsHorizontally) return maxOffset;
+        if (isVisible && overlapsHorizontally) {
+          next = Math.max(next, Math.ceil(viewportHeight - rect.top + AVOIDANCE_GAP_PX));
+        }
+      }
 
-        return Math.max(maxOffset, Math.ceil(viewportHeight - rect.top + AVOIDANCE_GAP_PX));
-      }, 0);
-
-      setOffsetPx((current) => (current === next ? current : next));
+      setOffsetPx(next);
     };
 
     const schedule = () => {
-      if (frameId !== null) return;
-      frameId = window.requestAnimationFrame(update);
+      if (frameId === null) frameId = window.requestAnimationFrame(update);
+    };
+    const scheduleIfNearby = () => {
+      if (nearbyTargets.size) schedule();
     };
 
-    schedule();
-    SETTLE_DELAYS_MS.forEach((delay) => timeoutIds.push(window.setTimeout(schedule, delay)));
-
-    const resizeObserver = new ResizeObserver(schedule);
-    resizeObserver.observe(document.documentElement);
+    const resizeObserver = new ResizeObserver(scheduleIfNearby);
     resizeObserver.observe(document.body);
-    getAvoidanceTargets().forEach((target) => resizeObserver.observe(target));
+    resizeObserver.observe(floating);
 
-    const mutationObserver = new MutationObserver(schedule);
+    // On the rest of the page, scroll events only do the Set check. Footer measurements start near the viewport.
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        const target = entry.target as HTMLElement;
+        if (entry.isIntersecting && targets.has(target)) nearbyTargets.add(target);
+        else nearbyTargets.delete(target);
+      }
+      schedule();
+    }, { rootMargin: `${AVOIDANCE_GAP_PX}px 0px` });
+
+    const syncTargets = () => {
+      const next = new Set(document.querySelectorAll<HTMLElement>(TARGET_SELECTOR));
+      for (const target of targets) {
+        if (next.has(target)) continue;
+        intersectionObserver.unobserve(target);
+        resizeObserver.unobserve(target);
+        if (nearbyTargets.delete(target)) schedule();
+      }
+      for (const target of next) {
+        if (targets.has(target)) continue;
+        intersectionObserver.observe(target);
+        resizeObserver.observe(target);
+      }
+      targets = next;
+    };
+
+    syncTargets();
+
+    const mutationObserver = new MutationObserver((records) => {
+      for (const record of records) {
+        if (
+          record.type === 'attributes' ||
+          (record.target instanceof Element && record.target.matches(FOOTER_SELECTOR)) ||
+          Array.from(record.addedNodes).some(canChangeTargets) ||
+          Array.from(record.removedNodes).some(canChangeTargets)
+        ) {
+          syncTargets();
+          return;
+        }
+      }
+    });
     mutationObserver.observe(document.body, {
       childList: true,
       subtree: true,
-      attributes: true,
-      attributeFilter: ['data-ask-bohdan-avoid', 'class', 'style']
+      attributeFilter: ['data-ask-bohdan-avoid']
     });
 
-    window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
-    window.addEventListener('orientationchange', schedule);
+    window.addEventListener('scroll', scheduleIfNearby, { passive: true });
+    window.addEventListener('resize', scheduleIfNearby);
+    window.addEventListener('orientationchange', scheduleIfNearby);
 
     return () => {
       if (frameId !== null) window.cancelAnimationFrame(frameId);
-
-      timeoutIds.forEach((id) => window.clearTimeout(id));
+      intersectionObserver.disconnect();
       resizeObserver.disconnect();
       mutationObserver.disconnect();
-      window.removeEventListener('scroll', schedule);
-      window.removeEventListener('resize', schedule);
-      window.removeEventListener('orientationchange', schedule);
+      window.removeEventListener('scroll', scheduleIfNearby);
+      window.removeEventListener('resize', scheduleIfNearby);
+      window.removeEventListener('orientationchange', scheduleIfNearby);
     };
   }, [suspended]);
 

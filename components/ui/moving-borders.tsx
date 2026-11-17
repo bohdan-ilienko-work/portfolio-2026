@@ -1,145 +1,52 @@
-"use client";
-
-import {
-  motion,
-  useAnimationFrame,
-  useMotionTemplate,
-  useMotionValue,
-  useTransform,
-} from "framer-motion";
-import { useRef } from "react";
+import type { ComponentPropsWithoutRef, CSSProperties, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
+import styles from "./moving-borders.module.css";
 
-type ButtonProps = {
+type ButtonProps = ComponentPropsWithoutRef<"button"> & {
   borderRadius?: string;
-  children: React.ReactNode;
-  as?: any;
+  children: ReactNode;
   containerClassName?: string;
   borderClassName?: string;
   duration?: number;
-  className?: string;
-  [key: string]: any;
 };
 
 export const Button = ({
   borderRadius = "1.75rem",
   children,
-  as: Component = "button",
   containerClassName,
   borderClassName,
-  duration,
+  duration = 2000,
   className,
   ...otherProps
-}: ButtonProps) => {
-  return (
-    <Component
-      className={cn(
-        "relative overflow-hidden bg-transparent p-[1px] text-xl md:col-span-2",
-        containerClassName
-      )}
-      style={{
-        borderRadius: borderRadius,
-      }}
-      {...otherProps}
-    >
-      <div
-        className="absolute inset-0"
-        style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
-      >
-        <MovingBorder duration={duration} rx="30%" ry="30%">
-          <div
-            className={cn(
-              "h-20 w-20 bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)] opacity-[0.8]",
-              borderClassName
-            )}
-          />
-        </MovingBorder>
-      </div>
-
+}: ButtonProps) => (
+  <button
+    className={cn(
+      "relative isolate overflow-hidden bg-transparent p-px text-xl md:col-span-2",
+      styles.card,
+      containerClassName
+    )}
+    style={{ borderRadius }}
+    {...otherProps}
+  >
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden" style={{ borderRadius: "inherit" }}>
       <div
         className={cn(
-          "relative flex h-full w-full items-center justify-center border text-sm antialiased backdrop-blur-xl",
-          "border-[--moving-card-border] bg-[--moving-card-bg] text-[--text-primary]",
-          className
+          styles.glow,
+          "absolute h-20 w-20 bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)] opacity-80",
+          borderClassName
         )}
-        style={{
-          borderRadius: `calc(${borderRadius} * 0.96)`,
-        }}
-      >
-        {children}
-      </div>
-    </Component>
-  );
-};
-
-type MovingBorderProps = {
-  children: React.ReactNode;
-  duration?: number;
-  rx?: string;
-  ry?: string;
-  [key: string]: any;
-};
-
-export const MovingBorder = ({
-  children,
-  duration = 2000,
-  rx,
-  ry,
-  ...otherProps
-}: MovingBorderProps) => {
-  const pathRef = useRef<any>(null);
-  const progress = useMotionValue<number>(0);
-
-  useAnimationFrame((time) => {
-    const length = pathRef.current?.getTotalLength();
-    if (length) {
-      const pxPerMillisecond = length / duration;
-      progress.set((time * pxPerMillisecond) % length);
-    }
-  });
-
-  const x = useTransform(
-    progress,
-    (val) => pathRef.current?.getPointAtLength(val).x
-  );
-  const y = useTransform(
-    progress,
-    (val) => pathRef.current?.getPointAtLength(val).y
-  );
-
-  const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
-
-  return (
-    <>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
-        className="absolute h-full w-full"
-        width="100%"
-        height="100%"
-        {...otherProps}
-      >
-        <rect
-          fill="none"
-          width="100%"
-          height="100%"
-          rx={rx}
-          ry={ry}
-          ref={pathRef}
-        />
-      </svg>
-      <motion.div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          display: "inline-block",
-          transform,
-        }}
-      >
-        {children}
-      </motion.div>
-    </>
-  );
-};
+        style={{ "--border-duration": `${duration}ms` } as CSSProperties}
+      />
+    </div>
+    <div
+      className={cn(
+        "relative flex h-full w-full items-center justify-center border border-[--moving-card-border] bg-[--moving-card-bg] text-sm text-[--text-primary] antialiased",
+        className
+      )}
+      style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
+    >
+      {children}
+    </div>
+  </button>
+);

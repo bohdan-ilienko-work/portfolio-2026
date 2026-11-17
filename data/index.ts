@@ -19,7 +19,7 @@ export const gridItems = [
     className: 'lg:col-span-3 md:col-span-3 md:row-span-2 lg:min-h-[30vh]',
     imgClassName: 'w-full h-full',
     titleClassName: 'justify-end',
-    img: '/b1.svg',
+    img: '/bento-summary-v1.webp',
     spareImg: ''
   },
   {
@@ -49,7 +49,7 @@ export const gridItems = [
     className: 'lg:col-span-2 md:col-span-2 md:row-span-1',
     imgClassName: '',
     titleClassName: 'justify-start',
-    img: '/grid.svg',
+    img: '/bento-grid-v1.webp',
     spareImg: '/b4.svg'
   },
   {
@@ -60,7 +60,7 @@ export const gridItems = [
     imgClassName: 'absolute right-0 bottom-0 md:w-96 w-60',
     titleClassName: 'justify-center md:justify-start lg:justify-center',
     img: '/undraw_code-review_jdgp.svg',
-    spareImg: '/grid.svg'
+    spareImg: '/bento-grid-v1.webp'
   },
   {
     id: 6,
@@ -81,11 +81,11 @@ export const projects = [
     desKey: 'items.bookPortfolio.description',
     img: '/p1.jpg',
     iconLists: [
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'
+      '/tech-icons/react.svg',
+      '/tech-icons/vitejs.svg',
+      '/tech-icons/typescript.svg',
+      '/tech-icons/javascript.svg',
+      '/tech-icons/html5.svg'
     ],
     link: 'https://neon-crostata-31e281.netlify.app/',
     visitLinks: [],
@@ -99,11 +99,11 @@ export const projects = [
     img: '/p3.jpg',
     imgPosition: 'top',
     iconLists: [
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg'
+      '/tech-icons/react.svg',
+      '/tech-icons/typescript.svg',
+      '/tech-icons/nestjs.svg',
+      '/tech-icons/postgresql.svg',
+      '/tech-icons/docker.svg'
     ],
     link: 'https://t.me/rix_logger_bot',
     visitLinks: [
@@ -130,12 +130,12 @@ export const projects = [
     desKey: 'items.ticketing.description',
     img: '/p2.jpg',
     iconLists: [
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-      'https://cdn.simpleicons.org/express/ffffff',
-      'https://cdn.simpleicons.org/jsonwebtokens/ffffff',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg'
+      '/tech-icons/nodejs.svg',
+      '/tech-icons/typescript.svg',
+      '/tech-icons/express.svg',
+      '/tech-icons/jsonwebtokens.svg',
+      '/tech-icons/mongodb.svg',
+      '/tech-icons/docker.svg'
     ],
     link: 'https://github.com/NureBohdanIlienko/ticketing/tree/master',
     visitLinks: [],
@@ -148,11 +148,11 @@ export const projects = [
     desKey: 'items.pharmacyApi.description',
     img: '/p4.jpg',
     iconLists: [
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg',
-      'https://cdn.simpleicons.org/jsonwebtokens/ffffff',
-      'https://cdn.simpleicons.org/swagger/85ea2d'
+      '/tech-icons/nestjs.svg',
+      '/tech-icons/nodejs.svg',
+      '/tech-icons/microsoftsqlserver.svg',
+      '/tech-icons/jsonwebtokens.svg',
+      '/tech-icons/swagger.svg'
     ],
     link: 'https://github.com/NureBohdanIlienko/apteka-api',
     visitLinks: [],
@@ -237,7 +237,7 @@ export const workExperience = [
     titleKey: 'items.wnet.title',
     descKey: 'items.wnet.description',
     className: 'md:col-span-2',
-    thumbnail: '/exp3.svg'
+    thumbnail: '/experience-wnet-v1.webp'
   }
 ] as const;
 
@@ -293,89 +293,89 @@ export const techStack = {
   stack1: [
     {
       name: 'TypeScript',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg'
+      icon: '/tech-icons/typescript.svg'
     },
     {
       name: 'JavaScript',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'
+      icon: '/tech-icons/javascript.svg'
     },
     {
       name: 'Node.js',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'
+      icon: '/tech-icons/nodejs.svg'
     },
     {
       name: 'NestJS',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg'
+      icon: '/tech-icons/nestjs.svg'
     },
     {
       name: 'Express.js',
-      icon: 'https://cdn.simpleicons.org/express/ffffff'
+      icon: '/tech-icons/express.svg'
     }
   ],
   stack2: [
     {
       name: 'React',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'
+      icon: '/tech-icons/react.svg'
     },
     {
       name: 'Next.js',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg'
+      icon: '/tech-icons/nextjs.svg'
     },
     {
       name: 'React Native',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'
+      icon: '/tech-icons/react.svg'
     },
     {
       name: 'Redux Toolkit',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg'
+      icon: '/tech-icons/redux.svg'
     },
     {
       name: 'Tailwind CSS',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg'
+      icon: '/tech-icons/tailwindcss.svg'
     }
   ],
   stack3: [
     {
       name: 'PostgreSQL',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg'
+      icon: '/tech-icons/postgresql.svg'
     },
     {
       name: 'MongoDB',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg'
+      icon: '/tech-icons/mongodb.svg'
     },
     {
       name: 'Redis',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg'
+      icon: '/tech-icons/redis.svg'
     },
     {
       name: 'Docker',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg'
+      icon: '/tech-icons/docker.svg'
     },
     {
       name: 'Kubernetes',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg'
+      icon: '/tech-icons/kubernetes.svg'
     }
   ],
   stack4: [
     {
       name: 'GitHub Actions',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg'
+      icon: '/tech-icons/githubactions.svg'
     },
     {
       name: 'RabbitMQ',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rabbitmq/rabbitmq-original.svg'
+      icon: '/tech-icons/rabbitmq.svg'
     },
     {
       name: 'Kafka',
-      icon: 'https://cdn.simpleicons.org/apachekafka/ffffff'
+      icon: '/tech-icons/apachekafka.svg'
     },
     {
       name: 'GraphQL',
-      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg'
+      icon: '/tech-icons/graphql.svg'
     },
     {
       name: 'WebSockets',
-      icon: 'https://cdn.simpleicons.org/socketdotio/ffffff'
+      icon: '/tech-icons/socketdotio.svg'
     }
   ]
 } as const;

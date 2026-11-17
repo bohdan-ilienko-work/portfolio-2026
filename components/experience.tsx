@@ -27,6 +27,7 @@ export const Experience = () => {
                 height={87}
                 src={experience.thumbnail}
                 alt={t(experience.titleKey)}
+                sizes="(min-width: 1024px) 128px, (min-width: 768px) 80px, 64px"
                 className="w-16 md:w-20 lg:w-32"
               />
 

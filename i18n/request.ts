@@ -1,4 +1,3 @@
-import {cookies} from 'next/headers';
 import {getRequestConfig} from 'next-intl/server';
 
 import {defaultLocale, isLocale, type Locale} from './routing';
@@ -24,20 +23,11 @@ const loadMessageFile = async (locale: Locale, fileName: (typeof messageFiles)[n
   }
 };
 
-export default getRequestConfig(async ({requestLocale}) => {
-  const cookieStore = await cookies();
-  const localeFromCookie = cookieStore.get('NEXT_LOCALE')?.value;
-  const localeFromRequest = await requestLocale;
-
-  let locale: Locale = defaultLocale;
-  const cookieCandidate = localeFromCookie ?? '';
-  const requestCandidate = localeFromRequest ?? '';
-
-  if (isLocale(cookieCandidate)) {
-    locale = cookieCandidate;
-  } else if (isLocale(requestCandidate)) {
-    locale = requestCandidate;
-  }
+export default getRequestConfig(async ({locale: explicitLocale, requestLocale}) => {
+  // Middleware uses the language cookie to redirect unprefixed URLs. The
+  // locale in a prefixed URL stays authoritative and can be prerendered.
+  const requestedLocale = explicitLocale ?? (await requestLocale) ?? defaultLocale;
+  const locale = isLocale(requestedLocale) ? requestedLocale : defaultLocale;
 
   const loadedFiles = await Promise.all(
     messageFiles.map((fileName) => loadMessageFile(locale, fileName))

@@ -1,6 +1,5 @@
 'use client';
 
-import { AnimatePresence, LazyMotion, domAnimation, m, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
@@ -19,12 +18,10 @@ type FloatingNavProps = {
 };
 
 export const FloatingNav = ({ navItems, className }: FloatingNavProps) => {
-  const { scrollY } = useScroll();
   const t = useTranslations('common');
   const navRef = useRef<HTMLElement | null>(null);
 
   const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -32,19 +29,25 @@ export const FloatingNav = ({ navItems, className }: FloatingNavProps) => {
     setMounted(true);
   }, []);
 
-  useMotionValueEvent(scrollY, 'change', (current) => {
-    if (typeof current === 'number') {
-      if (current < 50) {
-        setVisible(true);
-      } else if (current > lastScrollY) {
-        setVisible(false);
-      } else {
-        setVisible(true);
-      }
+  useEffect(() => {
+    let previousY = window.scrollY;
+    let shown = true;
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY === previousY) return;
 
-      setLastScrollY(current);
-    }
-  });
+      const shouldShow = currentY < 50 || currentY < previousY;
+      previousY = currentY;
+
+      if (shouldShow !== shown) {
+        shown = shouldShow;
+        setVisible(shouldShow);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
@@ -68,127 +71,108 @@ export const FloatingNav = ({ navItems, className }: FloatingNavProps) => {
   }, [isMobileMenuOpen]);
 
   return (
-    <LazyMotion features={domAnimation}>
-      <AnimatePresence mode="wait">
-        <m.nav
-          ref={navRef}
-          initial={{
-            opacity: 1,
-            y: -100
-          }}
-          animate={{
-            y: visible ? 0 : -100,
-            opacity: visible ? 1 : 0
-          }}
-          transition={{
-            duration: 0.2
-          }}
-          className={cn(
-            'fixed inset-x-0 top-4 z-[5000] mx-auto flex max-w-fit items-center justify-center space-x-4 rounded-3xl border px-3 py-3 md:top-10 md:py-5',
-            'border-[--border-medium] bg-[--surface-1] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]',
-            'w-[calc(100vw-1rem)] md:w-auto',
-            className
-          )}
-        >
-          <div className="hidden items-center space-x-4 lg:flex">
-            {navItems.map((navItem, idx) => (
-              <Link
-                key={`desktop-link-${idx}`}
-                href={navItem.link}
-                className="relative flex items-center space-x-1 text-[--text-secondary] transition-colors hover:text-[--text-primary]"
-              >
-                <span className="!cursor-pointer text-sm">{t(navItem.nameKey)}</span>
-              </Link>
-            ))}
+    <nav
+      ref={navRef}
+      className={cn(
+        'fixed inset-x-0 top-4 z-[5000] mx-auto flex max-w-fit items-center justify-center space-x-4 rounded-3xl border px-3 py-3 md:top-10 md:py-5',
+        'border-[--border-medium] bg-[--surface-1] shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]',
+        'w-[calc(100vw-1rem)] md:w-auto',
+        'transition-[transform,opacity] duration-200 motion-reduce:transition-none',
+        !visible && !isMobileMenuOpen && '-translate-y-28 opacity-0 focus-within:translate-y-0 focus-within:opacity-100',
+        className
+      )}
+    >
+      <div className="hidden items-center space-x-4 lg:flex">
+        {navItems.map((navItem, idx) => (
+          <Link
+            key={`desktop-link-${idx}`}
+            href={navItem.link}
+            className="relative flex items-center space-x-1 text-[--text-secondary] transition-colors hover:text-[--text-primary]"
+          >
+            <span className="!cursor-pointer text-sm">{t(navItem.nameKey)}</span>
+          </Link>
+        ))}
 
-            {mounted && (
+        {mounted && (
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event('open-ask-bohdan'))}
+            aria-haspopup="dialog"
+            aria-label={t('askBohdan.title')}
+            title={t('askBohdan.title')}
+            className={cn(
+              // The menu is already tight at 1024px, so the label only shows from xl; below that the pill is the monogram.
+              'group flex shrink-0 items-center gap-2 rounded-full border border-[--border-medium] p-1 text-xs font-medium text-[--text-primary] transition-colors hover:border-[--border-strong] hover:bg-[--surface-2] xl:pr-3',
+              focusRing
+            )}
+          >
+            <Monogram size={22} className="group-hover:bg-[--surface-3]" />
+            <span className="hidden whitespace-nowrap xl:inline">{t('askBohdan.title')}</span>
+          </button>
+        )}
+
+        <LanguageSwitcher />
+        <ThemeSwitcher />
+      </div>
+
+      <div className="flex w-full items-center gap-3 lg:hidden">
+        <button
+          type="button"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[--border-medium] bg-[--surface-card] text-[--text-secondary] transition hover:text-[--text-primary]"
+        >
+          {isMobileMenuOpen ? <HiXMark className="h-5 w-5" /> : <HiBars3 className="h-5 w-5" />}
+        </button>
+
+        <div className="min-w-0 flex-1">
+          <LanguageSwitcher />
+        </div>
+
+        <div className="hidden md:block">
+          <ThemeSwitcher />
+        </div>
+      </div>
+
+        {isMobileMenuOpen && (
+          <div
+            className="absolute left-0 right-0 top-[calc(100%+0.55rem)] rounded-2xl border border-[--border-medium] bg-[--surface-1] p-3 shadow-[0px_10px_25px_rgba(0,0,0,0.2)] duration-200 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-top-2 lg:hidden"
+          >
+            <div className="flex flex-col gap-1.5">
+              {navItems.map((navItem, idx) => (
+                <Link
+                  key={`mobile-link-${idx}`}
+                  href={navItem.link}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="rounded-xl px-3 py-2 text-sm text-[--text-secondary] transition hover:bg-[--surface-card] hover:text-[--text-primary]"
+                >
+                  {t(navItem.nameKey)}
+                </Link>
+              ))}
+
               <button
                 type="button"
-                onClick={() => window.dispatchEvent(new Event('open-ask-bohdan'))}
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  window.dispatchEvent(new Event('open-ask-bohdan'));
+                }}
                 aria-haspopup="dialog"
-                aria-label={t('askBohdan.title')}
-                title={t('askBohdan.title')}
                 className={cn(
-                  // The menu is already tight at 1024px, so the label only shows from xl; below that the pill is the monogram.
-                  'group flex shrink-0 items-center gap-2 rounded-full border border-[--border-medium] p-1 text-xs font-medium text-[--text-primary] transition-colors hover:border-[--border-strong] hover:bg-[--surface-2] xl:pr-3',
+                  'group flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-[--text-primary] transition hover:bg-[--surface-card]',
                   focusRing
                 )}
               >
                 <Monogram size={22} className="group-hover:bg-[--surface-3]" />
-                <span className="hidden whitespace-nowrap xl:inline">{t('askBohdan.title')}</span>
+                {t('askBohdan.title')}
               </button>
-            )}
-
-            <LanguageSwitcher />
-            <ThemeSwitcher />
-          </div>
-
-          <div className="flex w-full items-center gap-3 lg:hidden">
-            <button
-              type="button"
-              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-              aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[--border-medium] bg-[--surface-card] text-[--text-secondary] transition hover:text-[--text-primary]"
-            >
-              {isMobileMenuOpen ? <HiXMark className="h-5 w-5" /> : <HiBars3 className="h-5 w-5" />}
-            </button>
-
-            <div className="min-w-0 flex-1">
-              <LanguageSwitcher />
             </div>
 
-            <div className="hidden md:block">
+            {/* Theme switcher in dropdown only on mobile (< md) */}
+            <div className="mt-3 border-t border-[--border-medium] pt-3 md:hidden">
               <ThemeSwitcher />
             </div>
           </div>
-
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <m.div
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.18 }}
-                className="absolute left-0 right-0 top-[calc(100%+0.55rem)] rounded-2xl border border-[--border-medium] bg-[--surface-1] p-3 shadow-[0px_10px_25px_rgba(0,0,0,0.2)] lg:hidden"
-              >
-                <div className="flex flex-col gap-1.5">
-                  {navItems.map((navItem, idx) => (
-                    <Link
-                      key={`mobile-link-${idx}`}
-                      href={navItem.link}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="rounded-xl px-3 py-2 text-sm text-[--text-secondary] transition hover:bg-[--surface-card] hover:text-[--text-primary]"
-                    >
-                      {t(navItem.nameKey)}
-                    </Link>
-                  ))}
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      window.dispatchEvent(new Event('open-ask-bohdan'));
-                    }}
-                    aria-haspopup="dialog"
-                    className={cn(
-                      'group flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-[--text-primary] transition hover:bg-[--surface-card]',
-                      focusRing
-                    )}
-                  >
-                    <Monogram size={22} className="group-hover:bg-[--surface-3]" />
-                    {t('askBohdan.title')}
-                  </button>
-                </div>
-
-                {/* Theme switcher in dropdown only on mobile (< md) */}
-                <div className="mt-3 border-t border-[--border-medium] pt-3 md:hidden">
-                  <ThemeSwitcher />
-                </div>
-              </m.div>
-            )}
-          </AnimatePresence>
-        </m.nav>
-      </AnimatePresence>
-    </LazyMotion>
+        )}
+    </nav>
   );
 };

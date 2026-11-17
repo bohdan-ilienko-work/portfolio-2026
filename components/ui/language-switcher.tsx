@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import { locales, type Locale } from '@/i18n/routing';
 
@@ -22,7 +22,6 @@ const languageOptions: LanguageOption[] = [
 export const LanguageSwitcher = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   const activeLocale = (() => {
     const segments = pathname.split('/').filter(Boolean);
@@ -33,8 +32,7 @@ export const LanguageSwitcher = () => {
   })();
 
   const switchLocale = (locale: Locale) => {
-    const query = searchParams.toString();
-    const hash = typeof window !== 'undefined' ? window.location.hash : '';
+    const {search, hash} = window.location;
 
     const segments = pathname.split('/').filter(Boolean);
     const hasLocalePrefix = locales.includes((segments[0] ?? '') as Locale);
@@ -44,7 +42,7 @@ export const LanguageSwitcher = () => {
       : [locale, ...segments];
 
     const nextPathname = `/${nextSegments.join('/')}`;
-    const nextUrl = `${nextPathname}${query ? `?${query}` : ''}${hash}`;
+    const nextUrl = `${nextPathname}${search}${hash}`;
 
     Reflect.set(
       document,

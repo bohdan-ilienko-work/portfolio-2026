@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { useId } from "react";
 
 type SpotlightProps = {
   className?: string;
@@ -6,50 +7,27 @@ type SpotlightProps = {
 };
 
 export const Spotlight = ({ className, fill }: SpotlightProps) => {
+  const gradientId = useId();
+
   return (
     <svg
+      aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute z-[1] h-[169%] w-[138%] animate-spotlight opacity-0 [--final-opacity:var(--spotlight-opacity)] lg:w-[84%]",
+        "pointer-events-none absolute z-[1] h-[169%] w-[138%] -translate-x-1/2 -translate-y-[40%] opacity-[--spotlight-opacity] lg:w-[84%]",
         className
       )}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 3787 2842"
       fill="none"
     >
-      <g filter="url(#filter)">
-        <ellipse
-          cx="1924.71"
-          cy="273.501"
-          rx="1924.71"
-          ry="273.501"
-          transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
-          fill={fill || "white"}
-          fillOpacity="0.21"
-        />
-      </g>
       <defs>
-        <filter
-          id="filter"
-          x="0.860352"
-          y="0.838989"
-          width="3785.16"
-          height="2840.26"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
-          <feFlood floodOpacity="0" result="BackgroundImageFix" />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="BackgroundImageFix"
-            result="shape"
-          />
-          <feGaussianBlur
-            stdDeviation="151"
-            result="effect1_foregroundBlur_1065_8"
-          />
-        </filter>
+        <radialGradient id={gradientId}>
+          <stop offset="0" stopColor={fill ?? "white"} stopOpacity="0.21" />
+          <stop offset="0.45" stopColor={fill ?? "white"} stopOpacity="0.14" />
+          <stop offset="1" stopColor={fill ?? "white"} stopOpacity="0" />
+        </radialGradient>
       </defs>
+      <ellipse cx="1893.5" cy="1421" rx="2100" ry="570" transform="rotate(34.7 1893.5 1421)" fill={`url(#${gradientId})`} />
     </svg>
   );
 };
