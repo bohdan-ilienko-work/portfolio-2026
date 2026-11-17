@@ -1,0 +1,82 @@
+{
+  "chat": {
+    "header": {
+      "subtitle": "Asystent AI · zna jego CV i projekty",
+      "status": "Part-time i projekty",
+      "newChat": "Nowy czat"
+    },
+    "trigger": {
+      "hint": "Zapytaj o technologie, projekty, dostępność"
+    },
+    "empty": {
+      "greeting": "Cześć, jestem asystentem AI Bohdana.",
+      "intro": "Zapytaj o technologie, projekty lub dostępność Bohdana. Odpowiedzi pochodzą z jego CV i tej strony.",
+      "tabPopular": "Popularne"
+    },
+    "composer": {
+      "placeholder": "Zapytaj o stack i projekty…",
+      "stop": "Zatrzymaj",
+      "hintSend": "Wyślij",
+      "hintNewLine": "Nowy wiersz",
+      "hintClose": "Zamknij"
+    },
+    "status": {
+      "retrieve": "Przeszukuję jego CV…",
+      "write": "Piszę…"
+    },
+    "sources": {
+      "label": "Na stronie"
+    },
+    "errors": {
+      "generic": "Nie udało się teraz uzyskać odpowiedzi.",
+      "rateLimited": "Zadano zbyt wiele pytań z rzędu. Spróbuj ponownie za minutę.",
+      "retry": "Spróbuj ponownie",
+      "contactFallback": "Możesz skontaktować się bezpośrednio z Bohdanem:"
+    },
+    "cards": {
+      "open": "Otwórz",
+      "source": "Źródło",
+      "viewOnPage": "Zobacz na stronie",
+      "present": "Obecnie",
+      "stack": {
+        "core": "Języki i backend",
+        "frontend": "Frontend i mobile",
+        "data": "Dane i infrastruktura",
+        "delivery": "Dostarczanie i komunikacja"
+      },
+      "contact": {
+        "title": "Skontaktuj się z Bohdanem",
+        "email": "E-mail",
+        "telegram": "Telegram",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "copy": "Kopiuj",
+        "copied": "Skopiowano",
+        "request": "Wyślij zapytanie",
+        "requestHint": "Cztery krótkie kroki. Wiadomość trafi do Bohdana na Telegramie.",
+        "availability": "Otwarty na pracę w niepełnym wymiarze i projekty"
+      },
+      "cv": {
+        "title": "CV",
+        "download": "Pobierz",
+        "drive": "Otwórz w Drive"
+      }
+    },
+    "flow": {
+      "progress": "Zapytanie · krok {current} z {total}",
+      "cancel": "Anuluj zapytanie",
+      "placeholderName": "Twoje imię",
+      "placeholderContact": "Email, Telegram lub tel.",
+      "placeholderProposal": "O czym chcesz porozmawiać?",
+      "placeholderCallTime": "Pora rozmowy lub skip"
+    },
+    "scripted": {
+      "contact": "Oto jak skontaktować się z Bohdanem."
+    },
+    "a11y": {
+      "conversation": "Rozmowa",
+      "starters": "Sugerowane pytania",
+      "followUps": "Sugerowane pytania uzupełniające"
+    }
+  }
+}

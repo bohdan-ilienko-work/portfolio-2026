@@ -1,0 +1,82 @@
+{
+  "chat": {
+    "header": {
+      "subtitle": "AI асистент · познава CV-то и проектите му",
+      "status": "Part-time и проекти",
+      "newChat": "Нов чат"
+    },
+    "trigger": {
+      "hint": "Попитай за технологиите, проектите или заетостта му"
+    },
+    "empty": {
+      "greeting": "Здравей, аз съм AI асистентът на Bohdan.",
+      "intro": "Попитай за технологиите, проектите или заетостта му. Отговорите са от CV-то му и този сайт.",
+      "tabPopular": "Популярни"
+    },
+    "composer": {
+      "placeholder": "Питай за стек и проекти…",
+      "stop": "Спри",
+      "hintSend": "Изпрати",
+      "hintNewLine": "Нов ред",
+      "hintClose": "Затвори"
+    },
+    "status": {
+      "retrieve": "Търся в CV-то му…",
+      "write": "Пиша…"
+    },
+    "sources": {
+      "label": "В сайта"
+    },
+    "errors": {
+      "generic": "В момента не успях да намеря отговор.",
+      "rateLimited": "Твърде много въпроси един след друг. Опитай пак след минута.",
+      "retry": "Опитай пак",
+      "contactFallback": "Можеш да се свържеш директно с Bohdan:"
+    },
+    "cards": {
+      "open": "Отвори",
+      "source": "Източник",
+      "viewOnPage": "Виж на страницата",
+      "present": "До момента",
+      "stack": {
+        "core": "Езици и бекенд",
+        "frontend": "Фронтенд и мобилни приложения",
+        "data": "Данни и инфраструктура",
+        "delivery": "Доставка и съобщения"
+      },
+      "contact": {
+        "title": "Свържи се с Bohdan",
+        "email": "Имейл",
+        "telegram": "Telegram",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "copy": "Копирай",
+        "copied": "Копирано",
+        "request": "Изпрати запитване",
+        "requestHint": "Четири кратки стъпки, изпратени до Bohdan в Telegram.",
+        "availability": "Отворен за почасова и проектна работа"
+      },
+      "cv": {
+        "title": "CV",
+        "download": "Изтегли",
+        "drive": "Отвори в Drive"
+      }
+    },
+    "flow": {
+      "progress": "Запитване · стъпка {current} от {total}",
+      "cancel": "Откажи запитването",
+      "placeholderName": "Името ти",
+      "placeholderContact": "Имейл, Telegram или тел.",
+      "placeholderProposal": "Какво искаш да обсъдим?",
+      "placeholderCallTime": "Час за разговор или skip"
+    },
+    "scripted": {
+      "contact": "Ето как можеш да се свържеш с Bohdan."
+    },
+    "a11y": {
+      "conversation": "Разговор",
+      "starters": "Предложени въпроси",
+      "followUps": "Предложени допълнителни въпроси"
+    }
+  }
+}

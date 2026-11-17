@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { HiBars3, HiXMark } from 'react-icons/hi2';
 
+import { Monogram, focusRing } from '@/components/chat/ui';
 import { navItems } from '@/data';
 import { cn } from '@/lib/utils';
 
@@ -104,10 +105,17 @@ export const FloatingNav = ({ navItems, className }: FloatingNavProps) => {
               <button
                 type="button"
                 onClick={() => window.dispatchEvent(new Event('open-ask-bohdan'))}
-                className="flex items-center gap-1.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 px-3 py-1.5 text-xs font-semibold text-white transition hover:from-cyan-400 hover:to-blue-400"
+                aria-haspopup="dialog"
+                aria-label={t('askBohdan.title')}
+                title={t('askBohdan.title')}
+                className={cn(
+                  // The menu is already tight at 1024px, so the label only shows from xl; below that the pill is the monogram.
+                  'group flex shrink-0 items-center gap-2 rounded-full border border-[--border-medium] p-1 text-xs font-medium text-[--text-primary] transition-colors hover:border-[--border-strong] hover:bg-[--surface-2] xl:pr-3',
+                  focusRing
+                )}
               >
-                <span aria-hidden>✦</span>
-                Ask AI
+                <Monogram size={22} className="group-hover:bg-[--surface-3]" />
+                <span className="hidden whitespace-nowrap xl:inline">{t('askBohdan.title')}</span>
               </button>
             )}
 
@@ -161,10 +169,14 @@ export const FloatingNav = ({ navItems, className }: FloatingNavProps) => {
                       setIsMobileMenuOpen(false);
                       window.dispatchEvent(new Event('open-ask-bohdan'));
                     }}
-                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-3 py-2 text-sm font-semibold text-white transition hover:from-cyan-400 hover:to-blue-400"
+                    aria-haspopup="dialog"
+                    className={cn(
+                      'group flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-[--text-primary] transition hover:bg-[--surface-card]',
+                      focusRing
+                    )}
                   >
-                    <span aria-hidden>✦</span>
-                    Ask Bohdan AI
+                    <Monogram size={22} className="group-hover:bg-[--surface-3]" />
+                    {t('askBohdan.title')}
                   </button>
                 </div>
 

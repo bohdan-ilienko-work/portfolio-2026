@@ -107,6 +107,14 @@
     --bento-overlay: rgba(255, 255, 255, 0.88);
     --bento-overlay-mid: rgba(255, 255, 255, 0.62);
     --bento-overlay-end: rgba(255, 255, 255, 0.28);
+
+    /* Chat assistant: one accent, everything else comes from the surface/border/text tokens */
+    --chat-accent: #6d28d9;
+    --chat-accent-hover: #5b21b6;
+    --chat-accent-soft: rgba(109, 40, 217, 0.08);
+    --chat-accent-fg: #ffffff;
+    --chat-ring: rgba(109, 40, 217, 0.35);
+    --chat-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
   }
 
   .dark {
@@ -211,6 +219,13 @@
     --bento-overlay: rgba(4, 7, 29, 0.88);
     --bento-overlay-mid: rgba(4, 7, 29, 0.62);
     --bento-overlay-end: rgba(4, 7, 29, 0.28);
+
+    /* Chat assistant */
+    --chat-accent: #cbacf9;
+    --chat-accent-hover: #ddc6fb;
+    --chat-accent-soft: rgba(203, 172, 249, 0.12);
+    --chat-accent-fg: #0a0d1a;
+    --chat-ring: rgba(203, 172, 249, 0.4);
   }
 }
 
@@ -239,6 +254,54 @@
     #contact {
       margin-bottom: 2rem;
       padding-bottom: 2rem;
+    }
+  }
+
+  /* Chat assistant motion: the only looping animations in the chat. Both are off under reduced motion. */
+  .chat-caret {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    margin-left: 2px;
+    vertical-align: -0.12em;
+    background: var(--chat-accent);
+    animation: chat-caret-blink 1s steps(1) infinite;
+  }
+
+  .chat-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--border-subtle) 0%,
+      var(--border-medium) 50%,
+      var(--border-subtle) 100%
+    );
+    background-size: 200% 100%;
+    animation: chat-shimmer-slide 1.4s ease-in-out infinite;
+  }
+
+  @keyframes chat-caret-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes chat-shimmer-slide {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chat-caret,
+    .chat-shimmer {
+      animation: none;
     }
   }
 }

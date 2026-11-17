@@ -1,0 +1,82 @@
+{
+  "chat": {
+    "header": {
+      "subtitle": "AI-асистент · знає його CV і проєкти",
+      "status": "Part-time і проєкти",
+      "newChat": "Новий чат"
+    },
+    "trigger": {
+      "hint": "Запитай про стек, проєкти, доступність"
+    },
+    "empty": {
+      "greeting": "Привіт, я AI-асистент Богдана.",
+      "intro": "Запитай про стек, проєкти або доступність. Відповідаю за його CV і матеріалами сайту.",
+      "tabPopular": "Популярне"
+    },
+    "composer": {
+      "placeholder": "Запитай про стек, проєкти…",
+      "stop": "Стоп",
+      "hintSend": "Надіслати",
+      "hintNewLine": "Новий рядок",
+      "hintClose": "Закрити"
+    },
+    "status": {
+      "retrieve": "Шукаю в його CV…",
+      "write": "Пишу відповідь…"
+    },
+    "sources": {
+      "label": "На сайті"
+    },
+    "errors": {
+      "generic": "Не вдалося отримати відповідь.",
+      "rateLimited": "Забагато запитань поспіль. Спробуй за хвилину.",
+      "retry": "Повторити",
+      "contactFallback": "Богдану можна написати напряму:"
+    },
+    "cards": {
+      "open": "Відкрити",
+      "source": "Вихідний код",
+      "viewOnPage": "Показати на сторінці",
+      "present": "дотепер",
+      "stack": {
+        "core": "Мови та бекенд",
+        "frontend": "Фронтенд і мобайл",
+        "data": "Дані та інфраструктура",
+        "delivery": "Доставка та черги"
+      },
+      "contact": {
+        "title": "Зв'язатися з Богданом",
+        "email": "Email",
+        "telegram": "Telegram",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "copy": "Копіювати",
+        "copied": "Скопійовано",
+        "request": "Залишити запит",
+        "requestHint": "Чотири короткі кроки, запит прийде Богдану в Telegram.",
+        "availability": "Відкритий до часткової зайнятості та проєктної роботи"
+      },
+      "cv": {
+        "title": "Резюме",
+        "download": "Завантажити",
+        "drive": "Відкрити в Drive"
+      }
+    },
+    "flow": {
+      "progress": "Запит · крок {current} з {total}",
+      "cancel": "Скасувати запит",
+      "placeholderName": "Ваше ім'я",
+      "placeholderContact": "Email, Telegram або телефон",
+      "placeholderProposal": "Про що хочете поговорити?",
+      "placeholderCallTime": "Час дзвінка або skip"
+    },
+    "scripted": {
+      "contact": "Ось як зв'язатися з Богданом."
+    },
+    "a11y": {
+      "conversation": "Розмова",
+      "starters": "Підказки запитань",
+      "followUps": "Можливі продовження"
+    }
+  }
+}

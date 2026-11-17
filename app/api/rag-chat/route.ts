@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import { CHAT_LIMITS } from '@/lib/chat/protocol';
 import { runBohdanRag, type ChatHistoryMessage, type ChatScenarioContext } from '@/lib/rag/chat-graph';
 
 type ChatRequestBody = {
@@ -26,7 +27,8 @@ export const POST = async (request: NextRequest) => {
     return NextResponse.json({ ok: false, error: 'Invalid JSON body' }, { status: 400 });
   }
 
-  const question = payload.question?.trim();
+  // Capped like the new chat: a question over the embeddings token limit hangs for about 100 s in silent retries.
+  const question = payload.question?.trim().slice(0, CHAT_LIMITS.questionMaxChars);
 
   if (!question) {
     return NextResponse.json({ ok: false, error: 'Question is required' }, { status: 400 });

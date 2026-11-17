@@ -17,6 +17,10 @@ const nextConfig = {
     ]
   },
   async headers() {
+    // Immutable caching is for production builds. In development the chunk URLs stay the same while their content
+    // changes, so the browser would keep serving stale code after every edit.
+    if (process.env.NODE_ENV !== 'production') return [];
+
     return [
       {
         source: '/_next/static/:path*',

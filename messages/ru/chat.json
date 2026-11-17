@@ -1,0 +1,82 @@
+{
+  "chat": {
+    "header": {
+      "subtitle": "AI-ассистент · знает его CV и проекты",
+      "status": "Part-time и проекты",
+      "newChat": "Новый чат"
+    },
+    "trigger": {
+      "hint": "Спроси про стек, проекты, доступность"
+    },
+    "empty": {
+      "greeting": "Привет, я AI-ассистент Богдана.",
+      "intro": "Спроси про стек, проекты или доступность. Отвечаю по его CV и материалам сайта.",
+      "tabPopular": "Популярное"
+    },
+    "composer": {
+      "placeholder": "Спроси про стек, проекты…",
+      "stop": "Стоп",
+      "hintSend": "Отправить",
+      "hintNewLine": "Новая строка",
+      "hintClose": "Закрыть"
+    },
+    "status": {
+      "retrieve": "Ищу в его CV…",
+      "write": "Пишу ответ…"
+    },
+    "sources": {
+      "label": "На сайте"
+    },
+    "errors": {
+      "generic": "Не удалось получить ответ.",
+      "rateLimited": "Слишком много вопросов подряд. Попробуй через минуту.",
+      "retry": "Повторить",
+      "contactFallback": "Богдану можно написать напрямую:"
+    },
+    "cards": {
+      "open": "Открыть",
+      "source": "Исходники",
+      "viewOnPage": "Показать на странице",
+      "present": "по настоящее время",
+      "stack": {
+        "core": "Языки и бэкенд",
+        "frontend": "Фронтенд и мобайл",
+        "data": "Данные и инфраструктура",
+        "delivery": "Доставка и очереди"
+      },
+      "contact": {
+        "title": "Связаться с Богданом",
+        "email": "Email",
+        "telegram": "Telegram",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "copy": "Копировать",
+        "copied": "Скопировано",
+        "request": "Оставить запрос",
+        "requestHint": "Четыре коротких шага, запрос придёт Богдану в Telegram.",
+        "availability": "Открыт к частичной занятости и проектной работе"
+      },
+      "cv": {
+        "title": "Резюме",
+        "download": "Скачать",
+        "drive": "Открыть в Drive"
+      }
+    },
+    "flow": {
+      "progress": "Запрос · шаг {current} из {total}",
+      "cancel": "Отменить запрос",
+      "placeholderName": "Ваше имя",
+      "placeholderContact": "Email, Telegram или телефон",
+      "placeholderProposal": "О чём хотите поговорить?",
+      "placeholderCallTime": "Время созвона или skip"
+    },
+    "scripted": {
+      "contact": "Вот как связаться с Богданом."
+    },
+    "a11y": {
+      "conversation": "Разговор",
+      "starters": "Подсказки вопросов",
+      "followUps": "Возможные продолжения"
+    }
+  }
+}

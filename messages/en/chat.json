@@ -1,0 +1,82 @@
+{
+  "chat": {
+    "header": {
+      "subtitle": "AI assistant · knows his CV and projects",
+      "status": "Part-time & projects",
+      "newChat": "New chat"
+    },
+    "trigger": {
+      "hint": "Ask about stack, projects, availability"
+    },
+    "empty": {
+      "greeting": "Hi, I'm Bohdan's AI assistant.",
+      "intro": "Ask about his stack, projects or availability. Answers come from his CV and this site.",
+      "tabPopular": "Popular"
+    },
+    "composer": {
+      "placeholder": "Ask about stack, projects…",
+      "stop": "Stop",
+      "hintSend": "Send",
+      "hintNewLine": "New line",
+      "hintClose": "Close"
+    },
+    "status": {
+      "retrieve": "Searching his CV…",
+      "write": "Writing…"
+    },
+    "sources": {
+      "label": "On the site"
+    },
+    "errors": {
+      "generic": "Couldn't get an answer right now.",
+      "rateLimited": "Too many questions in a row. Try again in a minute.",
+      "retry": "Retry",
+      "contactFallback": "You can reach Bohdan directly:"
+    },
+    "cards": {
+      "open": "Open",
+      "source": "Source",
+      "viewOnPage": "View on the page",
+      "present": "Present",
+      "stack": {
+        "core": "Language & backend",
+        "frontend": "Frontend & mobile",
+        "data": "Data & infrastructure",
+        "delivery": "Delivery & messaging"
+      },
+      "contact": {
+        "title": "Contact Bohdan",
+        "email": "Email",
+        "telegram": "Telegram",
+        "linkedin": "LinkedIn",
+        "github": "GitHub",
+        "copy": "Copy",
+        "copied": "Copied",
+        "request": "Send a request",
+        "requestHint": "Four short steps, delivered to Bohdan on Telegram.",
+        "availability": "Open to part-time and project work"
+      },
+      "cv": {
+        "title": "Resume",
+        "download": "Download",
+        "drive": "Open in Drive"
+      }
+    },
+    "flow": {
+      "progress": "Request · step {current} of {total}",
+      "cancel": "Cancel request",
+      "placeholderName": "Your name",
+      "placeholderContact": "Email, Telegram or phone",
+      "placeholderProposal": "What would you like to discuss?",
+      "placeholderCallTime": "Preferred call time, or type skip"
+    },
+    "scripted": {
+      "contact": "Here's how to reach Bohdan."
+    },
+    "a11y": {
+      "conversation": "Conversation",
+      "starters": "Suggested questions",
+      "followUps": "Suggested follow-ups"
+    }
+  }
+}

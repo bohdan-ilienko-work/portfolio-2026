@@ -11,7 +11,8 @@ const messageFiles = [
   'testimonials',
   'experience',
   'cv',
-  'footer'
+  'footer',
+  'chat'
 ] as const;
 
 const loadMessageFile = async (locale: Locale, fileName: (typeof messageFiles)[number]) => {
